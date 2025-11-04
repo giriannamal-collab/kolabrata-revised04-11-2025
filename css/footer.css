@@ -1,0 +1,136 @@
+/*
+======================================================
+10. FOOTER (RESTYLED)
+======================================================
+*/
+.footer { 
+    padding: 6rem 5% 3rem;
+    background: var(--footer-dark);
+    color: rgba(255,255,255,0.7); 
+    position: relative;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-grid { 
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; 
+    gap: 4rem; 
+    margin-bottom: 4rem; 
+}
+
+.footer-brand h3 { 
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    color: var(--bg-white);
+}
+
+.footer-brand .brand-tagline {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.footer-brand p { 
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.footer-contact {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.footer-contact svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--primary-accent); /* Orange */
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--primary-accent); /* Orange */
+    transform: translateY(-3px);
+}
+
+.social-link svg {
+    width: 18px;
+    height: 18px;
+    stroke: white;
+}
+
+.footer-column h4 { 
+    font-size: 1rem;
+    font-weight: 700; 
+    margin-bottom: 1.5rem; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--bg-white);
+}
+
+.footer-column ul { list-style: none; }
+.footer-column ul li { margin-bottom: 0.9rem; }
+
+.footer-column ul li a { 
+    color: rgba(255,255,255,0.7);
+    text-decoration: none; 
+    transition: all 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: var(--primary-accent); /* Orange */
+    padding-left: 5px;
+}
+
+.footer-bottom { 
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom-left {
+    color: rgba(255,255,255,0.6);
+}
+
+@media (max-width: 1024px) {
+    .footer-grid { 
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-grid { 
+        grid-template-columns: 1fr;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}

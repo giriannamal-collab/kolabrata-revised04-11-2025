@@ -1,0 +1,130 @@
+/*
+======================================================
+2. TWO-LINE HEADER (YOUR REQUEST)
+======================================================
+*/
+.header-new {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* --- EDITED: Outer wrapper has no side padding --- */
+    padding: 1.25rem 0; 
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-gray);
+}
+
+.header-container {
+    /* --- EDITED: Inner wrapper has max-width and side padding --- */
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 3vw; /* This is your "slight margin" */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.header-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-decoration: none;
+    line-height: 1.1;
+}
+
+.header-value-prop {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-gray);
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.header-nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.header-nav-links a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.header-nav-links a:hover,
+.header-nav-links a.active {
+    color: var(--primary-accent-dark);
+    font-weight: 700;
+}
+
+.header-nav-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.header-nav-buttons .btn-primary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.mobile-menu-btn svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--text-dark);
+}
+
+/* --- Mobile Menu Styles --- */
+@media (max-width: 900px) {
+    .header-nav {
+        display: none; /* Hide nav on mobile */
+        
+        /* New styles for active mobile menu */
+        position: absolute;
+        top: 99%; /* Position below the header (100% was too low) */
+        left: 0;
+        width: 100%;
+        background: var(--bg-white);
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        border-top: 1px solid var(--border-gray);
+    }
+    
+    .header-nav.mobile-nav-active {
+        display: flex; /* Show the menu */
+    }
+
+    .header-nav-links {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem; /* Space out links vertically */
+    }
+
+    .header-nav-buttons {
+        margin-top: 1.5rem;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+}

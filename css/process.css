@@ -1,0 +1,111 @@
+/*
+======================================================
+7. OUR PROCESS SECTION (RESTYLED)
+======================================================
+*/
+.process-section {
+    background: var(--bg-light-gray);
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    position: relative;
+}
+
+/* Connecting Line */
+.process-grid::before {
+    content: '';
+    position: absolute;
+    top: 60px; /* Align with center of icon */
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: dashed #D1D5DB;
+    z-index: 1;
+}
+
+.process-card {
+    background: var(--bg-white);
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    border: 2px solid var(--border-gray);
+    transition: all 0.4s ease;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.process-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-accent); /* Orange */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.step-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 45px;
+    background: var(--primary-accent); /* Orange */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--bg-white);
+    border: 4px solid var(--bg-white);
+}
+
+.step-icon {
+    width: 70px;
+    height: 70px;
+    margin: 1.5rem auto 1.2rem;
+    background: rgba(249, 115, 22, 0.1); /* Orange */
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+.step-icon svg {
+    width: 36px;
+    height: 36px;
+    stroke: var(--primary-accent-dark); /* Orange */
+}
+
+.process-card:hover .step-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--primary-accent); /* Orange */
+}
+.process-card:hover .step-icon svg {
+    stroke: var(--bg-white);
+}
+
+.step-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.step-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .process-grid::before { display: none; } /* Hide line */
+}
+
+@media (max-width: 768px) {
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+}

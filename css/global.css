@@ -1,0 +1,146 @@
+/*
+======================================================
+1. GLOBAL STYLES (NEW FONT & NEW ORANGE COLOR SCHEME)
+======================================================
+*/
+:root {
+    --primary-accent: #F97316; /* New Bright Orange from image */
+    --primary-accent-dark: #EA580C; /* Darker hover */
+    --text-dark: #1F2937;
+    --text-gray: #6B7280;
+    --bg-white: #FFFFFF;
+    --bg-light-gray: #FAFBFF;
+    --border-gray: #E5E7EB;
+    --footer-dark: #111827;
+    
+    /* --- Service colors --- */
+    --svc-red: #EF4444;
+    --svc-blue: #3B82F6;
+    --svc-yellow: #FDE047;
+    --svc-teal: #2DD4BF;
+    --svc-darkblue: #1E40AF;
+}
+
+* { 
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif; /* NEW FONT */
+    background: var(--bg-white);
+    color: var(--text-gray);
+    line-height: 1.7;
+    padding-top: 100px; /* Offset for new fixed header */
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif; /* NEW FONT */
+    color: var(--text-dark);
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+/* NEW HIGHLIGHT STYLE (from BlueRoute) */
+.highlight {
+    color: var(--primary-accent);
+}
+
+/* --- EDITED: Outer wrapper has no side padding --- */
+.section-container {
+    padding: 6rem 0; 
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- EDITED: Inner wrapper has max-width and side padding --- */
+.container {
+    max-width: 1800px; 
+    margin: 0 auto;
+    padding: 0 3vw; /* This is your "slight margin" */
+    position: relative;
+    z-index: 2;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 4rem;
+}
+
+.section-header .section-badge {
+    display: inline-block;
+    background: rgba(249, 115, 22, 0.1); /* Orange */
+    border: 1px solid rgba(249, 115, 22, 0.3); /* Orange */
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--primary-accent-dark);
+    margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+}
+
+.section-header p {
+    font-size: 1.15rem;
+    color: var(--text-gray);
+    font-weight: 400;
+}
+
+/*
+======================================================
+1.1 FULLY ROUNDED BUTTONS (NEW STYLE)
+======================================================
+*/
+.btn {
+    padding: 1rem 2.2rem;
+    border-radius: 50px; /* FULLY ROUNDED EDGES */
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    border: 2px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: var(--primary-accent);
+    color: var(--bg-white);
+    border-color: var(--primary-accent);
+}
+
+.btn-primary:hover {
+    background: var(--primary-accent-dark);
+    border-color: var(--primary-accent-dark);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--bg-white);
+    color: var(--text-dark);
+    border: 2px solid var(--border-gray);
+}
+
+.btn-secondary:hover {
+    border-color: var(--text-dark);
+    color: var(--text-dark);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}

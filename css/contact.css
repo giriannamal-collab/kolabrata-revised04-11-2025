@@ -1,0 +1,213 @@
+/*
+======================================================
+9. NEW CONTACT FORM SECTION (RESTYLED)
+======================================================
+*/
+.consultation-section {
+    background: var(--bg-light-gray);
+}
+
+.consultation-container {
+    max-width: 800px; /* Centered container */
+    margin: 0 auto;
+}
+
+.form-container {
+    background: var(--bg-white);
+    padding: 3rem;
+    border-radius: 28px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border-gray);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-header h3 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-subtext {
+    font-size: 1.1rem;
+}
+
+.quick-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-field { position: relative; }
+
+.form-field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.input-wrapper { position: relative; }
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    stroke: var(--text-gray);
+}
+
+.form-field input,
+.form-field select {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 2px solid var(--border-gray);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    transition: all 0.3s ease;
+    background: var(--bg-white);
+}
+
+.form-field input:focus,
+.form-field select:focus {
+    outline: none;
+    border-color: var(--primary-accent); /* Orange */
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1); /* Orange */
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1.3rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 50px; /* Rounded */
+    cursor: pointer;
+    margin-top: 1rem;
+    
+    /* Re-using flat button styles */
+    background: var(--primary-accent);
+    color: var(--bg-white);
+    border: 2px solid var(--primary-accent);
+    transition: all 0.2s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+    background: var(--primary-accent-dark);
+    border-color: var(--primary-accent-dark);
+    transform: translateY(-2px);
+}
+
+.submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background: var(--text-gray);
+    border-color: var(--text-gray);
+    box-shadow: none;
+}
+
+.error-message {
+    background: #FEE2E2;
+    border: 1px solid #EF4444;
+    color: #991B1B;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.error-message.show { display: block; }
+
+.form-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-gray);
+}
+
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-gray);
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    background: #10B981;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 900;
+}
+
+/* Success Overlay */
+.success-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+}
+
+.success-overlay.show { display: flex; }
+
+.success-box {
+    background: white;
+    padding: 3rem 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: #10B981;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.success-icon svg {
+    width: 50px;
+    height: 50px;
+    stroke: white;
+    stroke-width: 3;
+}
+
+.success-box h3 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.success-box p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
