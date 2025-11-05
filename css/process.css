@@ -1,111 +1,253 @@
-/*
-======================================================
-7. OUR PROCESS SECTION (RESTYLED)
-======================================================
+/* ======================================================
+  FINAL "SIMPLE C-RING" CSS
+  ======================================================
 */
-.process-section {
-    background: var(--bg-light-gray);
-}
-
-.process-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+.process-simple-container {
     position: relative;
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 2rem 0;
 }
 
-/* Connecting Line */
-.process-grid::before {
-    content: '';
+/* Each Step Row - NEW LAYOUT */
+.process-simple-step {
+    position: relative;
+    /* Set height for spacing and icon centering */
+    height: 150px; 
+    margin-bottom: 2rem; /* Space between steps */
+    width: 100%;
+    
+    /* Animation */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+/* Add a clearing element for floats */
+.process-simple-step::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.process-simple-step.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* The central element: Icon + C-Ring - NEW LAYOUT */
+.simple-step-icon {
     position: absolute;
-    top: 60px; /* Align with center of icon */
-    left: 10%;
-    width: 80%;
-    height: 2px;
-    background: dashed #D1D5DB;
-    z-index: 1;
-}
-
-.process-card {
-    background: var(--bg-white);
-    padding: 2rem 1.5rem;
-    border-radius: 20px;
-    border: 2px solid var(--border-gray);
-    transition: all 0.4s ease;
-    text-align: center;
-    position: relative;
+    top: 0;
+    /* Force to center */
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 150px; 
+    height: 150px;
     z-index: 2;
 }
 
-.process-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary-accent); /* Orange */
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-}
-
-.step-badge {
+/* The White Inner Circle */
+.icon-inner-circle {
     position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 45px;
-    height: 45px;
-    background: var(--primary-accent); /* Orange */
+    top: 25px; 
+    left: 25px;
+    width: 100px; 
+    height: 100px;
+    background: var(--bg-light, #ffffff);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--bg-white);
-    border: 4px solid var(--bg-white);
+    font-size: 3.5rem; 
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    z-index: 3;
 }
 
-.step-icon {
-    width: 70px;
-    height: 70px;
-    margin: 1.5rem auto 1.2rem;
-    background: rgba(249, 115, 22, 0.1); /* Orange */
-    border-radius: 16px;
+/* The Colored "C" Ring */
+.color-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* 150px */
+    height: 100%; /* 150px */
+    border-radius: 50%;
+    border: 25px solid; 
+    z-index: 2;
+}
+
+/* The Text Label (Left or Right) - NEW LAYOUT */
+.simple-step-label {
+    position: relative;
+    width: 50%;
+    /* Use padding to clear the center icon */
+    box-sizing: border-box; 
+    padding-top: 2rem; /* Align text vertically */
+    
+    /* --- NEW FLEXBOX RULES --- */
+    display: flex;
+    align-items: flex-start; /* Aligns badge and text to the top */
+    gap: 1rem; /* Space between badge and text */
+}
+
+/* NEW: Wrapper for the text content */
+.label-text-content {
+    flex-grow: 1;
+}
+
+.simple-step-label .step-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark, #333);
+}
+
+/* Hide description by default */
+.simple-step-label p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0.5rem 0 0;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease-out;
+}
+/* Show description on hover */
+.process-simple-step:hover .simple-step-label p {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+}
+
+/* The little colored number */
+.step-number-badge {
+    position: relative; /* CHANGED: No longer absolute */
+    top: 0.25rem; /* Slight nudge down to align with text */
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.4s ease;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0; /* Prevent shrinking */
 }
 
-.step-icon svg {
-    width: 36px;
-    height: 36px;
-    stroke: var(--primary-accent-dark); /* Orange */
+/* --- Alternating Layout (Matches Image) - NEW LAYOUT --- */
+
+/* ODD Steps: 01, 03, 05 (Text on RIGHT) */
+.step-odd .simple-step-label {
+    float: right;
+    text-align: left; 
+    /* 75px (half icon) + 3rem */
+    padding-left: calc(75px + 3rem); 
+    flex-direction: row; /* Badge first, then text */
 }
 
-.process-card:hover .step-icon {
-    transform: scale(1.1) rotate(5deg);
-    background: var(--primary-accent); /* Orange */
-}
-.process-card:hover .step-icon svg {
-    stroke: var(--bg-white);
-}
-
-.step-title {
-    font-size: 1.3rem;
-    margin-bottom: 0.8rem;
+/* EVEN Steps: 02, 04 (Text on LEFT) */
+.step-even .simple-step-label {
+    float: left;
+    text-align: right; 
+    /* 75px (half icon) + 3rem */
+    padding-right: calc(75px + 3rem);
+    flex-direction: row-reverse; /* Text first, then badge */
 }
 
-.step-description {
-    font-size: 0.95rem;
-    line-height: 1.6;
+/* --- Colors (This creates the "C" shape) --- */
+.step-1 .icon-inner-circle { color: #29c7b0; }
+.step-1 .step-number-badge { background: #29c7b0; }
+.step-1 .color-ring {
+    border-color: #29c7b0;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    transform: rotate(-45deg);
+}
+.step-2 .icon-inner-circle { color: #2985c7; }
+.step-2 .step-number-badge { background: #2985c7; }
+.step-2 .color-ring {
+    border-color: #2985c7;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    transform: rotate(-45deg);
+}
+.step-3 .icon-inner-circle { color: #8b29c7; }
+.step-3 .step-number-badge { background: #8b29c7; }
+.step-3 .color-ring {
+    border-color: #8b29c7;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    transform: rotate(-45deg);
+}
+.step-4 .icon-inner-circle { color: #c72985; }
+.step-4 .step-number-badge { background: #c72985; }
+.step-4 .color-ring {
+    border-color: #c72985;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    transform: rotate(-45deg);
+}
+.step-5 .icon-inner-circle { color: #c77a29; }
+.step-5 .step-number-badge { background: #c77a29; }
+.step-5 .color-ring {
+    border-color: #c77a29;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    transform: rotate(-45deg);
 }
 
-@media (max-width: 1024px) {
-    .process-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .process-grid::before { display: none; } /* Hide line */
-}
-
+/*
+======================================================
+7. RESPONSIVE (Mobile for Simple C-Ring)
+======================================================
+*/
 @media (max-width: 768px) {
-    .process-grid {
-        grid-template-columns: 1fr;
+    .process-simple-container {
+        padding: 0;
+        background: none; 
+    }
+    .process-simple-step {
+        flex-direction: column;
+        padding: 0 1rem;
+        margin-bottom: 3rem;
+        height: auto; /* Let content define height */
+    }
+    
+    .step-even {
+        flex-direction: column;
+    }
+    
+    /* Center icon on mobile */
+    .simple-step-icon {
+        position: relative; /* Unset absolute */
+        left: auto;
+        transform: none;
+        margin-bottom: 1rem;
+    }
+
+    .simple-step-label {
+        width: 100%;
+        text-align: center !important;
+        padding: 0 !important;
+        float: none; /* Unset float */
+        /* Center badge/text on mobile */
+        justify-content: center;
+        flex-direction: column !important;
+    }
+    
+    .label-text-content {
+        text-align: center !important;
+    }
+
+    .simple-step-label p {
+        opacity: 1;
+        visibility: visible;
+        height: auto;
+    }
+
+    .step-number-badge {
+        /* On mobile, place badge on top of text */
+        margin: 0 auto 0.5rem auto;
+        top: 0;
     }
 }
