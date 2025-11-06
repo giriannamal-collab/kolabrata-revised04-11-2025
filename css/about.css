@@ -2,9 +2,9 @@
 ======================================================
 6. ABOUT US SECTION (RESTYLED)
 ======================================================
-*/
-.about-section {
-    background: var(--bg-white);
+/* --- Add this for section separation --- */
+#about {
+    background: var(--bg-light-gray); /* LIGHT GRAY */
 }
 
 .about-container {

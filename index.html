@@ -20,9 +20,9 @@
     <link rel="stylesheet" href="css/industries.css">
     <link rel="stylesheet" href="css/services.css">
     <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/process.css"> 
-    <link rel="stylesheet" href="css/technology.css"> 
-    <link rel="stylesheet" href="css/testimonials.css">     
+    <link rel="stylesheet" href="css/process.css">    
+    <link rel="stylesheet" href="css/technology.css">    
+    <link rel="stylesheet" href="css/testimonials.css">      
     <link rel="stylesheet" href="css/faq.css">
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -31,35 +31,43 @@
 
 <body>
     
-    <nav class="header-new">
-        <div class="header-container">
-            <div class="header-logo-wrapper">
-                <a href="#hero" class="header-logo">Kolabrata</a>
-                <div class="header-value-prop">We Build Custom Solutions</div>
-            </div>
-            
-            <div class="header-nav">
-                <div class="header-nav-links">
-                    <a href="#about" class="active">About Us</a>
-                    <a href="#services">Services</a>
-                    <a href="#methodology">Our Process</a>
-                    <a href="#faq">FAQ</a>
-                </div>
-                <div class="header-nav-buttons">
-                    <a href="#consultation" class="btn btn-primary">Book a Call</a>
-                </div>
-            </div>
+ <nav class="header-new">
+    <div class="header-container">
 
-            <button class="mobile-menu-btn" aria-label="Open Menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
+        <div class="header-logo-wrapper">
+            <a href="#hero" class="header-logo-link">
+                <img src="image/logo.png" alt="Kolabrata Logo" class="site-logo">
+                <div class="site-identity">
+                    <span class="site-name">Kolabrata</span>
+                    <span class="site-tagline">Build. Innovate. Integrate.</span>
+                </div>
+            </a>
         </div>
-    </nav>
-    
+        
+        <div class="header-nav">
+            <div class="header-nav-links">
+                <a href="#about" class="active">About Us</a>
+                <a href="#services">Services</a>
+                <a href="#methodology">Our Process</a>
+                <a href="#technology">Technology</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="header-nav-buttons">
+                <a href="#consultation" class="btn btn-primary">Book a Call</a>
+            </div>
+        </div>
+
+        <button class="mobile-menu-btn" aria-label="Open Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+</nav>
+
     <main id="main-content">
 
         <section class="hero-new" id="hero">
@@ -93,218 +101,104 @@
             </div>
 
         </section>
-<section class="section-container" id="industries">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-badge">Our Expertise</div>
-            <h2>We Specialize in These <span class="highlight">Industries</span></h2>
-        </div>
-
-        <div class="industries-grid">
-            <div class="industry-card">
-                <div class="industry-icon">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="1" y="3" width="15" height="13"></rect>
-                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                    </svg>
-                </div>
-                <div class="industry-name">Supply Chain</div>
-                <div class="industry-description">Optimizing logistics, inventory, and distribution networks for maximum efficiency</div>
-            </div>
-
-            <div class="industry-card">
-                <div class="industry-icon">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                    </svg>
-                </div>
-                <div class="industry-name">Healthcare</div>
-                <div class="industry-description">Transforming patient care, clinical workflows, and healthcare operations with innovative solutions</div>
-            </div>
-
-            <div class="industry-card">
-                <div class="industry-icon">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                </div>
-                <div class="industry-name">Flexible Workspace</div>
-                <div class="industry-description">Empowering co-working spaces with smart booking systems and community management tools</div>
-            </div>
-
-            <div class="industry-card">
-                <div class="industry-icon">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-                    </svg>
-                </div>
-                <div class="industry-name">DevOps/Cloud</div>
-                <div class="industry-description">Infrastructure and deployment solutions for scalable and reliable cloud environments</div>
-            </div>
-
-            <div class="industry-card">
-                <div class="industry-icon">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                        <line x1="8" y1="21" x2="16" y2="21"></line>
-                        <line x1="12" y1="17" x2="12" y2="21"></line>
-                    </svg>
-                </div>
-                <div class="industry-name">Enterprise Software</div>
-                <div class="industry-description">CRM, ERP, and business management systems to streamline operations and drive growth</div>
-            </div>
-        </div>
-
-        <div class="trust-badges-row">
-            <div class="trust-badge">
-                <div class="badge-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                    </svg>
-                </div>
-                <span>Trusted Partner</span>
-            </div>
-
-            <div class="trust-badge">
-                <div class="badge-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                    </svg>
-                </div>
-                <span>Proven Track Record</span>
-            </div>
-
-            <div class="trust-badge">
-                <div class="badge-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                </div>
-                <span>24/7 Support</span>
-            </div>
-        </div>
-    </div>
-</section>
- 
-        <section id="services" class="section-container">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-badge">⚡ Our Expertise</div>
-            <h2>Transform Your <span class="theme-color-text">Business Operations</span></h2>
-            <p>Enterprise-grade software solutions designed to streamline workflows, reduce costs, and accelerate growth.</p>
-        </div>
         
-        <div class="bento-grid-container">
-            <div class="bento-box box-1">
-                <div class="bento-icon">
-                    <img src="icons/custom.png" alt="Custom Business Software Icon">
+        <section class="section-container" id="industries">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">Our Expertise</div>
+                    <h2>We Specialize in These <span class="highlight">Industries</span></h2>
                 </div>
-                <h3>Custom Business Software</h3>
-                <p>Stop compromising with off-the-shelf solutions. Get a competitive advantage with custom apps that fit your exact processes.</p>
-                <!-- MODIFIED: Added container and new button -->
-                <div class="bento-link-container">
-                    <a href="#" class="bento-link learn-more">Learn More</a>
-                    <a href="#consultation" class="bento-link primary-link">Get Started →</a>
-                </div>
-            </div>
-            
-            <div class="bento-box box-2">
-                <div class="bento-icon">
-                    <img src="icons/buildmyapp-bg.png" alt="Build My App Idea Icon">
-                </div>
-                <h3>Build My App Idea</h3>
-                <p>Turn innovative ideas into successful products with our MVP development.</p>
-                <!-- MODIFIED: Added container and new button -->
-                <div class="bento-link-container">
-                    <a href="#" class="bento-link learn-more">Learn More</a>
-                    <a href="#consultation" class="bento-link primary-link">Start Your Journey →</a>
-                </div>
-            </div>
-            
-            <div class="bento-box box-3">
-                <div class="bento-icon">
-                    <img src="icons/rescue-icon.png" alt="Software Project Rescue Icon">
-                </div>
-                <h3>Software Project Rescue</h3>
-                <p>Is your project off track? We provide comprehensive audits to get you back on track.</p>
-                <!-- MODIFIED: Added container and new button -->
-                <div class="bento-link-container">
-                    <a href="#" class="bento-link learn-more">Learn More</a>
-                    <a href="#consultation" class="bento-link primary-link">Get an Audit →</a>
-                </div>
-            </div>
 
-            <div class="bento-box box-4">
-                <div class="bento-icon">
-                    <img src="icons/AI-icon.png" alt="Artificial Intelligence Icon">
-                </div>
-                <h3>Artificial Intelligence</h3>
-                <p>Cut through the AI hype with practical implementations that deliver measurable results.</p>
-                <!-- MODIFIED: Added container and new button -->
-                <div class="bento-link-container">
-                    <a href="#" class="bento-link learn-more">Learn More</a>
-                    <a href="#consultation" class="bento-link primary-link">Explore AI →</a>
-                </div>
-            </div>
+                <div class="industries-grid">
+                    <div class="industry-card">
+                        <div class="industry-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="3" width="15" height="13"></rect>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                            </svg>
+                        </div>
+                        <div class="industry-name">Supply Chain</div>
+                        <div class="industry-description">Optimizing logistics, inventory, and distribution networks for maximum efficiency</div>
+                    </div>
 
-            <div class="bento-box box-5">
-                <div class="bento-icon">
-                    <img src="icons/software.png" alt="Software Consulting Icon">
-                </div>
-                <h3>Software Consulting</h3>
-                <p>Make informed decisions with expert guidance and virtual CTO services.</p>
-                <!-- MODIFIED: Added container and new button -->
-                <div class="bento-link-container">
-                    <a href="#" class="bento-link learn-more">Learn More</a>
-                    <a href="#consultation" class="bento-link primary-link">Book Consultation →</a>
-                </div>
-            </div>
+                    <div class="industry-card">
+                        <div class="industry-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg>
+                        </div>
+                        <div class="industry-name">Healthcare</div>
+                        <div class="industry-description">Transforming patient care, clinical workflows, and healthcare operations with innovative solutions</div>
+                    </div>
 
-            <div class="bento-box box-6">
-                <div class="bento-icon">
-                    <img src="icons/Systems Integration.png" alt="Systems Integration Icon">
-                </div>
-                <h3>Systems Integration</h3>
-                <p>Break down data silos by connecting accounting, HR, CRM, and custom systems.</p>
-                <!-- MODIFIED: Added container and new button -->
-                <div class="bento-link-container">
-                    <a href="#" class="bento-link learn-more">Learn More</a>
-                    <a href="#consultation" class="bento-link primary-link">Start Integration →</a>
-                </div>
-            </div>
+                    <div class="industry-card">
+                        <div class="industry-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </div>
+                        <div class="industry-name">Flexible Workspace</div>
+                        <div class="industry-description">Empowering co-working spaces with smart booking systems and community management tools</div>
+                    </div>
 
-            <div class="bento-box box-7">
-                <div class="bento-icon">
-                    <img src="icons/datamig.png" alt="Data Migration Services Icon">
-                </div>
-                <h3>Data Migration Services</h3>
-                <p>Move your critical business data safely and efficiently. We handle complex migrations from legacy systems to modern cloud platforms with zero data loss.</p>
-                <!-- MODIFIED: Added container and new button -->
-                <div class="bento-link-container">
-                    <a href="#" class="bento-link learn-more">Learn More</a>
-                    <a href="#consultation" class="bento-link primary-link">Plan Migration →</a>
-                </div>
-            </div>
+                    <div class="industry-card">
+                        <div class="industry-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                            </svg>
+                        </div>
+                        <div class="industry-name">DevOps/Cloud</div>
+                        <div class="industry-description">Infrastructure and deployment solutions for scalable and reliable cloud environments</div>
+                    </div>
 
-            <div class="bento-box box-8">
-                <div class="bento-icon">
-                    <img src="icons/appmodern.png" alt="App Modernization Icon">
+                    <div class="industry-card">
+                        <div class="industry-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <div class="industry-name">Enterprise Software</div>
+                        <div class="industry-description">CRM, ERP, and business management systems to streamline operations and drive growth</div>
+                    </div>
                 </div>
-                <h3>App Modernization</h3>
-                <p>Transform outdated legacy systems into modern, cloud-ready applications.</p>
-                <!-- MODIFIED: Added container and new button -->
-                <div class="bento-link-container">
-                    <a href="#" class="bento-link learn-more">Learn More</a>
-                    <a href="#consultation" class="bento-link primary-link">Modernize Now →</a>
+
+                <div class="trust-badges-row">
+                    <div class="trust-badge">
+                        <div class="badge-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <span>Trusted Partner</span>
+                    </div>
+
+                    <div class="trust-badge">
+                        <div class="badge-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                        </div>
+                        <span>Proven Track Record</span>
+                    </div>
+
+                    <div class="trust-badge">
+                        <div class="badge-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <span>24/7 Support</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+ 
         <section id="about" class="section-container about-section">
             <div class="container">
                 <header class="section-header about-header">
@@ -367,11 +261,114 @@
             </div>
         </section>
 
-<!-- 
-          ======================================================
-          FINAL "SIMPLE C-RING" HTML
-          ======================================================
-        -->
+        <section id="services" class="section-container">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">⚡ Our Expertise</div>
+                    <h2>Transform Your <span class="theme-color-text">Business Operations</span></h2>
+                    <p>Enterprise-grade software solutions designed to streamline workflows, reduce costs, and accelerate growth.</p>
+                </div>
+                
+                <div class="bento-grid-container">
+                    <div class="bento-box box-1">
+                        <div class="bento-icon">
+                            <img src="icons/custom.png" alt="Custom Business Software Icon">
+                        </div>
+                        <h3>Custom Business Software</h3>
+                        <p>Stop compromising with off-the-shelf solutions. Get a competitive advantage with custom apps that fit your exact processes.</p>
+                        <div class="bento-link-container">
+                            <a href="#" class="bento-link learn-more">Learn More</a>
+                            <a href="#consultation" class="bento-link primary-link">Get Started →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bento-box box-2">
+                        <div class="bento-icon">
+                            <img src="icons/buildmyapp-bg.png" alt="Build My App Idea Icon">
+                        </div>
+                        <h3>Build My App Idea</h3>
+                        <p>Turn innovative ideas into successful products with our MVP development.</p>
+                        <div class="bento-link-container">
+                            <a href="#" class="bento-link learn-more">Learn More</a>
+                            <a href="#consultation" class="bento-link primary-link">Start Your Journey →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bento-box box-3">
+                        <div class="bento-icon">
+                            <img src="icons/rescue-icon.png" alt="Software Project Rescue Icon">
+                        </div>
+                        <h3>Software Project Rescue</h3>
+                        <p>Is your project off track? We provide comprehensive audits to get you back on track.</p>
+                        <div class="bento-link-container">
+                            <a href="#" class="bento-link learn-more">Learn More</a>
+                            <a href="#consultation" class="bento-link primary-link">Get an Audit →</a>
+                        </div>
+                    </div>
+
+                    <div class="bento-box box-4">
+                        <div class="bento-icon">
+                            <img src="icons/AI-icon.png" alt="Artificial Intelligence Icon">
+                        </div>
+                        <h3>Artificial Intelligence</h3>
+                        <p>Cut through the AI hype with practical implementations that deliver measurable results.</p>
+                        <div class="bento-link-container">
+                            <a href="#" class="bento-link learn-more">Learn More</a>
+                            <a href="#consultation" class="bento-link primary-link">Explore AI →</a>
+                        </div>
+                    </div>
+
+                    <div class="bento-box box-5">
+                        <div class="bento-icon">
+                            <img src="icons/software.png" alt="Software Consulting Icon">
+                        </div>
+                        <h3>Software Consulting</h3>
+                        <p>Make informed decisions with expert guidance and virtual CTO services.</p>
+                        <div class="bento-link-container">
+                            <a href="#" class="bento-link learn-more">Learn More</a>
+                            <a href="#consultation" class="bento-link primary-link">Book Consultation →</a>
+                        </div>
+                    </div>
+
+                    <div class="bento-box box-6">
+                        <div class="bento-icon">
+                            <img src="icons/Systems Integration.png" alt="Systems Integration Icon">
+                        </div>
+                        <h3>Systems Integration</h3>
+                        <p>Break down data silos by connecting accounting, HR, CRM, and custom systems.</p>
+                        <div class="bento-link-container">
+                            <a href="#" class="bento-link learn-more">Learn More</a>
+                            <a href="#consultation" class="bento-link primary-link">Start Integration →</a>
+                        </div>
+                    </div>
+
+                    <div class="bento-box box-7">
+                        <div class="bento-icon">
+                            <img src="icons/datamig.png" alt="Data Migration Services Icon">
+                        </div>
+                        <h3>Data Migration Services</h3>
+                        <p>Move your critical business data safely and efficiently. We handle complex migrations from legacy systems to modern cloud platforms with zero data loss.</p>
+                        <div class="bento-link-container">
+                            <a href="#" class="bento-link learn-more">Learn More</a>
+                            <a href="#consultation" class="bento-link primary-link">Plan Migration →</a>
+                        </div>
+                    </div>
+
+                    <div class="bento-box box-8">
+                        <div class="bento-icon">
+                            <img src="icons/appmodern.png" alt="App Modernization Icon">
+                        </div>
+                        <h3>App Modernization</h3>
+                        <p>Transform outdated legacy systems into modern, cloud-ready applications.</p>
+                        <div class="bento-link-container">
+                            <a href="#" class="bento-link learn-more">Learn More</a>
+                            <a href="#consultation" class="bento-link primary-link">Modernize Now →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="methodology" class="section-container process-section">
             <div class="container">
                 <div class="section-header process-header">
@@ -380,10 +377,8 @@
                     <p>Our 5-step innovation process ensures your solution is cutting-edge, secure, and built for the future.</p>
                 </div>
 
-                <!-- NEW SIMPLE C-RING CONTAINER -->
                 <div class="process-simple-container">
 
-                    <!-- Step 1 (AI) - Text RIGHT -->
                     <div class="process-simple-step step-1 step-odd">
                         <div class="simple-step-icon">
                             <div class="color-ring"></div>
@@ -398,7 +393,6 @@
                         </div>
                     </div>
 
-                    <!-- Step 2 (Cloud) - Text LEFT -->
                     <div class="process-simple-step step-2 step-even">
                         <div class="simple-step-label">
                             <span class="step-number-badge">02</span>
@@ -413,7 +407,6 @@
                         </div>
                     </div>
                     
-                    <!-- Step 3 (Low-Code) - Text RIGHT -->
                     <div class="process-simple-step step-3 step-odd">
                         <div class="simple-step-icon">
                             <div class="color-ring"></div>
@@ -428,7 +421,6 @@
                         </div>
                     </div>
 
-                    <!-- Step 4 (IoT) - Text LEFT -->
                     <div class="process-simple-step step-4 step-even">
                         <div class="simple-step-label">
                             <span class="step-number-badge">04</span>
@@ -443,7 +435,6 @@
                         </div>
                     </div>
 
-                    <!-- Step 5 (Blockchain) - Text RIGHT -->
                     <div class="process-simple-step step-5 step-odd">
                         <div class="simple-step-icon">
                             <div class="color-ring"></div>
@@ -459,487 +450,484 @@
                     </div>
 
                 </div>
-                <!-- END NEW SIMPLE C-RING CONTAINER -->
-
             </div>
         </section>
-<section class="section-container tech-section-wrapper" id="technology">
-    <div class="floating-shape shape-1"></div>
-    <div class="floating-shape shape-2"></div>
 
-    <div class="container">
-        <div class="section-header">
-            <div class="section-badge">🚀 Our Technology Stack</div>
-            <h2>Built With <span class="highlight">Modern Technology</span></h2>
-            <p>We use cutting-edge technologies and trusted platforms to deliver robust, scalable solutions for your business.</p>
-        </div>
+        <section class="section-container tech-section-wrapper" id="technology">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
 
-        <div class="tech-category">
-            <div class="category-header">
-                <h3>Development Technologies</h3>
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">🚀 Our Technology Stack</div>
+                    <h2>Built With <span class="highlight">Modern Technology</span></h2>
+                    <p>We use cutting-edge technologies and trusted platforms to deliver robust, scalable solutions for your business.</p>
+                </div>
+
+                <div class="tech-category">
+                    <div class="category-header">
+                        <h3>Development Technologies</h3>
+                    </div>
+                    <div class="tech-grid">
+                        <div class="tech-card featured">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python">
+                            </div>
+                            <div class="tech-name">Python</div>
+                            <div class="tech-desc">Backend & Data</div>
+                        </div>
+                        <div class="tech-card featured">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React">
+                            </div>
+                            <div class="tech-name">React</div>
+                            <div class="tech-desc">Frontend UI</div>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js">
+                            </div>
+                            <div class="tech-name">Node.js</div>
+                            <div class="tech-desc">Server Side</div>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript">
+                            </div>
+                            <div class="tech-name">TypeScript</div>
+                            <div class="tech-desc">Type Safety</div>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
+                            </div>
+                            <div class="tech-name">PostgreSQL</div>
+                            <div class="tech-desc">Database</div>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB">
+                            </div>
+                            <div class="tech-name">MongoDB</div>
+                            <div class="tech-desc">NoSQL</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <div class="category-header">
+                        <h3>Platforms & Integrations</h3>
+                    </div>
+                    <div class="tech-grid">
+                        <div class="tech-card featured">
+                            <div class="tech-logo">
+                                <img src="https://cliniko.com/favicon.ico" alt="Cliniko" style="width: 70px;">
+                            </div>
+                            <div class="tech-name">Cliniko</div>
+                            <div class="tech-desc">Healthcare</div>
+                        </div>
+                        <div class="tech-card featured">
+                            <div class="tech-logo">
+                                <img src="https://images.ctfassets.net/fzn2n1nzq965/HTTOloNPhisV9P4hlMPNA/cacf1bb88b9fc492dfad34378d844280/Stripe_icon_-_square.svg" alt="Stripe">
+                            </div>
+                            <div class="tech-name">Stripe</div>
+                            <div class="tech-desc">Payments</div>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS">
+                            </div>
+                            <div class="tech-name">AWS</div>
+                            <div class="tech-desc">Cloud Services</div>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" alt="Azure">
+                            </div>
+                            <div class="tech-name">Azure</div>
+                            <div class="tech-desc">Cloud Platform</div>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker">
+                            </div>
+                            <div class="tech-name">Docker</div>
+                            <div class="tech-desc">Containers</div>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-logo">
+                                <img src="https://cdn.worldvectorlogo.com/logos/sendgrid-1.svg" alt="SendGrid">
+                            </div>
+                            <div class="tech-name">SendGrid</div>
+                            <div class="tech-desc">Email API</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <div class="category-header">
+                        <h3>Tools & Infrastructure</h3>
+                    </div>
+                    <div class="tech-grid">
+                        <div class="tech-card">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git">
+                            </div>
+                            <div class="tech-name">Git</div>
+                            <div class="tech-desc">Version Control</div>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub">
+                            </div>
+                            <div class="tech-name">GitHub</div>
+                            <div class="tech-desc">Code Repository</div>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg" alt="CI/CD">
+                            </div>
+                            <div class="tech-name">CI/CD</div>
+                            <div class="tech-desc">Automation</div>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nginx/nginx-original.svg" alt="Nginx">
+                            </div>
+                            <div class="tech-name">Nginx</div>
+                            <div class="tech-desc">Web Server</div>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" alt="Redis">
+                            </div>
+                            <div class="tech-name">Redis</div>
+                            <div class="tech-desc">Caching</div>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg" alt="GraphQL">
+                            </div>
+                            <div class="tech-name">GraphQL</div>
+                            <div class="tech-desc">API Query</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-footer">
+                    <div class="why-tech-section">
+                        <h3>Why We Chose These Technologies</h3>
+                        <div class="benefits-grid">
+                            <div class="benefit-card">
+                                <div class="benefit-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                    </svg>
+                                </div>
+                                <h4>Performance & Scalability</h4>
+                                <p>Built to handle growth from startup to enterprise scale without rewriting code.</p>
+                            </div>
+                            <div class="benefit-card">
+                                <div class="benefit-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                </div>
+                                <h4>Enterprise Security</h4>
+                                <p>Bank-grade encryption and compliance with GDPR, HIPAA, and data protection standards.</p>
+                            </div>
+                            <div class="benefit-card">
+                                <div class="benefit-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                </div>
+                                <h4>Active Community</h4>
+                                <p>Technologies with strong community support mean faster updates and better long-term stability.</p>
+                            </div>
+                            <div class="benefit-card">
+                                <div class="benefit-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                    </svg>
+                                </div>
+                                <h4>Future-Proof</h4>
+                                <p>Modern architecture that evolves with technology trends, protecting your investment.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trust-section">
+                        <h4>Built with Security & Compliance</h4>
+                        <div class="trust-badges">
+                            <div class="trust-badge">
+                                <div class="badge-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                </div>
+                                <span>SSL/TLS Encrypted</span>
+                            </div>
+                            <div class="trust-badge">
+                                <div class="badge-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                    </svg>
+                                </div>
+                                <span>GDPR Compliant</span>
+                            </div>
+                            <div class="trust-badge">
+                                <div class="badge-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                </div>
+                                <span>HIPAA Ready</span>
+                            </div>
+                            <div class="trust-badge">
+                                <div class="badge-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                                    </svg>
+                                </div>
+                                <span>Cloud Native</span>
+                            </div>
+                            <div class="trust-badge">
+                                <div class="badge-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="23 4 23 10 17 10"></polyline>
+                                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                                    </svg>
+                                </div>
+                                <span>Continuous Updates</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="tech-grid">
-                <div class="tech-card featured">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python">
-                    </div>
-                    <div class="tech-name">Python</div>
-                    <div class="tech-desc">Backend & Data</div>
+        </section>
+
+        <section class="section-container" id="testimonials">
+            <div class="bg-orb bg-orb-1" aria-hidden="true"></div>
+            <div class="bg-orb bg-orb-2" aria-hidden="true"></div>
+
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">🏆 Client Success Stories</div>
+                    <h2>Proven Results, <span class="highlight">Real Impact</span></h2>
+                    <p>See how we've transformed businesses with seamless migrations and custom solutions.</p>
                 </div>
-                <div class="tech-card featured">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React">
+
+                <div class="stories-container" aria-live="polite" aria-atomic="true">
+                    <div class="story-wrapper" id="story-wrapper">
+                        
+                        <article class="story-card active" role="group" aria-roledescription="slide" aria-label="Healthcare Success Story">
+                            <div class="story-content">
+                                <div class="story-image">
+                                    <div class="story-badge">Healthcare</div>
+                                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop" alt="Healthcare Patient Records" />
+                                    <div class="stats-bar">
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="250000">0</span>+
+                                            <span class="stat-label">Patient Records</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="100">0</span>%
+                                            <span class="stat-label">Data Accuracy</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="0">0</span> Hrs
+                                            <span class="stat-label">Downtime</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="story-text">
+                                    <h3>Multi-Practice Healthcare Migration</h3>
+                                    <div class="client-name">Leading Medical Group - Melbourne</div>
+                                    <div class="challenge">
+                                        <h4>The Challenge</h4>
+                                        <p>Five medical practices needed to consolidate patient records from three different legacy systems into Cliniko, with zero disruption to patient care.</p>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="testimonial-text">The migration was flawless. We were back to seeing patients the next day with all our historical data intact. Kolabrata's attention to detail was exceptional.</p>
+                                        <div class="author">Dr. Sarah Mitchell</div>
+                                        <div class="role">Practice Director</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="story-card" role="group" aria-roledescription="slide" aria-label="Financial Success Story">
+                            <div class="story-content">
+                                <div class="story-image">
+                                    <div class="story-badge">Financial Services</div>
+                                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=600&fit=crop" alt="Financial Data Migration" />
+                                    <div class="stats-bar">
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="10000">0</span> TB
+                                            <span class="stat-label">Data Migrated</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="15">0</span> Yrs
+                                            <span class="stat-label">History</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="2">0</span> M
+                                            <span class="stat-label">Savings</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="story-text">
+                                    <h3>Legacy Banking System Modernization</h3>
+                                    <div class="client-name">Regional Credit Union - Sydney</div>
+                                    <div class="challenge">
+                                        <h4>The Challenge</h4>
+                                        <p>20-year-old mainframe system needed migration to modern cloud infrastructure while maintaining regulatory compliance and transaction history.</p>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="testimonial-text">Moving from a mainframe felt impossible. Kolabrata made it happen in 3 months with complete audit trails. Our operations are now 10x faster.</p>
+                                        <div class="author">James Chen</div>
+                                        <div class="role">Chief Technology Officer</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="story-card" role="group" aria-roledescription="slide" aria-label="E-commerce Success Story">
+                            <div class="story-content">
+                                <div class="story-image">
+                                    <div class="story-badge">E-commerce</div>
+                                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop" alt="E-commerce Marketplace Migration" />
+                                    <div class="stats-bar">
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="500">0</span>+
+                                            <span class="stat-label">Vendors</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="5">0</span> M
+                                            <span class="stat-label">Monthly GMV</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="99.9">0</span>%
+                                            <span class="stat-label">Uptime</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="story-text">
+                                    <h3>Custom Marketplace Platform</h3>
+                                    <div class="client-name">Growing Startup - Brisbane</div>
+                                    <div class="challenge">
+                                        <h4>The Challenge</h4>
+                                        <p>Build a custom marketplace with Stripe integration, inventory management, and vendor portals to replace expensive SaaS platforms.</p>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="testimonial-text">They built exactly what we envisioned. The custom solution costs 1/10th of our previous platform and handles 5x the traffic.</p>
+                                        <div class="author">Emma Rodriguez</div>
+                                        <div class="role">Founder & CEO</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="story-card" role="group" aria-roledescription="slide" aria-label="Manufacturing Success Story">
+                            <div class="story-content">
+                                <div class="story-image">
+                                    <div class="story-badge">Manufacturing</div>
+                                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop" alt="Manufacturing ERP Automation" />
+                                    <div class="stats-bar">
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="5">0</span> Plants
+                                            <span class="stat-label">Integrated</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="40">0</span>%
+                                            <span class="stat-label">Time Saved</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="100">0</span>%
+                                            <span class="stat-label">Real-time Tracking</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="story-text">
+                                    <h3>ERP Integration & Automation</h3>
+                                    <div class="client-name">Industrial Equipment - Perth</div>
+                                    <div class="challenge">
+                                        <h4>The Challenge</h4>
+                                        <p>Connect five manufacturing plants with disparate systems into a unified ERP platform with real-time inventory tracking and automated workflows.</p>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="testimonial-text">What used to take days now happens in minutes. We have complete visibility across all facilities and can make data-driven decisions instantly.</p>
+                                        <div class="author">Michael Thompson</div>
+                                        <div class="role">Operations Director</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="story-card" role="group" aria-roledescription="slide" aria-label="Education Success Story">
+                            <div class="story-content">
+                                <div class="story-image">
+                                    <div class="story-badge">Education</div>
+                                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=600&fit=crop" alt="Education Learning Platform" />
+                                    <div class="stats-bar">
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="50000">0</span>+
+                                            <span class="stat-label">Students</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="200">0</span>+
+                                            <span class="stat-label">Courses</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value" data-target="24">0</span>/7
+                                            <span class="stat-label">Access</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="story-text">
+                                    <h3>Learning Management System</h3>
+                                    <div class="client-name">Online Education Platform - Adelaide</div>
+                                    <div class="challenge">
+                                        <h4>The Challenge</h4>
+                                        <p>Build a scalable LMS platform with video streaming, payment processing, progress tracking, and certificate generation for thousands of concurrent users.</p>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="testimonial-text">Our enrollment increased 300% after launch. The platform handles peak loads flawlessly and our students love the seamless experience.</p>
+                                        <div class="author">Lisa Anderson</div>
+                                        <div class="role">Product Manager</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
                     </div>
-                    <div class="tech-name">React</div>
-                    <div class="tech-desc">Frontend UI</div>
+
+                    <div class="carousel-controls" aria-label="Story Navigation">
+                        <button class="control-btn" aria-label="Previous Story" onclick="prevStory()">←</button>
+                        <div class="dots" role="tablist" aria-label="Story pagination">
+                            <button role="tab" class="dot active" aria-selected="true" id="dot1" onclick="goToStory(0)"></button>
+                            <button role="tab" class="dot" aria-selected="false" id="dot2" onclick="goToStory(1)"></button>
+                            <button role="tab" class="dot" aria-selected="false" id="dot3" onclick="goToStory(2)"></button>
+                            <button role="tab" class="dot" aria-selected="false" id="dot4" onclick="goToStory(3)"></button>
+                            <button role="tab" class="dot" aria-selected="false" id="dot5" onclick="goToStory(4)"></button>
+                        </div>
+                        <button class="control-btn" aria-label="Next Story" onclick="nextStory()">→</button>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js">
-                    </div>
-                    <div class="tech-name">Node.js</div>
-                    <div class="tech-desc">Server Side</div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript">
-                    </div>
-                    <div class="tech-name">TypeScript</div>
-                    <div class="tech-desc">Type Safety</div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
-                    </div>
-                    <div class="tech-name">PostgreSQL</div>
-                    <div class="tech-desc">Database</div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB">
-                    </div>
-                    <div class="tech-name">MongoDB</div>
-                    <div class="tech-desc">NoSQL</div>
+
+                <div class="success-cta">
+                    <h3>Ready to Write Your Success Story?</h3>
+                    <p>Let's discuss how we can transform your business with proven solutions.</p>
+                    <a href="#consultation" class="btn btn-primary">Start Your Project →</a>
                 </div>
             </div>
-        </div>
-
-        <div class="tech-category">
-            <div class="category-header">
-                <h3>Platforms & Integrations</h3>
-            </div>
-            <div class="tech-grid">
-                <div class="tech-card featured">
-                    <div class="tech-logo">
-                        <img src="https://cliniko.com/favicon.ico" alt="Cliniko" style="width: 70px;">
-                    </div>
-                    <div class="tech-name">Cliniko</div>
-                    <div class="tech-desc">Healthcare</div>
-                </div>
-                <div class="tech-card featured">
-                    <div class="tech-logo">
-                        <img src="https://images.ctfassets.net/fzn2n1nzq965/HTTOloNPhisV9P4hlMPNA/cacf1bb88b9fc492dfad34378d844280/Stripe_icon_-_square.svg" alt="Stripe">
-                    </div>
-                    <div class="tech-name">Stripe</div>
-                    <div class="tech-desc">Payments</div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS">
-                    </div>
-                    <div class="tech-name">AWS</div>
-                    <div class="tech-desc">Cloud Services</div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" alt="Azure">
-                    </div>
-                    <div class="tech-name">Azure</div>
-                    <div class="tech-desc">Cloud Platform</div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker">
-                    </div>
-                    <div class="tech-name">Docker</div>
-                    <div class="tech-desc">Containers</div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">
-                        <img src="https://cdn.worldvectorlogo.com/logos/sendgrid-1.svg" alt="SendGrid">
-                    </div>
-                    <div class="tech-name">SendGrid</div>
-                    <div class="tech-desc">Email API</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tech-category">
-            <div class="category-header">
-                <h3>Tools & Infrastructure</h3>
-            </div>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git">
-                    </div>
-                    <div class="tech-name">Git</div>
-                    <div class="tech-desc">Version Control</div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub">
-                    </div>
-                    <div class="tech-name">GitHub</div>
-                    <div class="tech-desc">Code Repository</div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg" alt="CI/CD">
-                    </div>
-                    <div class="tech-name">CI/CD</div>
-                    <div class="tech-desc">Automation</div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nginx/nginx-original.svg" alt="Nginx">
-                    </div>
-                    <div class="tech-name">Nginx</div>
-                    <div class="tech-desc">Web Server</div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" alt="Redis">
-                    </div>
-                    <div class="tech-name">Redis</div>
-                    <div class="tech-desc">Caching</div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg" alt="GraphQL">
-                    </div>
-                    <div class="tech-name">GraphQL</div>
-                    <div class="tech-desc">API Query</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tech-footer">
-            <div class="why-tech-section">
-                <h3>Why We Chose These Technologies</h3>
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                            </svg>
-                        </div>
-                        <h4>Performance & Scalability</h4>
-                        <p>Built to handle growth from startup to enterprise scale without rewriting code.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
-                        </div>
-                        <h4>Enterprise Security</h4>
-                        <p>Bank-grade encryption and compliance with GDPR, HIPAA, and data protection standards.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            </svg>
-                        </div>
-                        <h4>Active Community</h4>
-                        <p>Technologies with strong community support mean faster updates and better long-term stability.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                            </svg>
-                        </div>
-                        <h4>Future-Proof</h4>
-                        <p>Modern architecture that evolves with technology trends, protecting your investment.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="trust-section">
-                <h4>Built with Security & Compliance</h4>
-                <div class="trust-badges">
-                    <div class="trust-badge">
-                        <div class="badge-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
-                        </div>
-                        <span>SSL/TLS Encrypted</span>
-                    </div>
-                    <div class="trust-badge">
-                        <div class="badge-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                        </div>
-                        <span>GDPR Compliant</span>
-                    </div>
-                    <div class="trust-badge">
-                        <div class="badge-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
-                        </div>
-                        <span>HIPAA Ready</span>
-                    </div>
-                    <div class="trust-badge">
-                        <div class="badge-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-                            </svg>
-                        </div>
-                        <span>Cloud Native</span>
-                    </div>
-                    <div class="trust-badge">
-                        <div class="badge-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="23 4 23 10 17 10"></polyline>
-                                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
-                            </svg>
-                        </div>
-                        <span>Continuous Updates</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section-container" id="testimonials">
-    <div class="bg-orb bg-orb-1" aria-hidden="true"></div>
-    <div class="bg-orb bg-orb-2" aria-hidden="true"></div>
-
-    <div class="container">
-        <div class="section-header">
-            <div class="section-badge">🏆 Client Success Stories</div>
-            <h2>Proven Results, <span class="highlight">Real Impact</span></h2>
-            <p>See how we've transformed businesses with seamless migrations and custom solutions.</p>
-        </div>
-
-        <div class="stories-container" aria-live="polite" aria-atomic="true">
-            <div class="story-wrapper" id="story-wrapper">
-                
-                <article class="story-card active" role="group" aria-roledescription="slide" aria-label="Healthcare Success Story">
-                    <div class="story-content">
-                        <div class="story-image">
-                            <div class="story-badge">Healthcare</div>
-                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop" alt="Healthcare Patient Records" />
-                            <div class="stats-bar">
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="250000">0</span>+
-                                    <span class="stat-label">Patient Records</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="100">0</span>%
-                                    <span class="stat-label">Data Accuracy</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="0">0</span> Hrs
-                                    <span class="stat-label">Downtime</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="story-text">
-                            <h3>Multi-Practice Healthcare Migration</h3>
-                            <div class="client-name">Leading Medical Group - Melbourne</div>
-                            <div class="challenge">
-                                <h4>The Challenge</h4>
-                                <p>Five medical practices needed to consolidate patient records from three different legacy systems into Cliniko, with zero disruption to patient care.</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">The migration was flawless. We were back to seeing patients the next day with all our historical data intact. Kolabrata's attention to detail was exceptional.</p>
-                                <div class="author">Dr. Sarah Mitchell</div>
-                                <div class="role">Practice Director</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="story-card" role="group" aria-roledescription="slide" aria-label="Financial Success Story">
-                    <div class="story-content">
-                        <div class="story-image">
-                            <div class="story-badge">Financial Services</div>
-                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=600&fit=crop" alt="Financial Data Migration" />
-                            <div class="stats-bar">
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="10000">0</span> TB
-                                    <span class="stat-label">Data Migrated</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="15">0</span> Yrs
-                                    <span class="stat-label">History</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="2">0</span> M
-                                    <span class="stat-label">Savings</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="story-text">
-                            <h3>Legacy Banking System Modernization</h3>
-                            <div class="client-name">Regional Credit Union - Sydney</div>
-                            <div class="challenge">
-                                <h4>The Challenge</h4>
-                                <p>20-year-old mainframe system needed migration to modern cloud infrastructure while maintaining regulatory compliance and transaction history.</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">Moving from a mainframe felt impossible. Kolabrata made it happen in 3 months with complete audit trails. Our operations are now 10x faster.</p>
-                                <div class="author">James Chen</div>
-                                <div class="role">Chief Technology Officer</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="story-card" role="group" aria-roledescription="slide" aria-label="E-commerce Success Story">
-                    <div class="story-content">
-                        <div class="story-image">
-                            <div class="story-badge">E-commerce</div>
-                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop" alt="E-commerce Marketplace Migration" />
-                            <div class="stats-bar">
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="500">0</span>+
-                                    <span class="stat-label">Vendors</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="5">0</span> M
-                                    <span class="stat-label">Monthly GMV</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="99.9">0</span>%
-                                    <span class="stat-label">Uptime</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="story-text">
-                            <h3>Custom Marketplace Platform</h3>
-                            <div class="client-name">Growing Startup - Brisbane</div>
-                            <div class="challenge">
-                                <h4>The Challenge</h4>
-                                <p>Build a custom marketplace with Stripe integration, inventory management, and vendor portals to replace expensive SaaS platforms.</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">They built exactly what we envisioned. The custom solution costs 1/10th of our previous platform and handles 5x the traffic.</p>
-                                <div class="author">Emma Rodriguez</div>
-                                <div class="role">Founder & CEO</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="story-card" role="group" aria-roledescription="slide" aria-label="Manufacturing Success Story">
-                    <div class="story-content">
-                        <div class="story-image">
-                            <div class="story-badge">Manufacturing</div>
-                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop" alt="Manufacturing ERP Automation" />
-                            <div class="stats-bar">
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="5">0</span> Plants
-                                    <span class="stat-label">Integrated</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="40">0</span>%
-                                    <span class="stat-label">Time Saved</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="100">0</span>%
-                                    <span class="stat-label">Real-time Tracking</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="story-text">
-                            <h3>ERP Integration & Automation</h3>
-                            <div class="client-name">Industrial Equipment - Perth</div>
-                            <div class="challenge">
-                                <h4>The Challenge</h4>
-                                <p>Connect five manufacturing plants with disparate systems into a unified ERP platform with real-time inventory tracking and automated workflows.</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">What used to take days now happens in minutes. We have complete visibility across all facilities and can make data-driven decisions instantly.</p>
-                                <div class="author">Michael Thompson</div>
-                                <div class="role">Operations Director</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="story-card" role="group" aria-roledescription="slide" aria-label="Education Success Story">
-                    <div class="story-content">
-                        <div class="story-image">
-                            <div class="story-badge">Education</div>
-                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=600&fit=crop" alt="Education Learning Platform" />
-                            <div class="stats-bar">
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="50000">0</span>+
-                                    <span class="stat-label">Students</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="200">0</span>+
-                                    <span class="stat-label">Courses</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value" data-target="24">0</span>/7
-                                    <span class="stat-label">Access</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="story-text">
-                            <h3>Learning Management System</h3>
-                            <div class="client-name">Online Education Platform - Adelaide</div>
-                            <div class="challenge">
-                                <h4>The Challenge</h4>
-                                <p>Build a scalable LMS platform with video streaming, payment processing, progress tracking, and certificate generation for thousands of concurrent users.</p>
-                            </div>
-                            <div class="testimonial">
-                                <p class="testimonial-text">Our enrollment increased 300% after launch. The platform handles peak loads flawlessly and our students love the seamless experience.</p>
-                                <div class="author">Lisa Anderson</div>
-                                <div class="role">Product Manager</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <div class="carousel-controls" aria-label="Story Navigation">
-                <button class="control-btn" aria-label="Previous Story" onclick="prevStory()">←</button>
-                <div class="dots" role="tablist" aria-label="Story pagination">
-                    <button role="tab" class="dot active" aria-selected="true" id="dot1" onclick="goToStory(0)"></button>
-                    <button role="tab" class="dot" aria-selected="false" id="dot2" onclick="goToStory(1)"></button>
-                    <button role="tab" class="dot" aria-selected="false" id="dot3" onclick="goToStory(2)"></button>
-                    <button role="tab" class="dot" aria-selected="false" id="dot4" onclick="goToStory(3)"></button>
-                    <button role="tab" class="dot" aria-selected="false" id="dot5" onclick="goToStory(4)"></button>
-                </div>
-                <button class="control-btn" aria-label="Next Story" onclick="nextStory()">→</button>
-            </div>
-        </div>
-
-        <div class="success-cta">
-            <h3>Ready to Write Your Success Story?</h3>
-            <p>Let's discuss how we can transform your business with proven solutions.</p>
-            <a href="#consultation" class="btn btn-primary">Start Your Project →</a>
-        </div>
-    </div>
-</section>
-
-
+        </section>
 
         <section id="faq" class="section-container faq-section">
             <div class="faq-container">
@@ -1137,7 +1125,8 @@
 
     </main>
 
-    <footer id="footer" class="footer" role="contentinfo">
+    
+<footer id="footer" class="footer" role="contentinfo">
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-brand">
@@ -1186,10 +1175,9 @@
                     <ul>
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#methodology">Our Process</a></li>
-                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#technology">Technology</a></li> <li><a href="#testimonials">Testimonials</a></li> <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-column">
                     <h4>Connect</h4>
                     <ul>
@@ -1210,75 +1198,5 @@
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
     <script src="script.js"></script>
 
-    <script>
-        // Wait for the DOM to be fully loaded
-        document.addEventListener("DOMContentLoaded", () => {
-            
-            // === 1. ANIMATE STEPS ON SCROLL (Requirement 4) ===
-            // Set up the Intersection Observer to watch for elements
-            const observerOptions = {
-                root: null, // Use the viewport as the root
-                rootMargin: '0px',
-                threshold: 0.3 // Trigger when 30% of the element is visible
-            };
-
-            const stepObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Add the 'is-visible' class to trigger the CSS animation
-                        entry.target.classList.add('is-visible');
-                        // Optional: Stop observing after it's visible
-                        // observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all elements with the class '.process-step'
-            const processSteps = document.querySelectorAll('.process-step');
-            processSteps.forEach(step => stepObserver.observe(step));
-
-
-            // === 2. ANIMATE COLOR FLOW ON SCROLL (Requirement 3) ===
-            const processSection = document.getElementById('methodology');
-            const progressBar = document.getElementById('process-progress-bar');
-            
-            if (processSection && progressBar) {
-                const handleScroll = () => {
-                    // Get the top and height of the methodology section
-                    const rect = processSection.getBoundingClientRect();
-                    const sectionTop = rect.top + window.pageYOffset;
-                    const sectionHeight = processSection.offsetHeight;
-                    
-                    // Get current scroll position
-                    const scrollY = window.pageYOffset;
-
-                    // Calculate how far we are into the section
-                    // We start the animation when the top of the section hits the top of the viewport
-                    const scrollableHeight = sectionHeight - window.innerHeight;
-                    
-                    // Don't start until the section is at the top of the viewport
-                    if (scrollY > sectionTop && scrollY < (sectionTop + scrollableHeight)) {
-                        let progress = (scrollY - sectionTop) / scrollableHeight;
-                        progress = Math.max(0, Math.min(1, progress)); // Clamp between 0 and 1
-                        
-                        // Set the height of the progress bar
-                        progressBar.style.height = (progress * 100) + '%';
-                    } else if (scrollY <= sectionTop) {
-                        // If we are above the section, reset to 0
-                        progressBar.style.height = '0%';
-                    } else {
-                        // If we are past the section, set to 100
-                        progressBar.style.height = '100%';
-                    }
-                };
-                
-                // Attach the event listener
-                window.addEventListener('scroll', handleScroll);
-            }
-
-        });
-    </script>
-    <script src="script.js"></script>
-    <script src="process-animation.js"></script>
-    </body>
+</body>
 </html>

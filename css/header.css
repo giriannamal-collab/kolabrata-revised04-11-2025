@@ -1,13 +1,12 @@
 /*
 ======================================================
-2. TWO-LINE HEADER (YOUR REQUEST)
+2. HEADER - UPDATED
 ======================================================
 */
 .header-new {
     position: fixed;
     top: 0;
     width: 100%;
-    /* --- EDITED: Outer wrapper has no side padding --- */
     padding: 1.25rem 0; 
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(15px);
@@ -16,34 +15,56 @@
 }
 
 .header-container {
-    /* --- EDITED: Inner wrapper has max-width and side padding --- */
     max-width: 1800px;
     margin: 0 auto;
-    padding: 0 3vw; /* This is your "slight margin" */
+    padding: 0 3vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* --- NEW LOGO STYLES --- 
+  This creates the [Logo] [Name+Tagline] layout
+*/
 .header-logo-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex: 1; /* Allows the logo area to take up space */
 }
 
-.header-logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--text-dark);
+.header-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between logo and text */
     text-decoration: none;
+}
+
+.site-logo {
+    height: 45px; /* <-- CHANGE THIS (e.g., from 35px to 45px) */
+    width: auto;
+    display: block;
+}
+
+.site-identity {
+    display: flex;
+    flex-direction: column;
+}
+
+/* In css/header.css, find this rule */
+.site-name {
+    font-family: 'Space Grotesk', sans-serif; /* --- ADD THIS LINE --- */
+    font-size: 2rem; 
+    font-weight: 900;
+    color: var(--primary-accent);
     line-height: 1.1;
 }
 
-.header-value-prop {
-    font-size: 0.85rem;
-    font-weight: 500;
+.site-tagline {
+    font-size: 1rem;
+    font-weight: 700;
     color: var(--text-gray);
+    line-height: 1.1;
 }
+/* --- END OF NEW LOGO STYLES --- */
+
 
 .header-nav {
     display: flex;
@@ -75,9 +96,10 @@
     gap: 0.5rem;
 }
 
+/* --- SMALLER BUTTON SIZE --- */
 .header-nav-buttons .btn-primary {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem; /* Reduced padding */
+    font-size: 0.85rem; /* Reduced font size */
 }
 
 .mobile-menu-btn {
@@ -92,56 +114,20 @@
     stroke: var(--text-dark);
 }
 
-/* --- Mobile Menu Styles --- */
-@media (max-width: 900px) {
-    .header-nav {
-        display: none; /* Hide nav on mobile */
-        
-        /* New styles for active mobile menu */
-        position: absolute;
-        top: 99%; /* Position below the header (100% was too low) */
-        left: 0;
-        width: 100%;
-        background: var(--bg-white);
-        flex-direction: column;
-        align-items: center;
-        padding: 1.5rem;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        border-top: 1px solid var(--border-gray);
-    }
-    
-    .header-nav.mobile-nav-active {
-        display: flex; /* Show the menu */
-    }
-
-    .header-nav-links {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem; /* Space out links vertically */
-    }
-
-    .header-nav-buttons {
-        margin-top: 1.5rem;
-    }
-    
-    .mobile-menu-btn {
-        display: block;
-    }
-}
-/* ... at the end of css/header.css ... */
-
+/* --- Mobile Menu Styles (Cleaned up) --- */
 @media (max-width: 900px) {
     .header-nav {
         display: none; /* Hide by default */
         position: absolute;
-        top: 80px; /* Height of the header */
+        top: 100%; /* Position right below header */
         left: 0;
         right: 0;
         background: #ffffff;
         flex-direction: column;
         width: 100%;
-        padding: 1rem;
+        padding: 1.5rem;
         box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        border-top: 1px solid var(--border-gray);
     }
 
     .header-nav.is-active {
@@ -152,16 +138,17 @@
         flex-direction: column;
         align-items: center;
         width: 100%;
+        gap: 1.5rem;
     }
 
     .header-nav-links a {
-        padding: 1rem 0;
+        padding: 0;
         width: 100%;
         text-align: center;
     }
 
     .header-nav-buttons {
-        margin-top: 1rem;
+        margin-top: 1.5rem;
         width: 100%;
     }
     
@@ -173,4 +160,17 @@
     .mobile-menu-btn {
         display: block; /* Show the burger icon */
     }
+
+    /* Adjust logo/tagline on mobile */
+    .site-name {
+        font-size: 1.5rem;
+    }
+    .site-tagline {
+        font-size: 0.8rem;
+    }
+    .site-logo {
+    height: 45px; /* --- LOGO SIZE --- (Adjust as needed) */
+    width: auto;
+    display: block;
+}
 }

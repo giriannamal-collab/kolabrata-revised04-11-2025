@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Check if this item is already open
                 const isOpen = item.classList.contains('active');
 
-                // Optional: Close all other items
+                // Close all other items
                 faqItems.forEach(otherItem => {
                     otherItem.classList.remove('active');
                 });
@@ -123,8 +123,29 @@ document.addEventListener("DOMContentLoaded", () => {
     // Run once on load
     updateActiveLink();
 
-    // === 5. TESTIMONIALS CAROUSEL ===
-    // --- START TESTIMONIALS CAROUSEL LOGIC ---
+    // === 5. PROCESS ANIMATION (from your inline script) ===
+    const observerOptions = {
+        root: null, // Use the viewport as the root
+        rootMargin: '0px',
+        threshold: 0.3 // Trigger when 30% of the element is visible
+    };
+
+    const stepObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // observer.unobserve(entry.target); // Optional: Stop observing
+            }
+        });
+    }, observerOptions);
+
+    const processSteps = document.querySelectorAll('.process-simple-step'); // Corrected selector
+    processSteps.forEach(step => stepObserver.observe(step));
+
+    // Note: Your 'process-progress-bar' logic was removed as the element wasn't in the HTML.
+    // If you add it back, we can add that logic here too.
+
+    // === 6. TESTIMONIALS CAROUSEL ===
     let currentStory = 0;
     const stories = document.querySelectorAll('.story-card');
     const dots = document.querySelectorAll('.dot');
@@ -250,6 +271,4 @@ document.addEventListener("DOMContentLoaded", () => {
         // Initial load
         updateStories();
     }
-    // --- END TESTIMONIALS CAROUSEL LOGIC ---
-
 });

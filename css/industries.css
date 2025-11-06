@@ -7,6 +7,13 @@
 /* Header is handled by global.css */
 /* .section-container and .container are handled by global.css */
 
+/* --- Add this for section separation --- */
+#industries {
+    background: var(--bg-white); /* WHITE */
+    border-top: 1px solid var(--border-gray);
+    border-bottom: 1px solid var(--border-gray);
+}
+
 /* Industry Grid */
 .industries-grid {
     display: grid;
