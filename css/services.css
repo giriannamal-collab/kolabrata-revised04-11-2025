@@ -5,19 +5,32 @@
 */
 .bento-grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    /* MODIFIED: Reverting to the 2:2:3:3 ratio per user request. */
+    grid-template-columns: 2fr 2fr 3fr 3fr;
     grid-auto-rows: minmax(150px, auto);
-    gap: 1.5rem;
+    gap: 1.0rem; /* MODIFIED: Was 1.5rem. Reduced gap between grid boxes. */
 }
 
 .bento-box {
     border-radius: 20px;
-    padding: 2rem;
+    padding: 1.5rem; /* MODIFIED: Decreased padding */
     border: 1px solid var(--border-gray);
     transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    
+    /* === MODIFIED: Switched from Flexbox to Grid === */
+    display: grid;
+    /* Define columns: auto for icon, 1fr for text content */
+    grid-template-columns: auto 1fr;
+    /* Define rows: header/icon, tagline, spacer (1fr), link */
+    grid-template-rows: auto auto 1fr auto;
+    /* Assign areas for layout */
+    grid-template-areas:
+        "icon header"
+        "icon tagline" /* MODIFIED: Changed '.' to 'icon' */
+        "spacer spacer"
+        "link   link";
+    /* Add a gap between the icon and text column */
+    column-gap: 0.75rem; /* MODIFIED: Decreased gap */
 
     /* --- Added for background images & OVERLAY --- */
     position: relative;
@@ -25,10 +38,9 @@
     background-position: center;
     background-repeat: no-repeat;
     
-    /* === THE FIX === 
-       This adds the dark overlay to make text readable */
+    /* === THE FIX === */
     background-blend-mode: multiply; 
-    background-color: rgba(0, 0, 0, 0.4); /* 40% black overlay. Adjust as needed. */
+    background-color: rgba(0, 0, 0, 0.6); /* MODIFIED: Was 0.4. Increased to 60% black overlay. */
 }
 
 .bento-box:hover,
@@ -38,46 +50,137 @@
     border-color: var(--primary-accent); /* Orange */
 }
 
+/* === CSS UPDATED HERE === */
 .bento-box .bento-icon {
-    font-size: 2rem;
-    color: var(--primary-accent-dark); /* Orange */
-    margin-bottom: 1rem;
+    /* MODIFIED: Assign grid area */
+    grid-area: icon;
+    /* MODIFIED: Removed margin-bottom */
+    /* margin-bottom: 1rem; */
     position: relative;
     z-index: 1;
+    /* MODIFIED: Align icon to the top of its row */
+    align-self: start;
+}
+
+/* This styles the new <img> icons */
+.bento-box .bento-icon img {
+    width: 70px;     /* Adjust size as needed */
+    height: 70px;    /* Adjust size as needed */
+    object-fit: contain; /* Keeps the icon's aspect ratio */
 }
 
 .bento-box h3 {
+    /* MODIFIED: Assign grid area */
+    grid-area: header;
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    /* MODIFIED: Removed margin-bottom, handled by grid */
+    /* margin-bottom: 0.5rem; */
     color: #FFFFFF; /* Makes text white */
     position: relative;
     z-index: 1;
+    /* MODIFIED: Vertically center header relative to icon */
+    align-self: start;
+    margin: 0; /* Reset margin */
+    transition: all 0.3s ease; /* NEW: Added for glow effect */
 }
 
 .bento-box p {
+    /* MODIFIED: Assign grid area */
+    grid-area: tagline;
     font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
+    /* MODIFIED: Removed margin-bottom */
+    /* margin-bottom: 1.5rem; */
+    /* MODIFIED: Removed flex-grow */
+    /* flex-grow: 1; */
     color: #FFFFFF; /* Makes text white */
     position: relative;
     z-index: 1;
+    /* MODIFIED: Reset margin and add small top margin */
+    margin: 0;
+    transition: all 0.3s ease; /* NEW: Added for glow effect */
+    /* margin-top: 0.1rem; */ /* MODIFIED: Removed this to move text up */
 }
 
+/* NEW: Glow effect on hover */
+.bento-box:hover h3,
+.bento-box:hover p {
+    /* MODIFIED: Changed glow from cyan to theme color (orange) */
+    text-shadow: 0 0 12px var(--primary-accent);
+}
+
+/* REMOVED: Glow effect on buttons
+.bento-box:hover .primary-link {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+.bento-box:hover .learn-more {
+    text-shadow: 0 0 8px var(--primary-accent-dark);
+}
+*/
+
+
+/* NEW: This is the container for the buttons */
+.bento-link-container {
+    grid-area: link;
+    align-self: end;
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.5rem; /* MODIFIED: Was 0.75rem. Reduced space between buttons. */
+    align-items: center;
+}
+
+/* MODIFIED: This is now the base button style */
 .bento-box .bento-link {
+    /* grid-area: link; */ /* REMOVED: Moved to container */
     font-weight: 700;
-    color: var(--primary-accent-dark); /* Orange */
+    /* color: var(--primary-accent-dark); */ /* REMOVED: Handled by specific rules */
     text-decoration: none;
     transition: all 0.3s ease;
     position: relative;
     z-index: 1;
     display: inline-block; /* For smoother transform */
+    
+    /* align-self: end; */ /* REMOVED: Moved to container */
+    /* margin-top: 1.5rem; */ /* REMOVED: Moved to container */
+
+    /* NEW: Button styling */
+    padding: 0.5rem 0.75rem; /* MODIFIED: Was 1rem horizontal. Reduced padding. */
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid transparent; /* Base border */
 }
 
+/* NEW: Style for the "Learn More" (secondary) button */
+.bento-box .learn-more {
+    background-color: transparent;
+    border-color: var(--primary-accent-dark);
+    color: var(--primary-accent-dark);
+}
+
+.bento-box .learn-more:hover,
+.bento-box .learn-more:focus-visible {
+    background-color: rgba(255, 121, 0, 0.1); /* Slight orange glow */
+}
+
+/* NEW: Style for the existing link (primary) */
+.bento-box .primary-link {
+    background-color: var(--primary-accent-dark);
+    color: #FFFFFF;
+    border-color: var(--primary-accent-dark);
+}
+
+.bento-box .primary-link:hover,
+.bento-box .primary-link:focus-visible {
+    background-color: var(--primary-accent); /* Lighter orange */
+    border-color: var(--primary-accent);
+}
+
+/* REMOVED: This ruleset was empty and causing an error.
 .bento-box .bento-link:hover,
 .bento-box .bento-link:focus-visible {
-    /* transform is smoother than padding */
-    transform: translateX(5px); 
+    /* transform: translateX(5px); *//* REMOVED: Replaced by button hover * /
 }
+*/
 
 /* Clear focus outline for accessibility */
 .bento-box .bento-link:focus-visible {
@@ -86,13 +189,12 @@
     border-radius: 4px;
 }
 
-/* Grid sizing & Image Assignment */
+/* Grid sizing & Image Assignment (NO CHANGES) */
 .bento-box.box-1 {
     grid-column: span 2;
     grid-row: span 2;
     background-image: url('../image/Custom-Business-Software.png');
 }
-
 .bento-box.box-2 { 
     grid-column: span 1; 
     grid-row: span 1; 
@@ -113,7 +215,6 @@
     grid-row: span 1; 
     background-image: url('../image/software-service.png');
 }
-
 .bento-box.box-6 {
     grid-column: span 2;
     grid-row: span 1;
@@ -124,7 +225,6 @@
     grid-row: span 2;
     background-image: url('../image/datamigration.png');
 }
-
 .bento-box.box-8 { 
     grid-column: span 2; 
     grid-row: span 1; 
@@ -136,7 +236,6 @@
     .bento-grid-container {
         grid-template-columns: repeat(2, 1fr);
     }
-    /* Reset all spans for 2-column layout */
     .bento-box {
         grid-column: span 1 !important;
         grid-row: span 1 !important;
@@ -145,6 +244,20 @@
 @media (max-width: 600px) {
     .bento-grid-container {
         grid-template-columns: 1fr;
+    }
+    
+    /* MODIFICATION: Ensure grid layout works on mobile */
+    .bento-box {
+        /* This keeps the new grid layout inside each box */
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas:
+            "icon header"
+            ".    tagline"
+            "spacer spacer"
+            "link   link";
+        column-gap: 1rem;
     }
 }
 
@@ -167,13 +280,18 @@
 */
 #services .section-header h2,
 #services .section-header p {
-    color: #FFFFFF; /* Makes header text white */
+    color: #333333; /* MODIFIED: Was #FFFFFF (white). Changed to dark gray. */
+}
+
+/* NEW: Color the span tag added to the h2 */
+#services .section-header h2 .theme-color-text {
+    color: var(--primary-accent-dark);
 }
 
 /* Optional: Style the badge to fit the dark background */
 #services .section-header .section-badge {
-    background-color: rgba(255, 255, 255, 0.1); /* Lighter transparent badge */
-    color: #FFFFFF; /* White text */
+    background-color: rgba(255, 121, 0, 0.1); /* MODIFIED: Light orange background */
+    color: var(--primary-accent-dark); /* MODIFIED: Was #FFFFFF. Changed to orange text. */
     /* You might want a different border color, e.g., white or your accent */
     border: 1px solid var(--primary-accent); 
 }
