@@ -63,6 +63,7 @@
     transition: all 0.3s ease;
 }
 
+/* This handles the "active" state */
 .faq-item.active .faq-icon-wrapper {
     background: var(--primary-accent); /* Orange */
 }
@@ -71,14 +72,16 @@
     transform: rotate(180deg);
 }
 
+/* This handles the show/hide animation */
 .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease;
+    transition: max-height 0.4s ease-out;
 }
 
 .faq-item.active .faq-answer {
-    max-height: 600px;
+    max-height: 600px; /* Expands to this height */
+    transition: max-height 0.6s ease-in;
 }
 
 .faq-answer-content {
@@ -87,27 +90,4 @@
     border-top: 1px solid var(--border-gray);
     margin: 0 2rem;
     padding-top: 1.5rem;
-}
-/* ... at the end of css/faq.css ... */
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-.faq-item.active .faq-answer {
-    max-height: 300px; /* Or a large enough value */
-    padding-top: 1rem;
-    padding-bottom: 1.5rem;
-}
-
-.faq-icon {
-    transition: transform 0.3s ease;
-}
-
-.faq-item.active .faq-icon {
-    transform: rotate(180deg);
 }

@@ -1,0 +1,442 @@
+/*
+======================================================
+7. TECHNOLOGY SECTION
+======================================================
+*/
+
+/* Main wrapper with light gray background */
+.tech-section-wrapper {
+    /* Use global var */
+    background: var(--bg-light-gray); 
+    border-top: 1px solid var(--border-gray);
+    border-bottom: 1px solid var(--border-gray);
+}
+
+/* Header, .section-badge, .container are handled by global.css */
+
+/* Animated Background */
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    /* Use new orange theme */
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-dark));
+    top: 10%;
+    left: -100px;
+    animation: float1 20s ease-in-out infinite;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    /* Use new orange theme */
+    background: linear-gradient(135deg, var(--primary-accent-dark), var(--primary-accent));
+    bottom: 10%;
+    right: -80px;
+    animation: float2 25s ease-in-out infinite;
+}
+
+@keyframes float1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(50px, -50px) rotate(180deg); }
+}
+
+@keyframes float2 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-50px, 50px) rotate(-180deg); }
+}
+
+/* Header title font size override */
+.tech-section-wrapper .section-header h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.tech-section-wrapper .section-header p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Category Section */
+.tech-category {
+    margin-bottom: 5rem;
+}
+
+.category-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.category-header h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
+    padding: 0 3rem;
+}
+
+.category-header h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 2px;
+    /* Use new orange theme */
+    background: linear-gradient(90deg, transparent, var(--primary-accent));
+}
+
+.category-header h3::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 2px;
+    /* Use new orange theme */
+    background: linear-gradient(90deg, var(--primary-accent), transparent);
+}
+
+/* Tech Grid */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2rem;
+}
+
+/* Tech Card */
+.tech-card {
+    background: var(--bg-white);
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    text-align: center;
+    /* Use new orange theme */
+    border: 2px solid rgba(249, 115, 22, 0.08);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+    opacity: 0;
+    animation: slideIn 0.6s ease forwards;
+    position: relative;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Animation delays */
+.tech-card:nth-child(1) { animation-delay: 0.1s; }
+.tech-card:nth-child(2) { animation-delay: 0.15s; }
+.tech-card:nth-child(3) { animation-delay: 0.2s; }
+.tech-card:nth-child(4) { animation-delay: 0.25s; }
+.tech-card:nth-child(5) { animation-delay: 0.3s; }
+.tech-card:nth-child(6) { animation-delay: 0.35s; }
+
+.tech-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Use new orange theme */
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.05), rgba(234, 88, 12, 0.05));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 20px;
+}
+
+.tech-card:hover {
+    transform: translateY(-15px);
+    border-color: var(--primary-accent); /* Use new orange theme */
+    box-shadow: 0 25px 70px rgba(249, 115, 22, 0.2); /* Use new orange theme */
+}
+
+.tech-card:hover::before {
+    opacity: 1;
+}
+
+/* Logo */
+.tech-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tech-logo img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tech-card:hover .tech-logo {
+    animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-15px); }
+    50% { transform: translateY(-7px); }
+    75% { transform: translateY(-12px); }
+}
+
+.tech-card:hover .tech-logo img {
+    filter: drop-shadow(0 8px 20px rgba(249, 115, 22, 0.4)); /* Use new orange theme */
+    transform: scale(1.15);
+}
+
+.tech-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.tech-card:hover .tech-name {
+    color: var(--primary-accent); /* Use new orange theme */
+}
+
+.tech-desc {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+}
+
+/* Featured Cards */
+.tech-card.featured {
+    /* Use new orange theme */
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(234, 88, 12, 0.08));
+    border-color: rgba(249, 115, 22, 0.3);
+}
+
+.tech-card.featured .tech-logo img {
+    filter: drop-shadow(0 6px 15px rgba(249, 115, 22, 0.3)); /* Use new orange theme */
+}
+
+/* Tech Footer Section */
+.tech-footer {
+    margin-top: 6rem;
+}
+
+.why-tech-section {
+    margin-bottom: 4rem;
+}
+
+.why-tech-section h3 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-dark);
+    margin-bottom: 3rem;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.benefit-card {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    border: 2px solid rgba(249, 115, 22, 0.1); /* Use new orange theme */
+    transition: all 0.4s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(249, 115, 22, 0.15); /* Use new orange theme */
+    border-color: var(--primary-accent); /* Use new orange theme */
+}
+
+.benefit-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    /* Use new orange theme */
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(234, 88, 12, 0.1));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+.benefit-icon svg {
+    width: 40px;
+    height: 40px;
+    stroke: var(--primary-accent); /* Use new orange theme */
+    transition: all 0.4s ease;
+}
+
+.benefit-card:hover .benefit-icon {
+    /* Use new orange theme */
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-dark));
+    transform: scale(1.1);
+}
+
+.benefit-card:hover .benefit-icon svg {
+    stroke: white;
+    transform: scale(1.1);
+}
+
+.benefit-card h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.benefit-card p {
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* Trust Section */
+.trust-section {
+    background: white;
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+}
+
+.trust-section h4 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 2.5rem;
+}
+
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    /* Use new orange theme */
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.05), rgba(234, 88, 12, 0.05));
+    border-radius: 50px;
+    border: 2px solid rgba(249, 115, 22, 0.1); /* Use new orange theme */
+    transition: all 0.3s ease;
+}
+
+.trust-badge:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-accent); /* Use new orange theme */
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.2); /* Use new orange theme */
+}
+
+.badge-icon {
+    width: 32px;
+    height: 32px;
+    /* Use new orange theme */
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.badge-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: white;
+    fill: none;
+}
+
+.trust-badge span {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .trust-badges {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tech-section-wrapper .section-header h2 {
+        font-size: 2.5rem;
+    }
+    .tech-section-wrapper .section-header p {
+        font-size: 1.1rem;
+    }
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    .tech-card {
+        padding: 1.5rem 1rem;
+    }
+    .tech-logo {
+        width: 60px;
+        height: 60px;
+    }
+    .tech-logo img {
+        width: 55px;
+        height: 55px;
+    }
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .trust-badges {
+        flex-direction: column;
+        align-items: center;
+    }
+    .trust-badge {
+        width: 100%;
+        justify-content: center;
+    }
+    .category-header h3 {
+        font-size: 1.5rem;
+    }
+    .why-tech-section h3 {
+        font-size: 2rem;
+    }
+}
