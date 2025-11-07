@@ -54,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- EDITED: Outer wrapper has no side padding --- */
 .section-container {
-    padding: 6rem 0; 
+    padding: 4rem 0; 
     overflow: hidden;
     position: relative;
 }
