@@ -1,58 +1,63 @@
 /*
 ======================================================
-6. ABOUT US SECTION (RESTYLED)
+6. ABOUT US SECTION (RESTYLED) - FULLY FIXED
 ======================================================
-/* --- Add this for section separation --- */
+*/
 #about {
     background: var(--bg-light-gray); /* LIGHT GRAY */
 }
 
+/* 1) Two-column grid layout (desktop) */
 .about-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* left image / right content */
     gap: 5rem;
     align-items: center;
 }
 
+/* 2) Image Constraints and Overflow Fix */
 .about-visual .main-image-wrapper {
     position: relative;
     border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08);
 }
 
 .main-image-wrapper img {
     width: 100%;
-    height: 600px;
+    max-height: 600px;
+    height: auto;
     object-fit: cover;
     display: block;
 }
 
+/* 3) Stats Overlay Positioning */
 .stats-overlay {
     position: absolute;
-    bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
+    bottom: -28px;
+    width: 88%;
     background: var(--bg-white);
     border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    z-index: 2;
+    z-index: 50;
 }
 
+/* Stats Box Styles - No changes needed here */
 .stat-box { text-align: center; }
 
 .stat-number {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--primary-accent-dark); /* Orange */
     display: block;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.25rem;
 }
 
 .stat-label {
@@ -61,6 +66,7 @@
     font-weight: 600;
 }
 
+/* About Content (Right Column) Styles - No changes needed here */
 .about-content h3 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
@@ -71,70 +77,101 @@
     margin-bottom: 1.5rem;
 }
 
+/* Right Column Boxes (Point Items) Container */
 .key-points {
     margin: 2.5rem 0;
     display: grid;
-    gap: 1.5rem;
+    /* Reduced gap between boxes */
+    gap: 1rem; 
+    
+    /* NEW FIX: Reduce the width of the key-points container slightly */
+    max-width: 95%; 
 }
 
+/* Highlight styles - No changes needed here */
+.highlight,
+.p-highlight {
+  color: var(--primary-accent) !important;
+  font-weight: 700;
+}
+
+/* Right Column Boxes (Point Items) Styling */
 .point-item {
     display: flex;
     align-items: flex-start;
     gap: 1.5rem;
-    padding: 1.5rem;
+    /* Reduced vertical padding to make boxes shorter */
+    padding: 1rem 1.5rem; 
     background: var(--bg-light-gray);
     border-radius: 16px;
     border: 1px solid var(--border-gray);
-    transition: all 0.3s ease;
+    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+    overflow: visible;
 }
 
 .point-item:hover {
     transform: translateX(10px);
-    border-color: var(--primary-accent); /* Orange */
+    border-color: var(--primary-accent);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
 }
 
-.point-icon {
-    width: 50px;
-    height: 50px;
-    background: var(--primary-accent); /* Orange */
-    color: var(--bg-white);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    flex-shrink: 0;
-    font-weight: 700;
-}
-
+/* NEW FIXES: Adjusting the text inside the boxes */
 .point-text h4 {
-    font-size: 1.2rem;
+    /* Increased title font size (e.g., "Zero-Risk Migrations") */
+    font-size: 1.3rem; 
     margin-bottom: 0.3rem;
 }
 
 .point-text p {
-    font-size: 1rem;
+    /* Reduced paragraph font size (e.g., "We deliver zero-downtime...") */
+    font-size: 0.95rem; 
     margin: 0;
 }
+/* END NEW FIXES */
 
+.point-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--bg-white);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    flex-shrink: 0;
+}
+
+.point-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Responsive rules: ensure stacking on narrower screens */
 @media (max-width: 1024px) {
     .about-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* stack for tablet / mobile */
         gap: 6rem;
     }
+
     .stats-overlay {
         position: relative;
         bottom: 0;
-        margin-top: 2rem;
+        left: auto;
+        transform: none;
+        width: 100%;
+        margin-top: 1.5rem;
+        grid-template-columns: repeat(3, 1fr);
     }
 }
+
 @media (max-width: 768px) {
-    .main-image-wrapper img { height: 400px; }
-    .stats-overlay { grid-template-columns: 1fr; gap: 1rem; }
+    .main-image-wrapper img { max-height: 400px; }
+    .stats-overlay { grid-template-columns: 1fr; gap: 0.75rem; padding: 1rem; }
     .about-content h3 { font-size: 2rem; }
-}
-.point-icon {
-    /* ... color and background definitions ... */
-    color: var(--bg-white); /* This sets the color property */
-    /* ... other styles ... */
+    .point-item { padding: 1rem; } 
+    .point-text h4 { font-size: 1.2rem; } /* Adjusted mobile font size */
+    .point-text p { font-size: 0.9rem; } /* Adjusted mobile font size */
+    .point-icon { width: 48px; height: 48px; padding: 4px; border-radius: 10px; }
 }
