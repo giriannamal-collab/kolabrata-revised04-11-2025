@@ -133,3 +133,8 @@
     .stats-overlay { grid-template-columns: 1fr; gap: 1rem; }
     .about-content h3 { font-size: 2rem; }
 }
+.point-icon {
+    /* ... color and background definitions ... */
+    color: var(--bg-white); /* This sets the color property */
+    /* ... other styles ... */
+}

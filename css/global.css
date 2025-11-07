@@ -144,3 +144,9 @@ h1, h2, h3, h4, h5, h6 {
 .btn:active {
     transform: translateY(0);
 }
+
+/* Custom class for bold, orange emphasis within paragraph text */
+.p-highlight {
+    font-weight: 700; /* Use bold font weight */
+    color: var(--primary-accent); /* Use your bright orange color */
+}
