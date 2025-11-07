@@ -1,0 +1,682 @@
+/*
+======================================================
+APP MODERNIZATION SUBPAGE STYLES (Orange Theme)
+Requires: global.css for variables and base typography
+======================================================
+*/
+
+/* --- 1. PAGE TITLE SECTION (Header Banner) --- */
+.page-title {
+    /* Use dark theme gradient for header banner */
+    background: linear-gradient(135deg, var(--footer-dark) 0%, var(--text-dark) 100%);
+    padding: 3rem 0;
+    text-align: center;
+    color: var(--bg-white);
+}
+
+.page-title-badge {
+    display: inline-block;
+    background: rgba(249, 115, 22, 0.2);
+    border: 1px solid var(--primary-accent);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary-accent);
+}
+
+.page-title h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+    color: var(--bg-white);
+}
+
+.page-title p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    opacity: 0.95;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: var(--border-gray);
+}
+
+/* --- 2. SPLIT SCREEN HERO --- */
+.hero-split {
+    height: 100vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+    position: relative;
+    transition: flex 0.5s;
+}
+
+/* Hover effect for split screen */
+.hero-split:hover .hero-side.before {
+    flex: 0.4;
+}
+
+.hero-split:hover .hero-side.after {
+    flex: 0.6;
+}
+
+.hero-side.before {
+    /* Legacy (Bad) side - use dark/red/gray tones */
+    background: linear-gradient(135deg, var(--text-dark) 0%, var(--footer-dark) 100%);
+    color: var(--bg-white);
+}
+
+.hero-side.after {
+    /* Modern (Good) side - use primary accent */
+    background: linear-gradient(135deg, var(--primary-accent-dark) 0%, var(--primary-accent) 100%);
+    color: var(--bg-white);
+}
+
+.hero-content {
+    max-width: 500px;
+    text-align: center;
+}
+
+.hero-label {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--bg-white);
+}
+
+.hero-side.before .hero-label {
+    background: rgba(239, 68, 68, 0.2); /* SVC Red tint */
+    border-color: var(--svc-red);
+}
+
+.hero-side.after .hero-label {
+    background: rgba(45, 212, 191, 0.2); /* SVC Teal tint */
+    border-color: var(--svc-teal);
+}
+
+.hero-content h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    color: var(--bg-white);
+}
+
+.hero-content ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.hero-content ul li {
+    padding: 0.8rem 0;
+    padding-left: 2rem;
+    position: relative;
+    opacity: 0.9;
+}
+
+.hero-content ul li i {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+}
+
+.hero-side.before ul li i {
+    color: var(--svc-red);
+}
+
+.hero-side.after ul li i {
+    color: var(--svc-teal);
+}
+
+.scroll-hover-text {
+    opacity: 0.8;
+    margin-top: 1rem;
+}
+
+.divider {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--bg-white);
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.divider-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: var(--bg-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--primary-accent-dark);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--bg-white);
+    animation: bounce 2s infinite;
+    font-size: 2rem;
+    z-index: 10;
+}
+
+/* Override global button for this specific CTA inside the hero */
+.hero-side .btn-secondary {
+    background: var(--bg-white);
+    color: var(--primary-accent-dark);
+    border-color: var(--bg-white);
+    font-size: 1rem;
+    padding: 1rem 2.5rem;
+}
+
+.hero-side .btn-secondary:hover {
+    color: var(--text-dark);
+    border-color: var(--text-dark);
+    transform: translateY(-2px);
+}
+
+/* --- 3. HEALTH CHECK DASHBOARD --- */
+.health-check {
+    background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light-gray) 100%);
+}
+
+.health-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.health-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.health-card {
+    background: var(--bg-white);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: all 0.3s;
+    border: 1px solid var(--border-gray);
+}
+
+.health-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.15);
+    border-color: var(--primary-accent);
+}
+
+.health-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.health-card h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.health-card p {
+    color: var(--text-gray);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.health-meter {
+    height: 12px;
+    background: var(--border-gray);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.health-meter-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s ease; /* Adjusted speed for visibility */
+}
+
+/* Custom coloring based on severity (Orange for Warning, Red for Critical) */
+.health-card:nth-child(1) .health-meter-fill, /* Performance - Critical */
+.health-card:nth-child(4) .health-meter-fill, /* Security - Critical */
+.health-card:nth-child(5) .health-meter-fill { /* Talent Pool - Critical */
+    background: linear-gradient(90deg, var(--svc-red), var(--primary-accent-dark));
+}
+.health-card:nth-child(2) .health-meter-fill, /* Maintenance Cost - High */
+.health-card:nth-child(3) .health-meter-fill, /* Flexibility - High */
+.health-card:nth-child(6) .health-meter-fill { /* UX - High */
+    background: linear-gradient(90deg, var(--primary-accent), var(--primary-accent-dark));
+}
+
+/* Health Meter Fill Animations (triggered by JS adding class .visible) */
+.health-card.visible:nth-child(1) .health-meter-fill { width: 85%; }
+.health-card.visible:nth-child(2) .health-meter-fill { width: 70%; }
+.health-card.visible:nth-child(3) .health-meter-fill { width: 65%; }
+.health-card.visible:nth-child(4) .health-meter-fill { width: 90%; }
+.health-card.visible:nth-child(5) .health-meter-fill { width: 80%; }
+.health-card.visible:nth-child(6) .health-meter-fill { width: 75%; }
+
+.health-status {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-gray);
+}
+
+/* --- 4. JOURNEY TIMELINE --- */
+.timeline-section {
+    background: var(--footer-dark);
+    color: var(--bg-white);
+}
+
+.timeline-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timeline {
+    position: relative;
+    margin-top: 4rem;
+}
+
+/* Vertical Timeline Line */
+.timeline:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    /* Gradient using primary accent */
+    background: linear-gradient(180deg, var(--primary-accent), var(--primary-accent-dark));
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline-content {
+    flex: 1;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    margin: 0 2rem;
+    transition: all 0.3s;
+}
+
+.timeline-content:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-accent);
+    transform: scale(1.02); /* Reduced hover scale for timeline */
+}
+
+.timeline-number {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    /* Solid primary accent background */
+    background: var(--primary-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: 4px solid var(--footer-dark);
+    color: var(--bg-white);
+}
+
+.timeline-content h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--bg-white);
+}
+
+.timeline-content p {
+    opacity: 0.9;
+    line-height: 1.7;
+    color: var(--border-gray);
+}
+
+.timeline-duration {
+    display: inline-block;
+    /* Use a light accent color for the duration tag */
+    background: rgba(249, 115, 22, 0.2); 
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    color: var(--primary-accent);
+}
+
+/* --- 5. TECH STACK COMPARISON --- */
+.tech-stack {
+    background: var(--bg-white);
+}
+
+.stack-comparison {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.stack-column {
+    background: linear-gradient(135deg, var(--bg-light-gray), var(--bg-white));
+    padding: 3rem;
+    border-radius: 20px;
+    border: 3px solid;
+}
+
+.stack-column.old {
+    border-color: var(--svc-red);
+}
+
+.stack-column.new {
+    border-color: var(--svc-teal);
+}
+
+.stack-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.stack-header h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.stack-badge {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.stack-column.old .stack-badge {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--svc-red);
+}
+
+.stack-column.new .stack-badge {
+    background: rgba(45, 212, 191, 0.1);
+    color: var(--svc-teal);
+}
+
+.tech-list {
+    list-style: none;
+}
+
+.tech-item {
+    background: var(--bg-white);
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s;
+    border: 1px solid var(--border-gray);
+}
+
+.tech-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.tech-icon {
+    width: 50px;
+    height: 50px;
+    /* Use a faint background based on primary accent */
+    background: rgba(249, 115, 22, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    color: var(--primary-accent);
+}
+
+.tech-info h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.3rem;
+}
+
+.tech-info p {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+}
+
+/* --- 6. COST BREAKDOWN --- */
+.cost-section {
+    background: linear-gradient(135deg, var(--bg-light-gray) 0%, rgba(249, 115, 22, 0.05) 100%);
+}
+
+.cost-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.cost-box {
+    background: var(--bg-white);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-gray);
+}
+
+.cost-options {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    justify-content: center;
+}
+
+.cost-option {
+    padding: 1rem 2rem;
+    border: 2px solid var(--border-gray);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: var(--bg-white);
+    text-align: center;
+}
+
+.cost-option:hover {
+    border-color: var(--primary-accent);
+}
+
+.cost-option.active {
+    border-color: var(--primary-accent);
+    background: rgba(249, 115, 22, 0.1);
+}
+
+.cost-breakdown {
+    display: none;
+}
+
+.cost-breakdown.active {
+    display: block;
+}
+
+.cost-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: var(--bg-light-gray);
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-accent);
+}
+
+.cost-label {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.cost-value {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--primary-accent-dark);
+}
+
+.cost-total {
+    /* Use primary accent for the total box */
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-dark));
+    padding: 2rem;
+    border-radius: 16px;
+    color: var(--bg-white);
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.cost-total h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--bg-white);
+}
+
+.cost-total .total-value {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--text-dark); /* Contrast color */
+}
+
+/* --- 7. CTA SECTION --- */
+.cta-section {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--footer-dark) 0%, var(--text-dark) 100%);
+    color: var(--bg-white);
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: var(--bg-white);
+}
+
+.cta-section p {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+    color: var(--border-gray);
+}
+
+.btn-cta {
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+    /* Inherits btn-primary styling from global.css */
+}
+
+/* --- 8. RESPONSIVE OVERRIDES --- */
+@media (max-width: 1024px) {
+    .hero-split {
+        flex-direction: column;
+        height: auto;
+    }
+    .hero-side {
+        flex: 1 !important;
+        min-height: 50vh;
+        padding: 4rem 3vw;
+    }
+    .divider {
+        left: 0;
+        right: 0;
+        top: 50%;
+        bottom: auto;
+        width: 100%;
+        height: 4px;
+    }
+    .divider-icon {
+        top: 0%;
+        left: 50%;
+    }
+    .stack-comparison {
+        grid-template-columns: 1fr;
+    }
+    .timeline:before {
+        left: 30px;
+    }
+    .timeline-item {
+        flex-direction: row !important;
+    }
+    .timeline-number {
+        left: 30px;
+        transform: translateX(-50%);
+    }
+    .timeline-content {
+        margin-left: 60px;
+        margin-right: 0;
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .health-grid {
+        grid-template-columns: 1fr;
+    }
+    .cost-options {
+        flex-direction: column;
+    }
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,587 @@
+/*
+======================================================
+AI SOLUTIONS SUBPAGE STYLES (Orange Theme)
+Requires: global.css for variables and base typography
+======================================================
+*/
+
+/* * IMPORTANT: Assuming Global Variables are accessible from :root in global.css
+* e.g., --primary-accent: #F97316; --footer-dark: #111827;
+*/
+
+
+/* --- 1. HERO SECTION (Unique Dark Background) --- */
+
+.hero-subpage {
+    /* Use dark theme for contrast with orange accent */
+    background: linear-gradient(135deg, var(--footer-dark) 0%, var(--text-dark) 100%);
+    min-height: 85vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    color: var(--bg-white); /* Ensures text is white */
+    padding: 6rem 0;
+}
+
+.grid-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Use Orange-tinted white for subtle grid lines */
+    background-image: 
+        linear-gradient(rgba(249, 115, 22, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(249, 115, 22, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+.hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* Use primary accent color for the badge */
+    background: rgba(249, 115, 22, 0.2); 
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    border: 1px solid var(--primary-accent);
+    color: var(--primary-accent); 
+}
+
+.typing-demo {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: 2rem;
+    min-height: 150px; /* Preserve space for text animation */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.typing-text {
+    /* Use primary accent for typing cursor */
+    border-right: 3px solid var(--primary-accent);
+    animation: blink 0.7s infinite;
+    color: var(--bg-white);
+}
+
+@keyframes blink {
+    0%, 50% { border-color: var(--primary-accent); }
+    51%, 100% { border-color: transparent; }
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    opacity: 0.8;
+    line-height: 1.7;
+    color: var(--border-gray);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    color: var(--primary-accent);
+    font-size: 2rem;
+    z-index: 10;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+}
+
+/* --- 2. STATS TICKER --- */
+
+.stats-ticker-section {
+    background: var(--primary-accent);
+    padding: 1rem 0;
+    overflow: hidden;
+}
+
+.ticker-wrap {
+    display: flex;
+    animation: ticker 30s linear infinite;
+    padding: 0.5rem 0; 
+}
+
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 3rem;
+    white-space: nowrap;
+    color: var(--bg-white);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.ticker-number {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-dark); 
+}
+
+/* --- 3. AI READINESS QUIZ --- */
+
+.quiz-section {
+    background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light-gray) 100%);
+}
+
+.quiz-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.quiz-box {
+    background: var(--bg-white);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-gray);
+}
+
+.quiz-question h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.quiz-options {
+    display: grid;
+    gap: 1rem;
+}
+
+.quiz-option {
+    padding: 1.2rem 1.5rem;
+    border: 2px solid var(--border-gray);
+    border-radius: 50px; 
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 500;
+}
+
+.quiz-option:hover {
+    border-color: var(--primary-accent);
+    background: rgba(249, 115, 22, 0.05);
+}
+
+.quiz-option.selected {
+    border-color: var(--primary-accent);
+    background: rgba(249, 115, 22, 0.1);
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.quiz-radio {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-gray);
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: all 0.3s;
+}
+
+.quiz-option.selected .quiz-radio {
+    border-color: var(--primary-accent);
+    background: var(--primary-accent);
+    box-shadow: inset 0 0 0 4px var(--bg-white);
+}
+
+.btn-quiz {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.quiz-result {
+    display: none;
+    background: linear-gradient(135deg, var(--primary-accent) 0%, var(--primary-accent-dark) 100%);
+    padding: 2.5rem;
+    border-radius: 20px;
+    color: var(--bg-white);
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.quiz-result.show {
+    display: block;
+}
+
+.quiz-result h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--bg-white);
+}
+
+.quiz-result .btn-secondary {
+    background: var(--bg-white);
+    color: var(--primary-accent-dark);
+    border: none;
+}
+.quiz-result .btn-secondary:hover {
+    color: var(--text-dark);
+    border-color: var(--text-dark);
+}
+
+/* --- 4. BEFORE/AFTER COMPARISON --- */
+
+.comparison-section {
+    background: var(--footer-dark);
+    color: var(--bg-white);
+}
+
+.comparison-grid {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.comparison-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 3rem;
+    border-radius: 16px;
+    position: relative;
+    transition: all 0.3s;
+}
+.comparison-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.2);
+}
+
+.comparison-card.before {
+    border: 2px solid var(--svc-red);
+}
+
+.comparison-card.after {
+    border: 2px solid var(--svc-teal);
+}
+
+.comparison-label {
+    position: absolute;
+    top: -15px;
+    left: 2rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--bg-white);
+}
+
+.comparison-card.before .comparison-label {
+    background: var(--svc-red);
+}
+
+.comparison-card.after .comparison-label {
+    background: var(--svc-teal);
+}
+
+.comparison-card h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    color: var(--bg-white);
+}
+
+.comparison-list {
+    list-style: none;
+}
+
+.comparison-list li {
+    padding: 1rem 0;
+    padding-left: 3rem;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--border-gray);
+}
+
+.comparison-list li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-white);
+}
+
+.comparison-card.before li:before {
+    background: var(--svc-red);
+    content: '\f057'; /* FontAwesome X icon */
+}
+
+.comparison-card.after li:before {
+    background: var(--svc-teal);
+    content: '\f058'; /* FontAwesome Check icon */
+}
+
+/* --- 5. BENTO GRID USE CASES (Structure Alignment Only) --- */
+
+.bento-section {
+    background: var(--bg-white);
+}
+
+/* Override header colors for light background */
+.bento-section .section-header h2,
+.bento-section .section-header p,
+.bento-section .section-badge {
+    color: var(--text-dark);
+}
+.bento-section .section-badge {
+    border-color: rgba(249, 115, 22, 0.3);
+    color: var(--primary-accent-dark);
+}
+
+
+.bento-grid {
+    max-width: 1400px;
+    margin: 3rem auto 0;
+    display: grid;
+    /* Base Grid: 4 Equal Columns */
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(150px, auto); /* Ensures minimum height */
+    gap: 1.5rem;
+}
+
+.bento-item {
+    /* Base visual styles (keeping light box look) */
+    background: var(--bg-light-gray);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-gray);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bento-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.1);
+    border-color: var(--primary-accent);
+}
+
+/* --- ALIGNMENT PATTERN (Final Custom Structure) --- */
+
+/* Item 1 (Intelligent Chatbots) spans 2 columns and 2 rows */
+.bento-item:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 2; 
+}
+/* Item 2 (Content at Scale) spans 2 columns */
+.bento-item:nth-child(2) { 
+    grid-column: span 2;
+}
+
+/* Item 3 (Smart Data Processing) - spans 1 */
+.bento-item:nth-child(3) {
+    grid-column: span 1;
+}
+
+/* Item 4 (Report Summaries) - spans 1 */
+.bento-item:nth-child(4) {
+    grid-column: span 1;
+}
+
+/* --- CUSTOM ROW 1 (The 1 + 3 Split) --- */
+
+/* Item 5 (Code Assistant): Takes up 1 column on the far left. */
+.bento-item:nth-child(5) { 
+    grid-column: span 1; 
+}
+
+/* Item 6, 7, 8 (Security, Requirements, Integration): Together span the remaining 3 columns. */
+.bento-item:nth-child(6) { 
+    grid-column: span 1;
+}
+.bento-item:nth-child(7) { 
+    grid-column: span 1;
+}
+.bento-item:nth-child(8) { 
+    grid-column: span 1;
+}
+
+/* --- CUSTOM ROW 2 (The 4-span element) --- */
+
+/* Item 9 (Lead Scoring): Spans the full width of the row (4 columns). */
+.bento-item:nth-child(9) {
+    grid-column: span 4;
+}
+
+
+/* Text styles for the light boxes */
+.bento-item h4 {
+    color: var(--text-dark);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+}
+
+.bento-icon-inline {
+    margin-right: 0.75rem;
+    color: var(--primary-accent);
+    font-size: 1.5rem;
+}
+
+.bento-stat {
+    background: rgba(249, 115, 22, 0.1);
+    color: var(--primary-accent);
+}
+
+/* --- 6. INTERACTIVE ROI CALCULATOR --- */
+
+.roi-calculator {
+    background: linear-gradient(135deg, var(--bg-light-gray) 0%, rgba(249, 115, 22, 0.05) 100%);
+}
+
+.calculator-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.calculator-box {
+    background: var(--bg-white);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-gray);
+}
+
+.calculator-label {
+    color: var(--text-dark);
+}
+
+.calculator-value {
+    color: var(--primary-accent);
+}
+
+.slider {
+    background: var(--border-gray);
+}
+
+.slider::-webkit-slider-thumb {
+    background: var(--primary-accent);
+    box-shadow: 0 2px 10px rgba(249, 115, 22, 0.4);
+}
+
+.slider::-moz-range-thumb {
+    background: var(--primary-accent);
+}
+
+.roi-results {
+    background: linear-gradient(135deg, var(--primary-accent) 0%, var(--primary-accent-dark) 100%);
+    color: var(--bg-white);
+}
+
+.roi-results h3 {
+    color: var(--bg-white);
+}
+
+.roi-number {
+    color: var(--text-dark); /* Use dark text on the orange background for contrast */
+}
+
+.roi-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- 7. FINAL CTA SECTION --- */
+
+.cta-section {
+    background: linear-gradient(135deg, var(--footer-dark) 0%, var(--text-dark) 100%);
+    color: var(--bg-white);
+    text-align: center;
+}
+
+.cta-section h2 {
+    color: var(--bg-white);
+}
+
+.cta-section p {
+    color: var(--border-gray);
+}
+
+/* --- 8. RESPONSIVE OVERRIDES --- */
+@media (max-width: 1024px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    /* On tablet, all items must stack uniformly to span 2 columns */
+    .bento-item {
+        grid-column: span 2 !important; 
+        grid-row: span 1 !important;
+    }
+    
+    .roi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-subpage {
+        min-height: 70vh;
+    }
+    .typing-demo {
+        font-size: 2rem;
+        min-height: 100px;
+    }
+    .ticker-item {
+        padding: 0 2rem;
+    }
+    .ticker-number {
+        font-size: 1.5rem;
+    }
+    .quiz-box, .calculator-box, .comparison-card {
+        padding: 2rem;
+    }
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+    /* On mobile, all items must stack */
+    .bento-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+    }
+}
