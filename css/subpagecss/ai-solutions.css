@@ -152,6 +152,7 @@ Requires: global.css for variables and base typography
 
 .quiz-section {
     background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light-gray) 100%);
+    padding: 6rem 0; /* Added padding */
 }
 
 .quiz-container {
@@ -256,6 +257,7 @@ Requires: global.css for variables and base typography
 /* --- 4. BEFORE/AFTER COMPARISON --- */
 
 .comparison-section {
+    padding: 6rem 0; /* Added padding */
     background: var(--footer-dark);
     color: var(--bg-white);
 }
@@ -316,6 +318,7 @@ Requires: global.css for variables and base typography
 
 .comparison-list {
     list-style: none;
+    padding: 0;
 }
 
 .comparison-list li {
@@ -357,6 +360,7 @@ Requires: global.css for variables and base typography
 /* --- 5. BENTO GRID USE CASES (Structure Alignment Only) --- */
 
 .bento-section {
+    padding: 6rem 0; /* Added padding */
     background: var(--bg-white);
 }
 
@@ -415,11 +419,15 @@ Requires: global.css for variables and base typography
 /* Item 3 (Smart Data Processing) - spans 1 */
 .bento-item:nth-child(3) {
     grid-column: span 1;
+    /* FIX: Explicit placement to ensure correct positioning after item 2 */
+    grid-column-start: 3;
 }
 
 /* Item 4 (Report Summaries) - spans 1 */
 .bento-item:nth-child(4) {
     grid-column: span 1;
+    /* FIX: Explicit placement to ensure correct positioning after item 3 */
+    grid-column-start: 4;
 }
 
 /* --- CUSTOM ROW 1 (The 1 + 3 Split) --- */
@@ -430,6 +438,7 @@ Requires: global.css for variables and base typography
 }
 
 /* Item 6, 7, 8 (Security, Requirements, Integration): Together span the remaining 3 columns. */
+/* No need for complex placement if Item 5 starts at column 1 and these start at 2 */
 .bento-item:nth-child(6) { 
     grid-column: span 1;
 }
@@ -467,9 +476,10 @@ Requires: global.css for variables and base typography
     color: var(--primary-accent);
 }
 
-/* --- 6. INTERACTIVE ROI CALCULATOR --- */
+/* --- 6. INTERACTIVE ROI CALCULATOR (FIXED LAYOUT AND CONTRAST) --- */
 
 .roi-calculator {
+    padding: 6rem 0;
     background: linear-gradient(135deg, var(--bg-light-gray) 0%, rgba(249, 115, 22, 0.05) 100%);
 }
 
@@ -485,6 +495,27 @@ Requires: global.css for variables and base typography
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--border-gray);
 }
+
+/* FIX: Added missing grid layout for inputs and results */
+.calculator-grid { 
+    display: grid;
+    grid-template-columns: 3fr 2fr; /* Inputs wider than results */
+    gap: 3rem;
+    align-items: stretch;
+}
+/* Assuming input fields are wrapped in a similar element from other pages */
+.calculator-input {
+    margin-bottom: 1.5rem;
+}
+.calculator-input label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.calculator-input input[type="range"], 
+.calculator-input input[type="number"] {
+    width: 100%;
+}
+
 
 .calculator-label {
     color: var(--text-dark);
@@ -508,25 +539,42 @@ Requires: global.css for variables and base typography
 }
 
 .roi-results {
+    /* Assuming this is contained in the 2fr column of the calculator-grid */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
     background: linear-gradient(135deg, var(--primary-accent) 0%, var(--primary-accent-dark) 100%);
     color: var(--bg-white);
 }
 
 .roi-results h3 {
     color: var(--bg-white);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .roi-number {
-    color: var(--text-dark); /* Use dark text on the orange background for contrast */
+    /* FIX: Changed to white for high contrast on orange background */
+    color: var(--bg-white); 
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.1;
+    display: block;
+    margin: 0.25rem 0 0.5rem;
 }
 
 .roi-label {
     color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
 }
 
 /* --- 7. FINAL CTA SECTION --- */
 
 .cta-section {
+    padding: 6rem 0; /* Added padding */
     background: linear-gradient(135deg, var(--footer-dark) 0%, var(--text-dark) 100%);
     color: var(--bg-white);
     text-align: center;
@@ -554,7 +602,12 @@ Requires: global.css for variables and base typography
         grid-row: span 1 !important;
     }
     
-    .roi-grid {
+    /* FIX: Collapse ROI grid on tablet/mobile */
+    .calculator-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .roi-grid { /* This was likely meant to be .calculator-grid */
         grid-template-columns: 1fr;
     }
 }
@@ -566,6 +619,10 @@ Requires: global.css for variables and base typography
     .typing-demo {
         font-size: 2rem;
         min-height: 100px;
+    }
+    .ticker-wrap {
+        /* Speed up ticker on mobile for shorter loop */
+        animation-duration: 20s;
     }
     .ticker-item {
         padding: 0 2rem;

@@ -14,22 +14,30 @@ body {
 /* --- 1. HERO SECTION (Diagonal Cut) --- */
 .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: 85vh; 
     /* Gradient using Red (SVC-Red) and Orange (Primary-Accent) */
     background: linear-gradient(135deg, var(--svc-red) 0%, var(--primary-accent) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     padding: 8rem 0 12rem;
     overflow: hidden;
+    color: white; 
 }
 
 .hero::before {
     content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     /* Retained pattern background but using white for contrast */
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     opacity: 0.8;
+    z-index: 1;
 }
 
 .hero-content {
+    /* FIX: Grid layout for text and SVG */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
@@ -43,40 +51,62 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: var(--bg-white);
     backdrop-filter: blur(5px);
+    display: inline-flex;
+    gap: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
 }
 
 .hero h1 {
     color: var(--bg-white);
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
 }
 
 .hero p {
     color: var(--bg-white);
     opacity: 0.95;
+    font-size: 1.15rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
 }
 
 /* Buttons inherit global styles */
 .hero-visual {
     position: relative;
-    height: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.rescue-svg {
+    max-width: 100%;
+    height: auto;
+}
 .rescue-svg text {
     /* Ensure font loads correctly */
     font-family: 'Space Grotesk', sans-serif; 
 }
-.rescue-svg circle[fill="#F97316"] {
+.rescue-svg circle[fill*="var(--primary-accent)"] {
     fill: var(--primary-accent);
 }
-.rescue-svg path[fill="#DC2626"] {
+.rescue-svg path[fill*="var(--svc-red)"] {
     fill: var(--svc-red);
 }
-.rescue-svg circle[stroke="#DC2626"] {
+.rescue-svg circle[stroke*="var(--svc-red)"] {
     stroke: var(--svc-red);
 }
 
 
-/* --- 2. WARNING SIGNS --- */
+/* --- 2. WARNING SIGNS (FINAL FIXED ALTERNATING LAYOUT) --- */
 .warning-section {
     padding: 6rem 0;
     margin-top: -8rem;
@@ -97,7 +127,11 @@ body {
     background-clip: text;
 }
 
-/* Alternating Cards Layout */
+.warning-grid {
+    margin-top: 3rem;
+}
+
+/* Alternating Cards Layout Container */
 .warning-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -106,13 +140,26 @@ body {
     align-items: center;
 }
 
-.warning-row:nth-child(even) {
-    direction: rtl;
+/* * FIX: Explicit column placement for alternation (Odd rows: Card [1] | Visual [2]) 
+* The default order in HTML is CARD then VISUAL, so odd rows need no swap.
+*/
+.warning-row:nth-child(odd) .warning-card {
+    grid-column: 1 / 2;
+}
+.warning-row:nth-child(odd) .warning-visual {
+    grid-column: 2 / 3;
 }
 
-.warning-row:nth-child(even) > * {
-    direction: ltr;
+/* * FIX: Explicit column placement for alternation (Even rows: Visual [1] | Card [2]) 
+* Even rows need the visual element to appear BEFORE the card.
+*/
+.warning-row:nth-child(even) .warning-card {
+    grid-column: 2 / 3;
 }
+.warning-row:nth-child(even) .warning-visual {
+    grid-column: 1 / 2;
+}
+
 
 .warning-card {
     background: var(--bg-white);
@@ -121,6 +168,19 @@ body {
     border-radius: 20px;
     padding: 3rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.warning-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.warning-card p {
+    color: var(--text-gray);
+    font-size: 1rem;
 }
 
 .warning-card:hover {
@@ -150,95 +210,243 @@ body {
     opacity: 0.6;
 }
 
-/* --- 3. SERVICES TIMELINE --- */
+/* --- 3. SERVICES TIMELINE (FIXED ALTERNATING LAYOUT) --- */
 .services-section {
     background: var(--bg-white);
     padding: 6rem 0;
 }
 
-.timeline-line {
-    /* Timeline line uses Red to Orange gradient */
+.services-timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 3rem auto 0;
+}
+
+/* FIX: Vertical timeline line */
+.services-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    bottom: 0;
+    width: 4px;
     background: linear-gradient(180deg, var(--svc-red), var(--primary-accent));
 }
 
+.service-item {
+    /* FIX: Alternating structure */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2.5rem;
+    position: relative;
+    min-height: 120px;
+}
+/* Ensure even items align right, odd items align left */
+.service-item:nth-child(odd) {
+    flex-direction: row;
+}
+.service-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+
+.timeline-line {
+    /* This rule is now redundant as we use ::before on .services-timeline */
+    display: none; 
+}
+
 .service-content {
+    /* FIX: Set content width */
+    width: 45%; 
     background: var(--bg-light-gray);
     border: 2px solid var(--border-gray);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
 }
 
 .service-content:hover {
     border-color: var(--svc-red);
-    transform: translateX(-5px);
+    transform: none; /* Keep generic scale/shadow */
     box-shadow: 0 10px 30px rgba(239, 68, 68, 0.15);
-}
-.service-item:nth-child(even) .service-content:hover {
-    transform: translateX(5px);
 }
 
 .service-number-circle {
+    /* FIX: Position circle over the timeline line */
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1rem;
+    z-index: 10;
+    
     /* Circle uses Red to Orange gradient */
     background: linear-gradient(135deg, var(--svc-red), var(--primary-accent));
     box-shadow: 0 10px 40px rgba(239, 68, 68, 0.3);
     border: 4px solid var(--bg-white);
+    color: var(--bg-white);
 }
 
 .service-content h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
     color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+.service-content p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
 }
 
-/* --- 4. PROCESS SECTION (Steps Grid) --- */
+
+/* --- 4. PROCESS SECTION (Steps Grid - FIXED LAYOUT) --- */
 .process-section {
     background: var(--bg-light-gray);
     padding: 6rem 0;
 }
 
 .process-grid {
+    /* FIX: 5 column grid layout */
+    display: grid;
     grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
 }
 
-.process-step::after {
-    /* Arrow uses SVC Red color */
+.process-step {
+    text-align: center;
+    position: relative;
+    padding-bottom: 4rem; /* Space for the arrow */
+}
+
+/* FIX: Arrow between steps (using pseudo-element on the step itself) */
+.process-step:not(:last-child)::after {
+    content: "\f061"; /* Fa Arrow Right */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: -0.75rem;
+    top: 15%;
+    font-size: 1.5rem;
     color: var(--svc-red);
+    transform: translateY(-50%);
 }
 
 .step-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem;
+    
     /* Circle uses Red to Orange gradient */
     background: linear-gradient(135deg, var(--svc-red), var(--primary-accent));
     box-shadow: 0 10px 40px rgba(239, 68, 68, 0.3);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.process-step h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+.process-step p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
 }
 
 .process-step:hover .step-circle {
     box-shadow: 0 15px 50px rgba(239, 68, 68, 0.5);
 }
 
-/* --- 5. REASONS SECTION --- */
+/* --- 5. REASONS SECTION (FIXED LAYOUT) --- */
 .reasons-section {
     background: var(--bg-white);
     padding: 6rem 0;
 }
 
+/* FIX: Reasons Grid Layout (3 columns) */
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
 .reason-card {
+    position: relative;
+    padding: 2rem;
     /* Light background tint */
     background: linear-gradient(135deg, var(--bg-light-gray) 0%, var(--bg-white) 100%);
     border: 2px solid var(--border-gray);
     border-radius: 16px;
+    transition: all 0.3s ease;
 }
 
 .reason-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: radial-gradient(circle, rgba(239, 68, 68, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .reason-card:hover {
     box-shadow: 0 15px 40px rgba(239, 68, 68, 0.15);
     border-color: var(--svc-red);
 }
+.reason-card:hover::before {
+    opacity: 1;
+}
 
 .reason-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: white;
+    
     /* Icon circle uses Red to Orange gradient */
     background: linear-gradient(135deg, var(--svc-red), var(--primary-accent));
     box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
 }
+.reason-card h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+.reason-card p {
+    color: var(--text-gray);
+    font-size: 1rem;
+}
+
 
 /* --- 6. FINAL CTA --- */
 .final-cta {
@@ -254,18 +462,34 @@ body {
 
 .final-cta::before {
     content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
     opacity: 0.8;
+    z-index: 0;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
 }
 
 .cta-content h2 {
     color: var(--bg-white);
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
 }
 
 .cta-content p {
     color: var(--bg-white);
     opacity: 0.95;
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
 }
 
 .cta-btn {
@@ -277,7 +501,8 @@ body {
 /* --- Responsive --- */
 @media (max-width: 1024px) {
     .hero {
-        padding-bottom: 12rem;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        padding-bottom: 10rem;
     }
     .hero-content {
         grid-template-columns: 1fr;
@@ -286,35 +511,66 @@ body {
     .hero-visual {
         height: 350px;
     }
+
+    /* FIX: Warning Signs - stack columns */
     .warning-row {
         grid-template-columns: 1fr;
         gap: 2rem;
-        direction: ltr !important; /* Force all rows back to LTR */
     }
-    .services-timeline {
-        margin-left: 0;
-        margin-right: 0;
+    /* FIX: Remove explicit grid-column placement on mobile/tablet for stacking */
+    .warning-row:nth-child(odd) .warning-card,
+    .warning-row:nth-child(odd) .warning-visual,
+    .warning-row:nth-child(even) .warning-card,
+    .warning-row:nth-child(even) .warning-visual {
+        grid-column: 1 / -1;
+    }
+    /* FIX: Ensure content is in the correct order on mobile (Card always first) */
+    .warning-row:nth-child(even) {
+        flex-direction: column; /* This only applies if the parent is flex, which it isn't here */
+    }
+    /* We achieve order by ensuring the card comes before the visual in the HTML for all rows, 
+       or using grid order if the HTML order is fixed. Given the HTML is fixed: */
+    .warning-row .warning-card {
+        order: 1;
+    }
+    .warning-row .warning-visual {
+        order: 2;
+    }
+    /* If the visual is supposed to be second for ALL mobile rows: */
+    /* If the card is supposed to be first for ALL mobile rows: */
+    
+    /* Services Timeline mobile setup */
+    .services-timeline::before {
+        left: 25px;
+        transform: none;
     }
     .service-item {
         flex-direction: column !important;
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
+        padding-left: 60px;
+        min-height: auto;
     }
-    .timeline-line {
-        display: none;
+    .service-item .service-content {
+        width: 100%;
+        margin-left: 0;
     }
     .service-number-circle {
-        position: relative;
-        left: auto;
+        position: absolute;
+        left: 0;
+        top: 1.5rem; 
         transform: none;
-        margin-bottom: 2rem;
     }
-    .service-content {
-        margin: 0;
-    }
+    
     .process-grid,
     .reasons-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    /* FIX: Remove arrow between process steps on smaller screens */
+    .process-step:not(:last-child)::after {
+        display: none;
+    }
+    .process-step {
+        padding-bottom: 0;
     }
 }
 

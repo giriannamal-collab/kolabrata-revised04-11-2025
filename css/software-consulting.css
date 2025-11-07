@@ -15,19 +15,27 @@ body {
     filter: blur(100px);
     opacity: 0.3;
     animation: float 20s infinite ease-in-out;
+    /* FIX: Added position/size for orbs to be visible if HTML uses .animated-bg */
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
 }
 
 /* Orbs use different light colors */
 .orb1 {
+    top: 10%; left: 5%;
     background: radial-gradient(circle, rgba(249, 115, 22, 0.2), transparent); /* Light Orange */
 }
 
 .orb2 {
+    bottom: 15%; right: 10%;
     background: radial-gradient(circle, var(--border-gray), transparent); /* Light Gray */
     animation-delay: 7s;
 }
 
 .orb3 {
+    top: 50%; left: 50%;
     background: radial-gradient(circle, rgba(249, 115, 22, 0.3), transparent); /* Light Orange Accent */
     animation-delay: 14s;
 }
@@ -45,19 +53,30 @@ body {
     min-height: 80vh;
     padding: 4rem 0;
     z-index: 1;
+    display: flex; /* FIX: Added flex to center content */
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-content {
     max-width: 1000px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    z-index: 10;
 }
 
 .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     background: rgba(249, 115, 22, 0.1);
     border: 1px solid rgba(249, 115, 22, 0.3);
     color: var(--primary-accent);
     backdrop-filter: blur(5px);
+    padding: 0.7rem 1.5rem; /* FIX: Added padding */
+    border-radius: 50px;
+    margin-bottom: 1.5rem; /* FIX: Added margin */
 }
 
 .hero h1 {
@@ -67,10 +86,20 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    margin-bottom: 1.5rem; /* FIX: Added margin */
 }
 
 .hero p {
     color: var(--text-gray);
+    font-size: 1.15rem; /* FIX: Added size for better readability */
+    line-height: 1.7;
+    margin-bottom: 2rem; /* FIX: Added margin */
+}
+
+.hero-buttons {
+    display: flex; /* FIX: Added flex for button layout */
+    gap: 1rem;
+    justify-content: center;
 }
 
 .btn-secondary {
@@ -80,6 +109,7 @@ body {
     backdrop-filter: blur(10px);
     border-radius: 50px;
     padding: 1rem 2.2rem;
+    font-weight: 700; /* FIX: Added weight for button readability */
 }
 
 .btn-secondary:hover {
@@ -87,17 +117,22 @@ body {
     border-color: var(--primary-accent);
 }
 
-/* --- 2. SERVICES BENTO GRID --- */
+/* --- 2. SERVICES BENTO GRID (FIXED LAYOUT) --- */
 
 .services-section {
+    padding: 6rem 0; /* FIX: Added padding */
     background: var(--bg-white);
 }
 
 .services-grid {
-    grid-template-columns: repeat(4, 1fr);
+    /* FIX: Added grid display */
+    display: grid;
+    /* FIX: Set 4 column template */
+    grid-template-columns: repeat(4, 1fr); 
     grid-auto-rows: 180px;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 3rem auto 0; /* FIX: Added margin */
+    gap: 1.5rem; /* FIX: Added gap */
 }
 
 .service-card {
@@ -135,19 +170,40 @@ body {
 
 .service-card h4 {
     color: var(--text-dark);
+    font-size: 1.3rem; /* FIX: Added size */
+    font-weight: 700; /* FIX: Added weight */
+}
+.service-card p {
+    color: var(--text-gray); /* FIX: Added color */
+    font-size: 1rem; /* FIX: Added size */
 }
 
-/* --- 3. VALUE PROPOSITIONS (PROPS) --- */
+/* --- 3. VALUE PROPOSITIONS (PROPS) (FIXED LAYOUT) --- */
 
 .props-section {
+    padding: 6rem 0; /* FIX: Added padding */
     /* Subtle background for separation */
     background: linear-gradient(180deg, var(--bg-light-gray) 0%, rgba(249, 115, 22, 0.08) 100%);
 }
 
+.props-grid {
+    /* FIX: Added grid display */
+    display: grid;
+    /* FIX: Set 3 column template */
+    grid-template-columns: repeat(3, 1fr); 
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    gap: 2rem; /* FIX: Added gap */
+}
+
 .prop-card {
+    position: relative; /* Needed for prop-number */
+    padding: 2.5rem; /* FIX: Added padding */
     background: var(--bg-white);
     border: 1px solid var(--border-gray);
     border-radius: 16px;
+    overflow: hidden; /* Contains prop-number */
+    transition: all 0.3s;
 }
 
 .prop-card:hover {
@@ -157,26 +213,58 @@ body {
 }
 
 .prop-number {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 3.5rem; /* FIX: Increased size */
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.1; /* FIX: Made it faint */
+    
     background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-dark));
     box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
     color: var(--bg-white);
+    -webkit-background-clip: text; /* FIX: Ensure gradient applies to text */
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .prop-card h4 {
     color: var(--text-dark);
+    font-size: 1.4rem; /* FIX: Added size */
+    font-weight: 700;
+    margin-bottom: 0.5rem; /* FIX: Added margin */
+    position: relative; /* FIX: Bring title above number */
+    z-index: 1;
+}
+.prop-card p {
+    color: var(--text-gray); /* FIX: Added color */
+    font-size: 1rem; /* FIX: Added size */
 }
 
-/* --- 4. BENEFITS GRID (WHO WE HELP) --- */
+/* --- 4. BENEFITS GRID (WHO WE HELP) (FIXED LAYOUT) --- */
 
 .benefits-section {
+    padding: 6rem 0; /* FIX: Added padding */
     background: var(--bg-white);
+}
+
+.benefits-grid {
+    /* FIX: Added grid display */
+    display: grid;
+    /* FIX: Set 4 column template */
+    grid-template-columns: repeat(4, 1fr); 
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    gap: 1.5rem; /* FIX: Added gap */
 }
 
 .benefit-card {
     background: var(--bg-light-gray);
     border: 1px solid var(--border-gray);
     border-radius: 16px;
-    padding: 3rem;
+    padding: 2rem; /* FIX: Adjusted padding */
+    transition: all 0.3s;
 }
 
 .benefit-card:hover {
@@ -186,45 +274,100 @@ body {
 
 .benefit-card h4 {
     color: var(--primary-accent-dark);
+    font-size: 1.3rem; /* FIX: Added size */
+    font-weight: 700;
+    margin-bottom: 1rem; /* FIX: Added margin */
+}
+
+.benefit-card ul {
+    list-style: none;
+    padding: 0;
 }
 
 .benefit-card li {
+    position: relative;
+    padding-left: 1.5rem;
     color: var(--text-gray);
+    font-size: 0.95rem; /* FIX: Added size */
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
     border-bottom: 1px solid var(--border-gray);
+    transition: all 0.3s;
+}
+.benefit-card li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
 }
 
 .benefit-card li::before {
-    content: '→';
+    content: '\f061'; /* FontAwesome Arrow Right */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 0;
     color: var(--primary-accent);
+    font-size: 0.8rem;
+    transition: all 0.3s;
 }
 
 .benefit-card li:hover {
     color: var(--text-dark);
-    padding-left: 3rem;
+    padding-left: 1.75rem; /* Slight shift on hover */
+}
+.benefit-card li:hover::before {
+    color: var(--primary-accent-dark);
 }
 
-/* --- 5. VIRTUAL CTO SECTION --- */
+/* --- 5. VIRTUAL CTO SECTION (FIXED LAYOUT) --- */
 
 .cto-section {
+    padding: 6rem 0; /* FIX: Added padding */
     background: linear-gradient(180deg, var(--bg-light-gray) 0%, rgba(249, 115, 22, 0.08) 100%);
 }
 
 .cto-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem; /* FIX: Added padding */
     background: var(--bg-white);
     border: 1px solid var(--border-gray);
+    border-radius: 16px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
 }
 
+.cto-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
 .cto-header h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    margin-bottom: 0.5rem;
     background: linear-gradient(135deg, var(--text-dark) 0%, var(--primary-accent-dark) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+.cto-header p {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+}
+
+.cto-features {
+    /* FIX: Added grid display */
+    display: grid;
+    /* FIX: Set 3 column template */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.5rem; /* FIX: Added gap */
+}
 
 .cto-feature {
     background: var(--bg-light-gray);
     border: 1px solid var(--border-gray);
+    border-radius: 12px; /* FIX: Adjusted border radius */
+    padding: 1.5rem;
+    transition: all 0.3s;
 }
 
 .cto-feature:hover {
@@ -235,46 +378,94 @@ body {
 
 .cto-feature h5 {
     color: var(--text-dark);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
 .cto-feature i {
     color: var(--primary-accent-dark);
     margin-right: 0.5rem;
 }
+.cto-feature p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
 
-/* --- 6. FINAL CTA SECTION --- */
+
+/* --- 6. FINAL CTA SECTION (FIXED LAYOUT) --- */
 
 .final-cta-section {
+    padding: 6rem 0;
     background: var(--bg-white);
 }
 
 .cta-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem; /* FIX: Added padding */
+    border-radius: 16px; /* FIX: Added border radius */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    
     background: var(--bg-white);
     border: 1px solid rgba(249, 115, 22, 0.3);
     box-shadow: 0 20px 60px rgba(249, 115, 22, 0.2);
 }
 
 .cta-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: radial-gradient(circle, rgba(249, 115, 22, 0.1), transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
 }
 
 .cta-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
     background: linear-gradient(135deg, var(--text-dark) 0%, var(--primary-accent-dark) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-/* --- Responsive --- */
+.cta-desc {
+    color: var(--text-gray);
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+}
+
+
+/* --- 7. RESPONSIVE OVERRIDES --- */
+@media (max-width: 1200px) {
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr); /* Collapse to 2 columns earlier */
+    }
+}
+
 @media (max-width: 1024px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    /* FIX: On tablet, large/wide items still span the full 2 columns */
     .service-card.large, .service-card.wide {
         grid-column: span 2;
         grid-row: span 1;
     }
-    .props-grid, .benefits-grid, .cto-features {
+    /* Standard grids collapse to 2 columns */
+    .props-grid, .cto-features {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -283,6 +474,7 @@ body {
     .services-grid {
         grid-template-columns: 1fr;
     }
+    /* On mobile, all items stack */
     .service-card.large, .service-card.wide {
         grid-column: span 1;
         grid-row: span 1;

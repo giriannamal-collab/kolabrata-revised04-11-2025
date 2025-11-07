@@ -1,0 +1,734 @@
+/*
+======================================================
+CUSTOM BUSINESS SOFTWARE SUBPAGE STYLES (Orange Theme)
+Requires: global.css for variables and base typography
+======================================================
+*/
+
+/* --- 1. HERO SECTION (WHITE BACKGROUND) --- */
+
+.hero {
+    /* CHANGED: White background */
+    background: var(--bg-white); 
+    padding: 5rem 0 2rem;
+    color: var(--text-dark); 
+    position: relative;
+    overflow: hidden;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    /* CHANGED: Subtle light gray background for effect */
+    background: rgba(0, 0, 0, 0.03); 
+    border-radius: 50%;
+    top: -300px;
+    right: -200px;
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20px, 30px); }
+}
+
+.hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-badge {
+    display: inline-block;
+    /* CHANGED: Darker badge for contrast on white background */
+    background: rgba(0, 0, 0, 0.05); 
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px; 
+    /* Font size reduced by 1 point */
+    font-size: 0.85rem; 
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-gray);
+    backdrop-filter: blur(10px);
+    color: var(--primary-accent-dark); 
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    line-height: 1.15;
+    color: var(--text-dark); 
+}
+
+.hero-subtitle {
+    /* Font size reduced by 1 point */
+    font-size: clamp(1.05rem, 2vw, 1.3rem); 
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+    line-height: 1.7;
+    color: var(--text-gray); 
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Primary Button inherits global style */
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-accent-dark); 
+    border: 2px solid var(--primary-accent-dark); 
+}
+
+.btn-secondary:hover {
+    background: var(--primary-accent-dark);
+    color: var(--bg-white);
+    transform: translateY(-2px);
+}
+
+/* SVG Illustration - ensures monitor screen uses brand color */
+.illustration-svg rect[fill*="var(--primary-accent)"] {
+    fill: var(--primary-accent);
+}
+
+/* --- 2. STATS SECTION --- */
+.stats-section {
+    padding: 0 0; 
+    margin-top: -80px;
+    position: relative;
+    z-index: 10;
+}
+
+.stats-ticker {
+    background: var(--bg-white);
+    padding: 3rem;
+    border-radius: 16px; 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    border: 1px solid var(--border-gray);
+}
+
+.stat-item {
+    transition: transform 0.3s ease, background 0.3s ease; 
+}
+
+.stat-item:hover {
+    background: var(--bg-light-gray);
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    /* Font size slightly reduced */
+    font-size: 3rem; 
+    font-weight: 900;
+    display: block;
+    margin-bottom: 0.5rem;
+    /* Use orange gradient for text fill */
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-dark));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+    /* Font size reduced */
+    font-size: 0.95rem; 
+    color: var(--text-gray);
+}
+
+/* --- 3. CALCULATOR SECTION --- */
+.calculator-section {
+    background: var(--bg-light-gray);
+    padding: 8rem 0 5rem;
+}
+
+.calculator-box {
+    background: var(--bg-white);
+    padding: 3.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border-gray);
+}
+
+.calculator-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 2.5rem;
+    align-items: stretch;
+}
+
+.calculator-input {
+    margin-bottom: 1.5rem;
+}
+
+.calculator-input label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    /* Font size reduced */
+    font-size: 0.95rem; 
+    color: var(--text-dark);
+}
+
+.calculator-input input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--border-gray);
+    background: var(--bg-light-gray);
+    font-family: 'Space Grotesk', sans-serif;
+    border-radius: 8px;
+}
+
+.calculator-input input:focus {
+    outline: none;
+    border-color: var(--primary-accent);
+    background: var(--bg-white);
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1);
+}
+
+.results-box {
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-dark));
+    color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-around; 
+    text-align: center;
+}
+
+.results-box h3 {
+    color: var(--bg-white);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    /* Font size slightly reduced */
+    font-size: 1.4rem; 
+    font-weight: 700;
+}
+
+.result-item {
+    color: var(--bg-white);
+    padding: 1rem 0;
+}
+
+.result-value {
+    color: var(--text-dark); 
+    /* Font size slightly reduced */
+    font-size: 2.5rem; 
+    font-weight: 900;
+    line-height: 1.1;
+    display: block;
+    background-color: var(--bg-white); 
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+    margin-bottom: 0.25rem;
+}
+
+.result-label {
+    opacity: 0.9;
+    /* Font size slightly reduced */
+    font-size: 0.95rem; 
+    display: block;
+}
+
+.p-note {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 0.95rem; 
+    margin-top: 1rem;
+}
+
+/* Tooltip */
+.tooltip {
+    border-bottom: 2px dotted var(--primary-accent);
+}
+.tooltip .tooltip-text {
+    background-color: var(--text-dark);
+}
+.tooltip .tooltip-text::after {
+    border-color: var(--text-dark) transparent transparent transparent;
+}
+
+/* --- 4. WHY CUSTOM CARDS --- */
+.why-custom {
+    background: var(--bg-white);
+}
+
+.why-grid, .use-cases-grid {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 2rem;
+}
+
+.why-card {
+    background: var(--bg-white);
+    border: 2px solid var(--border-gray);
+    padding: 2.5rem;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.why-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px; 
+    background: linear-gradient(to right, var(--primary-accent), var(--primary-accent-dark));
+    transition: height 0.3s ease;
+}
+
+.why-card:hover {
+    box-shadow: 0 20px 50px rgba(249, 115, 22, 0.15);
+    border-color: var(--primary-accent);
+}
+
+.why-card h3 {
+    color: var(--text-dark);
+    display: flex; 
+    align-items: center;
+    /* Font size slightly reduced */
+    font-size: 1.5rem; 
+    margin-bottom: 1rem;
+}
+
+.why-card p {
+    /* Font size reduced */
+    font-size: 1rem;
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+}
+
+.card-icon {
+    background: rgba(249, 115, 22, 0.1);
+    color: var(--primary-accent);
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    font-size: 1.1rem;
+}
+
+.data-point {
+    background: rgba(249, 115, 22, 0.1);
+    border-left: 3px solid var(--primary-accent);
+    color: var(--primary-accent);
+    font-weight: 700;
+    padding: 0.75rem 1rem;
+    border-radius: 0 0 10px 10px;
+}
+
+/* --- 5. COMPARISON SECTION --- */
+.comparison-section {
+    background: linear-gradient(135deg, var(--footer-dark) 0%, var(--text-dark) 100%);
+    color: var(--bg-white);
+    padding: 5rem 0;
+}
+
+.comparison-grid {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 3rem;
+    max-width: 900px;
+    margin: 3rem auto 0;
+}
+
+.comparison-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    border-radius: 12px;
+}
+
+.comparison-card h3 {
+    color: var(--bg-white);
+    /* Font size slightly reduced */
+    font-size: 1.6rem; 
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+}
+
+.comparison-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comparison-list li {
+    padding: 0.75rem 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--border-gray);
+    /* Font size reduced */
+    font-size: 1.05rem; 
+}
+.comparison-list li:last-child {
+    border-bottom: none;
+}
+
+.check-icon, .cross-icon {
+    width: 25px; 
+    text-align: center;
+    margin-right: 1rem;
+    font-size: 1.1rem;
+}
+
+.check-icon { color: var(--svc-teal); }
+.cross-icon { color: var(--svc-red); }
+
+/* --- 6. USE CASES --- */
+.use-cases-section {
+    background: var(--bg-light-gray);
+}
+
+.use-case-card {
+    background: var(--bg-white);
+    border: 2px solid var(--border-gray);
+    padding: 2rem;
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.use-case-card:hover {
+    border-color: var(--primary-accent);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.use-case-icon {
+    background: rgba(249, 115, 22, 0.1);
+    color: var(--primary-accent);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.use-case-card h4 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    /* Font size reduced */
+    font-size: 1.25rem; 
+}
+
+.use-case-card p {
+    /* Font size reduced */
+    font-size: 1rem;
+    color: var(--text-gray);
+    flex-grow: 1; 
+    margin-bottom: 1.5rem;
+}
+
+.real-example {
+    background: var(--bg-light-gray);
+    border-left: 3px solid var(--primary-accent);
+    padding: 1rem;
+    border-radius: 0 8px 8px 0;
+    margin-top: auto;
+    /* Font size reduced */
+    font-size: 0.95rem; 
+    color: var(--text-dark);
+}
+
+.real-example strong {
+    color: var(--primary-accent);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* --- 7. PROCESS TIMELINE (WHITE BACKGROUND & VERY LIGHT MULTI-COLOR ITEMS) --- */
+.process-section {
+    background: var(--bg-white); 
+    color: var(--text-dark); 
+    padding: 5rem 0;
+}
+
+.process-timeline {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    position: relative;
+}
+
+.process-timeline::before {
+    content: '';
+    position: absolute;
+    left: 45px; 
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--border-gray); 
+}
+
+.timeline-item {
+    /* FIX: Ensure items align from the start */
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-left: 80px; 
+}
+
+.timeline-number {
+    position: absolute;
+    left: 0;
+    /* FIX: Vertical centering adjustment */
+    top: 50%; 
+    transform: translateY(-50%); 
+    
+    background: var(--primary-accent-dark); 
+    color: var(--bg-white); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+    /* Font size and size reduced */
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem; 
+    font-weight: 700;
+    z-index: 2;
+}
+
+/* Reset default timeline-content styles for individual coloring */
+.timeline-content {
+    color: var(--text-dark); 
+    padding: 1.5rem;
+    border-radius: 10px;
+    flex-grow: 1;
+    transition: all 0.3s ease;
+}
+
+/* Specific increase for Process Section H4 headers */
+.timeline-content h4 {
+    color: var(--text-dark);
+    margin-top: 0;
+    /* Font size reduced to 1.3rem */
+    font-size: 1.3rem; 
+    font-weight: 700; 
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+    /* Font size reduced */
+    font-size: 1rem; 
+    color: var(--text-gray);
+}
+
+/* NEW: Very Light Multi-Color Backgrounds for Timeline Items */
+
+/* 1. Discovery (Light Blue/Cyan theme) */
+.timeline-item:nth-child(1) .timeline-content {
+    background: linear-gradient(135deg, #e6f7ff, #e0ffff); /* Very Light Blue/Cyan */
+}
+
+/* 2. Design & Planning (Light Purple/Violet theme) */
+.timeline-item:nth-child(2) .timeline-content {
+    background: linear-gradient(135deg, #f3e6ff, #fbe9ff); /* Very Light Purple/Pink */
+}
+
+/* 3. Development (Light Green/Teal theme) */
+.timeline-item:nth-child(3) .timeline-content {
+    background: linear-gradient(135deg, #e6ffe6, #f0fff0); /* Very Light Mint Green */
+}
+
+/* 4. Testing & Training (Light Orange/Yellow theme) */
+.timeline-item:nth-child(4) .timeline-content {
+    background: linear-gradient(135deg, #fff0e6, #fffaf5); /* Very Light Peach/Cream */
+}
+
+/* 5. Launch & Support (Light Red/Pink theme) */
+.timeline-item:nth-child(5) .timeline-content {
+    background: linear-gradient(135deg, #ffe6e6, #fff0f5); /* Very Light Rose */
+}
+
+/* Ensure text remains dark inside the light colored gradient boxes for readability */
+.timeline-item .timeline-content h4 {
+    color: var(--text-dark);
+}
+.timeline-item .timeline-content p {
+    color: var(--text-gray);
+}
+
+/* --- 8. FAQ --- */
+.faq-section {
+    background: var(--bg-white);
+    padding: 5rem 0;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 3rem auto 0;
+}
+
+.faq-item {
+    background: var(--bg-light-gray);
+    border: 2px solid var(--border-gray);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.faq-item:hover {
+    border-color: var(--primary-accent);
+}
+
+.faq-item.active {
+    border-color: var(--primary-accent-dark);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    background: none;
+    border: none;
+    text-align: left;
+    /* Font size reduced */
+    font-size: 1.1rem; 
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+}
+
+.faq-answer {
+    max-height: 0; 
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    padding: 0 1.5rem;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 1.5rem 1.5rem;
+}
+
+.faq-answer p {
+    /* Font size reduced */
+    font-size: 1rem; 
+    color: var(--text-gray);
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+    color: var(--primary-accent-dark);
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+
+/* --- 9. FINAL CTA --- */
+.final-cta {
+    background: var(--bg-white);
+    text-align: center;
+    padding: 5rem 0;
+}
+
+.final-cta h2 {
+    color: var(--text-dark);
+}
+
+.final-cta p {
+    /* Font size reduced */
+    font-size: 1.1rem; 
+    color: var(--text-gray);
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .hero-container, .calculator-grid, .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero {
+        min-height: auto;
+    }
+    .hero-illustration {
+        max-width: 500px;
+        margin: 2rem auto 0;
+        height: 350px;
+    }
+    .results-box {
+        margin-top: 2rem;
+        background: var(--bg-light-gray);
+        border: 2px solid var(--primary-accent);
+        color: var(--text-dark); 
+    }
+    .results-box h3, .result-label {
+        color: var(--text-dark);
+    }
+
+    /* Process Timeline adjustments for small screens */
+    .process-timeline::before {
+        left: 25px; 
+    }
+    .timeline-item {
+        padding-left: 60px;
+    }
+    .timeline-number {
+        left: 0;
+        width: 50px; 
+        height: 50px;
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-ticker {
+        grid-template-columns: 1fr 1fr;
+        padding: 2rem;
+    }
+    .calculator-box {
+        padding: 2rem;
+    }
+    .why-grid, .use-cases-grid {
+        grid-template-columns: 1fr;
+    }
+    .faq-question {
+        font-size: 1rem; 
+        padding: 1.2rem 1.5rem;
+    }
+    .comparison-card {
+        padding: 1.5rem;
+    }
+}

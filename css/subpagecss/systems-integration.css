@@ -1,370 +1,516 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Systems Integration | Kolabrata</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+/*
+======================================================
+SYSTEMS INTEGRATION SUBPAGE STYLES (Orange Theme)
+Requires: global.css for variables and base typography
+======================================================
+*/
 
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/header.css">
-    
-    <link rel="stylesheet" href="systems-integration.css"> 
+/* --- 0. BACKGROUND --- */
+body {
+    /* Soft light background for the whole page */
+    background: linear-gradient(135deg, var(--bg-light-gray) 0%, var(--bg-white) 50%, rgba(249, 115, 22, 0.05) 100%);
+}
 
-</head>
-<body>
-    <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
-        <h1>Systems Integration API Development Australia</h1>
-        <p>Systems integration, API integration, ERP CRM integration, accounting software integration, Xero QuickBooks MYOB integration, Salesforce HubSpot Zoho integration, Stripe PayPal Square integration, Shopify WooCommerce integration, inventory synchronization, HR payroll integration, Gmail Outlook Office 365 integration, Google Calendar integration, Power BI Tableau integration, REST API GraphQL SOAP, webhook integration, OAuth SSO single sign-on, API gateway management security, Melbourne Sydney Brisbane Perth Adelaide Australia.</p>
-    </div>
-    
-    <nav class="header-new">
-        <div class="header-container">
-            <div class="header-logo-wrapper">
-                <a href="../index.html#hero" class="header-logo-link">
-                    <img src="../image/logo.png" alt="Kolabrata Logo" class="site-logo">
-                    <div class="site-identity">
-                        <span class="site-name">Kolabrata</span>
-                        <span class="site-tagline">Build. Innovate. Integrate.</span>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="header-nav">
-                <div class="header-nav-links">
-                    <a href="../index.html#about">About Us</a>
-                    <a href="../index.html#services" class="active">Services</a> 
-                    <a href="../index.html#methodology">Our Process</a>
-                    <a href="../index.html#technology">Technology</a>
-                    <a href="../index.html#testimonials">Testimonials</a>
-                    <a href="../index.html#faq">FAQ</a>
-                </div>
-                <div class="header-nav-buttons">
-                    <a href="../index.html#consultation" class="btn btn-primary">Book a Call</a>
-                </div>
-            </div>
+/* --- 1. HERO SECTION (Teal to Orange) --- */
 
-            <button class="mobile-menu-btn" aria-label="Open Menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
-        </div>
-    </nav>
-    <main id="main-content">
-        <section class="hero">
-            <div class="hero-content container">
-                <div class="hero-text">
-                    <div class="hero-badge">
-                        <i class="fa-solid fa-link"></i>
-                        <span>SYSTEMS INTEGRATION</span>
-                    </div>
-                    <h1>Connect Everything. <span class="highlight">Break Down Silos.</span></h1>
-                    <p>Integrate business systems with powerful APIs and workflows. Turn fragmented data into actionable intelligence with seamless connections between accounting, HR, CRM, and custom systems.</p>
-                    <div class="hero-buttons">
-                        <a href="../index.html#consultation" class="btn btn-primary">
-                            Start Integration
-                            <i class="fa-solid fa-arrow-right-long"></i>
-                        </a>
-                        <a href="#types" class="btn btn-secondary">
-                            Integration Examples
-                        </a>
-                    </div>
-                </div>
+.hero {
+    min-height: 85vh; 
+    padding: 6rem 0 4rem;
+    display: flex; /* FIX: Added flex to align content */
+    align-items: center;
+}
 
-                <div class="integration-visual">
-                    <svg class="connection-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="200" cy="200" r="50" class="svg-hub-fill" opacity="0.9">
-                            <animate attributeName="r" values="50;55;50" dur="3s" repeatCount="indefinite"/>
-                        </circle>
-                        <text x="200" y="210" font-family="Space Grotesk" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">HUB</text>
-                        
-                        <line x1="200" y1="200" x2="200" y2="80" stroke-width="3" opacity="0.6" stroke-dasharray="5,5" class="svg-line-stroke">
-                            <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1s" repeatCount="indefinite"/>
-                        </line>
-                        <line x1="200" y1="200" x2="320" y2="200" stroke-width="3" opacity="0.6" stroke-dasharray="5,5" class="svg-line-stroke">
-                            <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1s" repeatCount="indefinite"/>
-                        </line>
-                        <line x1="200" y1="200" x2="200" y2="320" stroke-width="3" opacity="0.6" stroke-dasharray="5,5" class="svg-line-stroke">
-                            <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1s" repeatCount="indefinite"/>
-                        </line>
-                        <line x1="200" y1="200" x2="80" y2="200" stroke-width="3" opacity="0.6" stroke-dasharray="5,5" class="svg-line-stroke">
-                            <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1s" repeatCount="indefinite"/>
-                        </line>
-                        
-                        <circle cx="200" cy="80" r="35" fill="var(--bg-white)" stroke-width="3" class="svg-line-stroke"/>
-                        <text x="200" y="85" font-family="Space Grotesk" font-size="12" font-weight="bold" text-anchor="middle" class="svg-text-fill">CRM</text>
-                        
-                        <circle cx="320" cy="200" r="35" fill="var(--bg-white)" stroke-width="3" class="svg-line-stroke"/>
-                        <text x="320" y="205" font-family="Space Grotesk" font-size="12" font-weight="bold" text-anchor="middle" class="svg-text-fill">ERP</text>
-                        
-                        <circle cx="200" cy="320" r="35" fill="var(--bg-white)" stroke-width="3" class="svg-line-stroke"/>
-                        <text x="200" y="325" font-family="Space Grotesk" font-size="12" font-weight="bold" text-anchor="middle" class="svg-text-fill">HR</text>
-                        
-                        <circle cx="80" cy="200" r="35" fill="var(--bg-white)" stroke-width="3" class="svg-line-stroke"/>
-                        <text x="80" y="205" font-family="Space Grotesk" font-size="12" font-weight="bold" text-anchor="middle" class="svg-text-fill">BI</text>
-                        
-                        <circle cx="200" cy="140" r="5" class="svg-fill">
-                            <animate attributeName="cy" values="140;200" dur="2s" repeatCount="indefinite"/>
-                            <animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/>
-                        </circle>
-                        <circle cx="260" cy="200" r="5" class="svg-fill">
-                            <animate attributeName="cx" values="260;200" dur="2s" repeatCount="indefinite"/>
-                            <animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/>
-                        </circle>
-                    </svg>
-                </div>
-            </div>
-        </section>
+.hero-content {
+    /* FIX: Added grid layout for the main content area */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px; /* FIX: Set max-width */
+    margin: 0 auto;
+}
 
-        <section class="section-container problems-section">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-badge">THE PROBLEM</div>
-                    <h2 class="section-title">The Cost of Data <span class="highlight">Silos</span></h2>
-                    <p class="section-subtitle">Disconnected systems create real business problems that impact your bottom line.</p>
-                </div>
+.hero-text {
+    /* FIX: Added text styling */
+    max-width: 550px;
+}
 
-                <div class="problems-grid">
-                    <div class="problem-card">
-                        <span class="problem-icon"><i class="fa-solid fa-keyboard"></i></span>
-                        <h3>Manual Data Entry</h3>
-                        <p>Staff waste hours copying data between systems. Error-prone, time-consuming, and frustrating work that adds no value.</p>
-                    </div>
+.hero-badge {
+    display: inline-flex; /* FIX: Added display property */
+    gap: 0.5rem;
+    padding: 0.6rem 1.5rem; /* FIX: Added padding */
+    border-radius: 50px; /* FIX: Added radius */
+    font-weight: 700;
+    margin-bottom: 1.5rem; /* FIX: Added margin */
+    background: rgba(249, 115, 22, 0.1);
+    border: 1px solid rgba(249, 115, 22, 0.3);
+    color: var(--primary-accent);
+    backdrop-filter: blur(5px);
+}
 
-                    <div class="problem-card">
-                        <span class="problem-icon"><i class="fa-solid fa-circle-question"></i></span>
-                        <h3>No Single Truth</h3>
-                        <p>Different systems show different numbers. Which one is right? Impossible to make confident decisions with conflicting data.</p>
-                    </div>
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem); /* FIX: Added size */
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    /* Dark text fading to accent color */
+    background: linear-gradient(135deg, var(--text-dark) 0%, var(--primary-accent-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
-                    <div class="problem-card">
-                        <span class="problem-icon"><i class="fa-solid fa-clock-rotate-left"></i></span>
-                        <h3>Delayed Insights</h3>
-                        <p>By the time you manually compile reports, the data is outdated. Miss opportunities because information comes too late.</p>
-                    </div>
+.hero p {
+    font-size: 1.15rem; /* FIX: Added size */
+    color: var(--text-gray);
+    line-height: 1.7;
+    margin-bottom: 2rem; /* FIX: Added margin */
+}
 
-                    <div class="problem-card">
-                        <span class="problem-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
-                        <h3>Data Inconsistency</h3>
-                        <p>Human errors in manual transfers create mismatches. Customers exist in one system but not another.</p>
-                    </div>
+.hero-buttons {
+    display: flex; /* FIX: Added flex for button layout */
+    gap: 1rem;
+    flex-wrap: wrap;
+}
 
-                    <div class="problem-card">
-                        <span class="problem-icon"><i class="fa-solid fa-eye-slash"></i></span>
-                        <h3>Limited Visibility</h3>
-                        <p>Can't see the big picture when data is fragmented. Miss patterns and insights that span multiple systems.</p>
-                    </div>
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--primary-accent);
+    border: 2px solid rgba(249, 115, 22, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 1rem 2.2rem;
+    font-weight: 700; /* FIX: Added weight */
+}
 
-                    <div class="problem-card">
-                        <span class="problem-icon"><i class="fa-solid fa-money-bill-wave"></i></span>
-                        <h3>Hidden Costs</h3>
-                        <p>Salary costs for manual data work add up. Plus opportunity cost of staff not doing higher-value work.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: var(--primary-accent);
+}
 
-        <section class="section-container types-section" id="types">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-badge">SOLUTIONS</div>
-                    <h2 class="section-title">Integration <span class="highlight">Solutions</span></h2>
-                    <p class="section-subtitle">Common integrations that deliver immediate value to your business.</p>
-                </div>
+/* SVG Styling Overrides */
+.integration-visual {
+    /* FIX: Set a height for the visual container */
+    height: 400px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.integration-visual .svg-hub-fill {
+    fill: var(--primary-accent-dark);
+}
+.integration-visual .svg-line-stroke {
+    stroke: var(--primary-accent);
+}
+.integration-visual .svg-text-fill {
+    fill: var(--primary-accent);
+}
+.integration-visual .svg-fill {
+    fill: var(--primary-accent);
+}
 
-                <div class="types-grid">
-                    <div class="type-card">
-                        <h4><i class="fa-solid fa-calculator"></i> Accounting Integration</h4>
-                        <p>Send timesheets, job costing, invoices, and order data straight to your accounting system automatically.</p>
-                        <div class="type-examples">Connect Xero, QuickBooks, MYOB, or SAP with custom systems</div>
-                    </div>
+/* --- 2. PROBLEMS SECTION (Silo Cards - FIXED LAYOUT) --- */
+.problems-section {
+    background: var(--bg-white);
+    padding: 6rem 0;
+}
 
-                    <div class="type-card">
-                        <h4><i class="fa-solid fa-user-friends"></i> HR Systems</h4>
-                        <p>Sync employee data, leave requests, timesheets, and performance data between HR and operational systems.</p>
-                        <div class="type-examples">Integrate BambooHR, Workday, or custom HR platforms</div>
-                    </div>
+.section-header {
+    text-align: center; /* FIX: Center header */
+    margin-bottom: 3rem;
+}
+.section-badge {
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
 
-                    <div class="type-card">
-                        <h4><i class="fa-solid fa-headset"></i> CRM Integration</h4>
-                        <p>Keep customer data synchronized. Link sales, support tickets, and orders for complete customer view.</p>
-                        <div class="type-examples">Connect Salesforce, HubSpot, Zoho, or custom CRMs</div>
-                    </div>
+.section-title {
+    font-size: clamp(2rem, 4vw, 3.5rem); /* FIX: Added size */
+    font-weight: 900;
+    margin-bottom: 1rem;
+    /* Accent text gradient */
+    background: linear-gradient(135deg, var(--primary-accent) 0%, var(--primary-accent-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.section-subtitle {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+}
 
-                    <div class="type-card">
-                        <h4><i class="fa-solid fa-credit-card"></i> Payment Gateways</h4>
-                        <p>Accept payments seamlessly with Stripe, PayPal, or Square. Handle subscriptions, invoicing, and complex billing.</p>
-                        <div class="type-examples">PCI-compliant payment processing with automated reconciliation</div>
-                    </div>
+/* FIX: Added grid layout for problem cards */
+.problems-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for problems */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+}
 
-                    <div class="type-card">
-                        <h4><i class="fa-solid fa-warehouse"></i> Inventory Systems</h4>
-                        <p>Real-time inventory sync across warehouses, stores, and online channels. Prevent overselling and stockouts.</p>
-                        <div class="type-examples">Connect WMS, POS, and ecommerce platforms</div>
-                    </div>
+.problem-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-light-gray);
+    border: 2px solid var(--border-gray);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: all 0.3s;
+}
 
-                    <div class="type-card">
-                        <h4><i class="fa-solid fa-calendar-check"></i> Email & Calendar</h4>
-                        <p>Automate appointment scheduling, send notifications, and sync important dates across platforms.</p>
-                        <div class="type-examples">Integrate Gmail, Outlook, Office 365, Google Calendar</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+.problem-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(249, 115, 22, 0.15);
+    border-color: var(--primary-accent);
+}
 
-        <section class="section-container benefits-section">
-            <div class="container benefits-container">
-                <div class="section-header">
-                    <div class="section-badge">BENEFITS</div>
-                    <h2 class="section-title">Business <span class="highlight">Benefits</span></h2>
-                    <p class="section-subtitle">Real results from proper system integration.</p>
-                </div>
+.problem-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px; /* Top border gradient using accent color */
+    background: linear-gradient(90deg, var(--primary-accent), var(--primary-accent-dark));
+}
 
-                <div class="benefits-visual">
-                    <svg class="benefits-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 50 350 L 150 300 L 250 200 L 350 100" stroke-width="4" fill="none" stroke-linecap="round" class="svg-line-stroke"/>
-                        <circle cx="50" cy="350" r="8" class="svg-fill"/>
-                        <circle cx="150" cy="300" r="8" class="svg-fill"/>
-                        <circle cx="250" cy="200" r="8" class="svg-fill"/>
-                        <circle cx="350" cy="100" r="8" class="svg-fill"/>
-                        
-                        <circle cx="350" cy="100" r="40" fill="none" stroke-width="3" opacity="0.3" class="svg-line-stroke">
-                            <animate attributeName="r" values="40;50;40" dur="2s" repeatCount="indefinite"/>
-                            <animate attributeName="opacity" values="0.3;0;0.3" dur="2s" repeatCount="indefinite"/>
-                        </circle>
-                        
-                        <path d="M 80 150 L 100 170 L 140 130" stroke-width="5" fill="none" stroke-linecap="round" class="svg-line-stroke"/>
-                        <path d="M 180 250 L 200 270 L 240 230" stroke-width="5" fill="none" stroke-linecap="round" class="svg-line-stroke"/>
-                        <path d="M 280 180 L 300 200 L 340 160" stroke-width="5" fill="none" stroke-linecap="round" class="svg-line-stroke"/>
-                    </svg>
-                </div>
+.problem-icon {
+    font-size: 3rem;
+    color: var(--primary-accent-dark);
+    margin-bottom: 1rem;
+}
+.problem-card h4 {
+    font-size: 1.4rem; /* FIX: Added size */
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+.problem-card p {
+    color: var(--text-gray);
+    font-size: 1rem;
+}
 
-                <div class="benefits-list">
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><i class="fa-solid fa-bolt"></i></div>
-                        <div class="benefit-content">
-                            <h4>Eliminate Manual Work</h4>
-                            <p>Automated data flow saves hours per week. Free staff for higher-value activities.</p>
-                        </div>
-                    </div>
 
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><i class="fa-solid fa-bullseye"></i></div>
-                        <div class="benefit-content">
-                            <h4>Single Source of Truth</h4>
-                            <p>All systems show the same data. Make decisions with confidence knowing info is accurate.</p>
-                        </div>
-                    </div>
+/* --- 3. INTEGRATION TYPES SECTION (FIXED LAYOUT) --- */
+.types-section {
+    padding: 6rem 0; /* FIX: Added padding */
+    /* Light patterned background with orange tint */
+    background: linear-gradient(135deg, var(--bg-light-gray) 0%, rgba(249, 115, 22, 0.08) 100%);
+    position: relative;
+    overflow: hidden;
+}
 
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><i class="fa-solid fa-hourglass-half"></i></div>
-                        <div class="benefit-content">
-                            <h4>Real-time Insights</h4>
-                            <p>Instant access to current data across all systems. Spot problems and opportunities immediately.</p>
-                        </div>
-                    </div>
+.types-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* Pattern background using light orange */
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F97316' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
 
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><i class="fa-solid fa-check-double"></i></div>
-                        <div class="benefit-content">
-                            <h4>Improved Accuracy</h4>
-                            <p>Eliminate human error from manual data transfer. Data flows correctly every time.</p>
-                        </div>
-                    </div>
+/* FIX: Added grid layout for type cards */
+.types-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for integration types */
+    max-width: 1000px;
+    margin: 3rem auto 0;
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
 
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><i class="fa-solid fa-chart-area"></i></div>
-                        <div class="benefit-content">
-                            <h4>Better Decisions</h4>
-                            <p>Complete data view across systems reveals insights impossible to see in silos.</p>
-                        </div>
-                    </div>
+.type-card {
+    position: relative;
+    padding: 2.5rem;
+    background: var(--bg-white);
+    border: 2px solid var(--border-gray);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
 
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><i class="fa-solid fa-coins"></i></div>
-                        <div class="benefit-content">
-                            <h4>Reduced Costs</h4>
-                            <p>Lower labor costs and fewer errors save money. Typical ROI within 6-12 months.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+.type-card:hover {
+    border-color: var(--primary-accent);
+    box-shadow: 0 15px 40px rgba(249, 115, 22, 0.15);
+}
 
-        <section class="section-container systems-section">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-badge">PLATFORMS</div>
-                    <h2 class="section-title">Popular Systems We <span class="highlight">Integrate</span></h2>
-                    <p class="section-subtitle">We have experience with hundreds of platforms and custom systems.</p>
-                </div>
+.type-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 0;
+    pointer-events: none;
+    /* Bottom glow effect */
+    background: linear-gradient(180deg, transparent, rgba(249, 115, 22, 0.05));
+}
 
-                <div class="systems-grid">
-                    <div class="system-box">
-                        <div class="system-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-                        <h5>Xero / QuickBooks</h5>
-                    </div>
+.type-card h4 {
+    font-size: 1.4rem; /* FIX: Added size */
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    display: flex; /* FIX: Added flex for icon alignment */
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+.type-card h4 i {
+    color: var(--primary-accent);
+    margin-right: 0.5rem;
+}
+.type-card p {
+    color: var(--text-gray);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
 
-                    <div class="system-box">
-                        <div class="system-icon"><i class="fa-brands fa-cc-stripe"></i></div>
-                        <h5>Stripe / PayPal</h5>
-                    </div>
+.type-examples {
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background: rgba(249, 115, 22, 0.1);
+    color: var(--text-dark);
+    border-left: 3px solid var(--primary-accent);
+    position: relative;
+    z-index: 1;
+}
 
-                    <div class="system-box">
-                        <div class="system-icon"><i class="fa-solid fa-address-book"></i></div>
-                        <h5>Salesforce / HubSpot</h5>
-                    </div>
 
-                    <div class="system-box">
-                        <div class="system-icon"><i class="fa-solid fa-envelope"></i></div>
-                        <h5>Gmail / Outlook</h5>
-                    </div>
+/* --- 4. BENEFITS SECTION (FIXED LAYOUT) --- */
+.benefits-section {
+    background: var(--bg-white);
+    padding: 6rem 0;
+}
 
-                    <div class="system-box">
-                        <div class="system-icon"><i class="fa-solid fa-chart-pie"></i></div>
-                        <h5>Power BI / Tableau</h5>
-                    </div>
+.benefits-container {
+    /* FIX: Added grid layout for content and visual */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    gap: 4rem;
+    align-items: center;
+}
 
-                    <div class="system-box">
-                        <div class="system-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-                        <h5>Shopify / WooCommerce</h5>
-                    </div>
+.benefits-list {
+    display: grid;
+    /* FIX: Changed to 2 columns for list items */
+    grid-template-columns: 1fr 1fr; 
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+}
 
-                    <div class="system-box">
-                        <div class="system-icon"><i class="fa-solid fa-user-plus"></i></div>
-                        <h5>BambooHR / Workday</h5>
-                    </div>
+.benefit-item {
+    padding: 1.5rem;
+    background: var(--bg-light-gray);
+    border: 2px solid var(--border-gray);
+    border-radius: 16px;
+    transition: all 0.3s;
+    position: relative;
+}
 
-                    <div class="system-box">
-                        <div class="system-icon"><i class="fa-solid fa-clinic-medical"></i></div>
-                        <h5>Cliniko / Gensolve</h5>
-                    </div>
+.benefit-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 40px rgba(249, 115, 22, 0.15);
+    border-color: var(--primary-accent);
+}
 
-                    <div class="system-box">
-                        <div class="system-icon"><i class="fa-solid fa-code"></i></div>
-                        <h5>Custom Systems</h5>
-                    </div>
-                </div>
-            </div>
-        </section>
+.benefit-item h5 {
+    font-size: 1.15rem; /* FIX: Added size */
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
 
-        <section class="final-cta">
-            <div class="cta-content">
-                <h2>Ready to Connect Your Systems?</h2>
-                <p>Let's break down your data silos and create seamless workflows across all your business systems.</p>
-                <a href="../index.html#consultation" class="btn btn-primary cta-btn">
-                    Start Your Integration Project
-                    <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
-            </div>
-        </section>
-    </main>
-</body>
-</html>
+.benefit-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-dark));
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
+    color: var(--bg-white);
+}
+.benefit-item p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
+
+.benefits-visual {
+    height: 400px; /* FIX: Set visual height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* --- 5. POPULAR SYSTEMS SECTION (FIXED LAYOUT) --- */
+.systems-section {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--bg-light-gray) 0%, rgba(249, 115, 22, 0.08) 100%);
+}
+
+/* FIX: Added grid layout for system cards */
+.systems-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for systems */
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    gap: 1.5rem;
+}
+
+.system-box {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: var(--bg-white);
+    border: 2px solid var(--border-gray);
+    border-radius: 16px;
+    transition: all 0.3s;
+}
+
+.system-box:hover {
+    box-shadow: 0 15px 40px rgba(249, 115, 22, 0.15);
+    border-color: var(--primary-accent);
+    background: linear-gradient(135deg, var(--bg-light-gray), var(--bg-white));
+}
+
+.system-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 0.75rem;
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-dark));
+    box-shadow: 0 5px 20px rgba(249, 115, 22, 0.3);
+    color: var(--bg-white);
+}
+
+.system-box h5 {
+    font-size: 1.1rem; /* FIX: Added size */
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+
+/* --- 6. FINAL CTA --- */
+.final-cta {
+    position: relative;
+    padding: 8rem 0;
+    /* CTA is dark, reversing the main hero diagonal cut */
+    background: linear-gradient(135deg, var(--footer-dark) 0%, var(--text-dark) 100%);
+    overflow: hidden;
+    text-align: center;
+    color: var(--bg-white); /* FIX: Set text color */
+}
+
+.final-cta::before {
+    /* White wave overlay on top */
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: var(--bg-white);
+    clip-path: ellipse(70% 50% at 50% 100%);
+    z-index: 1;
+}
+
+.final-cta::after {
+    /* Pattern background using light white */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-content h2 {
+    color: var(--bg-white);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    color: var(--border-gray);
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+}
+
+.final-cta .cta-btn {
+    padding: 1.3rem 3rem; /* FIX: Set padding */
+    font-size: 1.15rem; /* FIX: Set size */
+    background: var(--bg-white);
+    color: var(--primary-accent-dark);
+}
+.final-cta .cta-btn:hover {
+    background: var(--bg-light-gray);
+    transform: translateY(-2px);
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .integration-visual,
+    .benefits-visual {
+        height: 350px;
+    }
+    .problems-grid,
+    .systems-grid,
+    .benefits-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .benefits-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .types-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .problems-grid,
+    .systems-grid,
+    .benefits-list {
+        grid-template-columns: 1fr;
+    }
+    .final-cta::before {
+        height: 50px;
+        top: -50px;
+    }
+}
