@@ -14,6 +14,27 @@
     border-bottom: 1px solid var(--border-gray);
 }
 
+/* 🚨 NEW/CORRECTED STYLING FOR "Our Expertise" BADGE IN THE INDUSTRIES SECTION 🚨 */
+/* Assuming the "Our Expertise" badge uses the class .section-badge or similar, 
+   and is inside the header of the #industries section. */
+#industries .section-header .section-badge {
+    /* Style based on Option 1 refined: Bigger font, Bold, Solid Background, No Shadow */
+    background-color: var(--primary-accent-dark); 
+    color: #FFFFFF;         
+    border: 1px solid var(--primary-accent-dark); 
+    
+    /* Bigger font and padding */
+    padding: 0.6rem 1.8rem; 
+    font-size: 1.1rem; 
+    font-weight: 700;
+    
+    /* No shadow as requested */
+    
+    border-radius: 25px; 
+    display: inline-block; 
+    margin-bottom: 1rem; /* Added margin to push it away from the main title */
+}
+
 /* Industry Grid */
 .industries-grid {
     display: grid;
