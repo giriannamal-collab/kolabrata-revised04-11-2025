@@ -22,11 +22,23 @@
     color: var(--primary-accent); /* Keeps your orange highlight */
 }
 
-/* Style the badge for the dark background */
+/* Style the badge for the dark background - UPDATED: Larger, Bold, NO SHADOW */
 #services .section-header .section-badge {
-    background-color: rgba(255, 121, 0, 0.1); /* Light orange bg */
-    color: var(--primary-accent-dark);         /* Orange text */
-    border: 1px solid var(--primary-accent); 
+    /* Solid background is fine */
+    background-color: var(--primary-accent-dark); 
+    color: #FFFFFF;         
+    border: 1px solid var(--primary-accent-dark); 
+    
+    /* Bigger font and padding retained */
+    padding: 0.6rem 1.8rem; 
+    font-size: 1.1rem; 
+    font-weight: 700;
+    
+    /* ** CHANGE: Box-shadow removed for a flat look ** */
+    /* box-shadow: 0 6px 12px rgba(255, 121, 0, 0.45); */
+    
+    border-radius: 25px; 
+    display: inline-block; 
 }
 
 /*
