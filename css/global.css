@@ -150,3 +150,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700; /* Use bold font weight */
     color: var(--primary-accent); /* Use your bright orange color */
 }
+
+/* NEW HIGHLIGHT STYLE (from BlueRoute) */
+.highlight {
+    color: var(--primary-accent);
+}

@@ -1,0 +1,19 @@
+robots.txt file for www.kolabrata.com
+
+--- General Directives for All Crawlers (*) ---
+User-agent: *
+--- Allow crawling of everything by default ---
+Allow: /
+
+--- Disallow crawling of common non-public directories and scripts ---
+Disallow: /cgi-bin/
+Disallow: /temp/
+Disallow: /tmp/
+Disallow: /*.log$
+Disallow: /*.sql$
+
+--- Specify Canonical Host (Optional, but recommended for consistency) ---
+Host: https://www.google.com/search?q=https://www.kolabrata.com
+
+--- Sitemap Location (MANDATORY) ---
+Sitemap: https://www.google.com/search?q=https://www.kolabrata.com/sitemap.xml
