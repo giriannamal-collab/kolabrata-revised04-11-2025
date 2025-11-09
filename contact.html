@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact Kolabrata</title>
+
+  <!-- Calendly widget CSS (ONLY inside iframe) -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Minimal inner-card styles only.
+       Modal overlay / shell / iframe shadow handled by parent global.css.
+       This file must NOT define the overlay/shell styles to avoid duplicates.
+    */
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    :root {
+      --primary: #F97316;
+      --primary-dark: #EA580C;
+      --bg-light-grey: #F5F5F5;
+      --bg-white: #FFFFFF;
+      --text-dark: #1A1A1A;
+      --text-secondary: #555555;
+      --border-color: #EAEAEA;
+    }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: transparent; /* parent supplies card background/shadow */
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    h1,h2,h3,h4,h5,h6, .logo { font-family: 'Space Grotesk', sans-serif; font-weight:700; color:var(--text-dark); }
+
+    .btn { display:inline-block; font-family:inherit; text-transform:uppercase; letter-spacing:1px; padding:12px 24px; font-size:14px; font-weight:700; border-radius:50px; transition:all .2s ease; text-decoration:none; cursor:pointer; border:none; }
+    .btn-primary { background:var(--primary); color:var(--bg-white); border:2px solid var(--primary); }
+    .btn-primary:hover { background:var(--primary-dark); border-color:var(--primary-dark); }
+
+    /* ---------- INNER CARD LAYOUT (no overlay styles) ---------- */
+    .contact-modal {
+      display: grid;
+      grid-template-columns: 1fr 2fr; /* left brand : right form */
+      gap: 28px;
+      width: 100%;
+      height: 100%;
+      background: transparent; /* parent provides visible card background/shadow */
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .modal-brand {
+      background: var(--text-dark);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--bg-light-grey);
+      min-height: 100%;
+    }
+
+    .modal-brand .logo { font-size: 28px; color: var(--bg-white); margin-bottom: 12px; }
+    .modal-brand h3 { font-size: 1.6rem; color: var(--bg-white); line-height:1.25; margin-bottom:12px; }
+    .modal-brand h3 .highlight { color: var(--primary); }
+    .modal-brand p { color:#cfcfcf; line-height:1.6; font-size:0.95rem; }
+
+    .trust-badges { margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .trust-item { display:flex; align-items:center; gap:10px; margin-bottom:12px; color:#ddd; font-size:0.9rem; }
+    .trust-item i { color: var(--primary); }
+
+    .modal-form {
+      padding: 32px;
+      overflow-y: auto;
+      max-height: 100%;
+      background: transparent;
+    }
+
+    .modal-form h3 { font-size:1.6rem; margin-bottom:6px; color:var(--text-dark); }
+    .modal-form .subtitle { color:var(--text-secondary); margin-bottom:20px; font-size:0.95rem; }
+
+    .form-group { margin-bottom:18px; }
+    .form-group label { display:block; font-weight:700; margin-bottom:8px; font-size:0.9rem; color:var(--text-dark); }
+    .form-group input, .form-group textarea, .form-group select {
+      width:100%; padding:12px 14px; border:1px solid var(--border-color); border-radius:8px; font-family:inherit; font-size:1rem; background:var(--bg-light-grey); transition:all .2s ease;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline:none; border-color:var(--primary); background:var(--bg-white); box-shadow:0 0 0 4px rgba(249,115,22,0.06);
+    }
+    .form-group textarea { min-height:100px; resize:vertical; }
+
+    .modal-close {
+      position:absolute; top:12px; right:12px; width:36px; height:36px; background: rgba(255,255,255,0.92); border-radius:50%; color:var(--text-dark); font-size:18px; line-height:36px; text-align:center; cursor:pointer; border:none; z-index:5; box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    }
+    .modal-close:hover { transform: rotate(90deg); }
+
+    .success-message { display:none; background:#10B981; color:#fff; padding:10px; border-radius:8px; margin-bottom:12px; text-align:center; font-weight:600; }
+    .success-message.show { display:block; animation: slideDown .28s ease-out; }
+
+    .step-indicator { display:flex; justify-content:center; gap:10px; margin-bottom:18px; }
+    .step { width:40px; height:4px; background:var(--border-color); border-radius:2px; }
+    .step.active { background:var(--primary); }
+
+    .calendly-container { display:none; }
+    .calendly-container.show { display:block; }
+
+    .form-container.hide { display:none; }
+
+    @keyframes slideDown { from { opacity:0; transform:translateY(-8px);} to {opacity:1; transform:translateY(0);} }
+
+    /* Responsive: stack and hide left brand only under 680px */
+    @media (max-width: 680px) {
+      .contact-modal { grid-template-columns: 1fr; height: 100%; border-radius: 0; }
+      .modal-brand { display: none; }
+      .modal-form { padding: 22px; max-height: 100vh; }
+    }
+
+    /* Small helper scrollbar */
+    .modal-form::-webkit-scrollbar { width: 8px; }
+    .modal-form::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.08); border-radius: 8px; }
+
+    /* ---------------------------
+       Remove Calendly floating items
+       (badge/chat/overlay) that can overlap the calendar.
+       These selectors are intentionally broad to cover variations.
+       --------------------------- */
+    .calendly-badge-widget,
+    .calendly-badge,
+    .calendly-overlay,
+    .calendly-badge-widget *[data-testid],
+    [data-testid="calendly-badge"],
+    .calendly-cta {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-modal">
+    <button class="modal-close" id="close-iframe-btn" title="Close" aria-label="Close modal">&times;</button>
+
+    <div class="modal-brand">
+      <div>
+        <div class="logo">Kolabrata</div>
+        <h3>Let's Build Your <span class="highlight">AI-Powered Future</span></h3>
+        <p>Fill out this form and our expert team will get back to you within 24 hours to schedule your free discovery call.</p>
+      </div>
+
+      <div class="trust-badges">
+        <div class="trust-item"><i class="fas fa-check-circle"></i><span>Free 30-Minute Consultation</span></div>
+        <div class="trust-item"><i class="fas fa-check-circle"></i><span>No Commitment Required</span></div>
+        <div class="trust-item"><i class="fas fa-check-circle"></i><span>100% Confidential</span></div>
+      </div>
+    </div>
+
+    <div class="modal-form">
+      <div class="step-indicator">
+        <div class="step active" id="step1"></div>
+        <div class="step" id="step2"></div>
+      </div>
+
+      <div id="success-message" class="success-message">🎉 Thank you! Loading calendar...</div>
+
+      <div class="form-container" id="form-container">
+        <form id="contact-form" method="POST">
+          <h3>Get in Touch</h3>
+          <p class="subtitle">Tell us about your project and we'll schedule a call</p>
+
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required placeholder="John Doe">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="+61 XXX XXX XXX">
+          </div>
+
+          <div class="form-group">
+            <label for="service">What do you need? *</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option value="custom-software">Custom Software Development</option>
+              <option value="data-migration">Data Migration Services</option>
+              <option value="ai-solutions">AI Solutions</option>
+              <option value="app-modernization">App Modernization</option>
+              <option value="system-integration">System Integration</option>
+              <option value="software-consulting">Software Consulting</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tell us about your project</label>
+            <textarea id="message" name="message" placeholder="E.g., We need to migrate 250K patient records from our legacy system..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="submit-btn"><i class="fas fa-arrow-right"></i> Proceed to Schedule Call</button>
+        </form>
+      </div>
+
+      <div class="calendly-container" id="calendly-container">
+        <!-- Calendly inline widget (kept inside the iframe) -->
+        <div class="calendly-inline-widget" id="calendly-widget"
+             data-url="https://calendly.com/adm-kolabrata/30min"
+             style="min-width:320px;height:700px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calendly widget JS (ONLY inside iframe) -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+
+  <script>
+    // Notify parent to close modal when close button clicked
+    document.getElementById('close-iframe-btn').addEventListener('click', function(e){
+      e.preventDefault();
+      window.parent.postMessage('closeModal', '*');
+    });
+
+    // Form submit handler: show Calendly inline widget with prefill
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('submit-btn');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+      submitBtn.disabled = true;
+      document.getElementById('step2').classList.add('active');
+
+      const formData = {
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        service: document.getElementById('service').value,
+        message: document.getElementById('message').value.trim()
+      };
+
+      try {
+        // show success message briefly
+        document.getElementById('success-message').classList.add('show');
+
+        // give a little time for UI
+        await new Promise(r => setTimeout(r, 700));
+
+        // hide the form and show Calendly inline container
+        document.getElementById('form-container').classList.add('hide');
+        document.getElementById('calendly-container').classList.add('show');
+
+        // build Calendly URL (ensure this matches the data-url above)
+        const calendlyUrl = `https://calendly.com/adm-kolabrata/30min?hide_gdpr_banner=1&primary_color=f97316&name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&a1=${encodeURIComponent(formData.phone)}&a2=${encodeURIComponent(formData.service)}`;
+
+        // initialize inline widget (Calendly script must be loaded above)
+        if (window.Calendly && typeof Calendly.initInlineWidget === 'function') {
+          Calendly.initInlineWidget({
+            url: calendlyUrl,
+            parentElement: document.getElementById('calendly-widget'),
+            prefill: {
+              name: formData.name,
+              email: formData.email
+            }
+          });
+        } else {
+          // fallback: navigate to Calendly in new tab
+          window.open(calendlyUrl, '_blank', 'noopener');
+        }
+
+        // hide success message after short delay
+        setTimeout(()=>{ document.getElementById('success-message').classList.remove('show'); }, 2800);
+      } catch (err) {
+        console.error(err);
+        alert('Something went wrong. Please try again.');
+        document.getElementById('form-container').classList.remove('hide');
+        document.getElementById('calendly-container').classList.remove('show');
+        document.getElementById('step2').classList.remove('active');
+      } finally {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+
+    // prevent Enter key submission except in textarea
+    document.getElementById('contact-form').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') e.preventDefault();
+    });
+  </script>
+</body>
+</html>

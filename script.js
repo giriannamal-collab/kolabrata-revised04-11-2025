@@ -19,15 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (question) {
             question.addEventListener('click', () => {
-                // Check if this item is already open
                 const isOpen = item.classList.contains('active');
-
-                // Close all other items
                 faqItems.forEach(otherItem => {
                     otherItem.classList.remove('active');
                 });
-
-                // If it wasn't open, open it
                 if (!isOpen) {
                     item.classList.add('active');
                 }
@@ -35,47 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // === 3. CONSULTATION FORM SUBMISSION (Example) ===
-    const form = document.getElementById('consultationForm');
-    const successOverlay = document.getElementById('successOverlay');
-    const errorMessage = document.getElementById('errorMessage');
-
-    if (form && successOverlay && errorMessage) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault(); // Stop the form from actually submitting
-            
-            // Basic validation example
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const service = document.getElementById('service').value;
-
-            if (name === '' || email === '' || service === '') {
-                errorMessage.textContent = 'Please fill out all required fields.';
-                errorMessage.style.display = 'block';
-                return;
-            }
-
-            // If validation passes
-            errorMessage.style.display = 'none';
-            
-            // Show the success message
-            successOverlay.style.display = 'flex';
-
-            // Reset the form
-            form.reset();
-
-            // Hide the success message after a few seconds
-            setTimeout(() => {
-                successOverlay.style.display = 'none';
-            }, 4000); 
-        });
-    }
-
-    // === 4. SMOOTH SCROLL & ACTIVE NAV LINKS ===
+    // === 3. SMOOTH SCROLL & ACTIVE NAV LINKS ===
     const navLinks = document.querySelectorAll('.header-nav-links a');
     const sections = document.querySelectorAll('section[id]');
 
-    // Function for smooth scrolling
     const smoothScroll = (e) => {
         e.preventDefault();
         const targetId = e.currentTarget.getAttribute('href');
@@ -83,15 +41,14 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (targetElement) {
             window.scrollTo({
-                top: targetElement.offsetTop - 80, // Adjust 80 for header height
+                top: targetElement.offsetTop - 80,
                 behavior: 'smooth'
             });
         }
         
-        // Close mobile menu on click
-        if (headerNav.classList.contains('is-active')) {
+        if (headerNav && headerNav.classList.contains('is-active')) {
             headerNav.classList.remove('is-active');
-            mobileMenuBtn.classList.remove('is-active');
+            if (mobileMenuBtn) mobileMenuBtn.classList.remove('is-active');
         }
     };
 
@@ -99,13 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
         link.addEventListener('click', smoothScroll);
     });
 
-    // Function to update active nav link on scroll
     const updateActiveLink = () => {
         let currentSection = '';
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - 100) { // 100px offset
+            if (window.scrollY >= sectionTop - 100) {
                 currentSection = section.getAttribute('id');
             }
         });
@@ -119,33 +75,27 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     window.addEventListener('scroll', updateActiveLink);
-    
-    // Run once on load
     updateActiveLink();
 
-    // === 5. PROCESS ANIMATION (from your inline script) ===
+    // === 4. PROCESS ANIMATION ===
     const observerOptions = {
-        root: null, // Use the viewport as the root
+        root: null,
         rootMargin: '0px',
-        threshold: 0.3 // Trigger when 30% of the element is visible
+        threshold: 0.3
     };
 
     const stepObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                // observer.unobserve(entry.target); // Optional: Stop observing
             }
         });
     }, observerOptions);
 
-    const processSteps = document.querySelectorAll('.process-simple-step'); // Corrected selector
+    const processSteps = document.querySelectorAll('.process-simple-step');
     processSteps.forEach(step => stepObserver.observe(step));
 
-    // Note: Your 'process-progress-bar' logic was removed as the element wasn't in the HTML.
-    // If you add it back, we can add that logic here too.
-
-    // === 6. TESTIMONIALS CAROUSEL ===
+    // === 5. TESTIMONIALS CAROUSEL ===
     let currentStory = 0;
     const stories = document.querySelectorAll('.story-card');
     const dots = document.querySelectorAll('.dot');
@@ -179,7 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
             updateStories();
         }
 
-        // Make functions globally accessible for inline onclick attributes
         window.nextStory = nextStory;
         window.prevStory = prevStory;
         window.goToStory = goToStory;
@@ -189,10 +138,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const counters = story.querySelectorAll('.stat-value');
             counters.forEach(counter => {
                 let start = 0;
-                const targetStr = counter.getAttribute('data-target');
-                const target = Number(targetStr);
+                const targetStr = counter.getAttribute('data-target') || '0';
+                const target = Number(targetStr.replace(/,/g, '') || 0);
                 let duration = 1500;
-                let stepTime = Math.max(Math.floor(duration / target), 10);
+                // avoid division by zero
+                let stepTime = target > 0 ? Math.max(Math.floor(duration / target), 10) : 20;
                 
                 if (target === 0) {
                     counter.textContent = targetStr;
@@ -218,10 +168,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        // Auto-play
         let autoplay = setInterval(nextStory, 7000);
 
-        // Pause on hover
         const container = document.querySelector('.stories-container');
         if (container) {
             container.addEventListener('mouseenter', () => {
@@ -231,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 autoplay = setInterval(nextStory, 7000);
             });
 
-            // Swipe support
             let startX = 0;
             let isDragging = false;
             container.addEventListener('touchstart', (e) => {
@@ -255,7 +202,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             const testimonialsSection = document.getElementById('testimonials');
             if (testimonialsSection) {
@@ -268,7 +214,142 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Initial load
         updateStories();
+    }
+
+    // === 6. MODAL FUNCTIONALITY ===
+    // Create overlay + shell + iframe (lazy-load contact.html)
+    (function() {
+        const modalOverlay = document.createElement('div');
+        modalOverlay.className = 'modal-overlay';
+        modalOverlay.id = 'contact-modal-overlay';
+        modalOverlay.setAttribute('role', 'dialog');
+        modalOverlay.setAttribute('aria-modal', 'true');
+        modalOverlay.setAttribute('aria-hidden', 'true');
+
+        const modalShell = document.createElement('div');
+        modalShell.className = 'modal-shell';
+
+        // close button (visible in parent overlay)
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'modal-close';
+        closeBtn.type = 'button';
+        closeBtn.setAttribute('aria-label', 'Close contact form');
+        closeBtn.innerHTML = '&times;';
+
+        const modalIframe = document.createElement('iframe');
+        // lazy load: do not set src now to save initial load time
+        // set the actual page path here for when we open
+        modalIframe.dataset.src = 'contact.html';
+        modalIframe.id = 'contact-iframe';
+        modalIframe.className = 'modal-iframe';
+        modalIframe.setAttribute('title', 'Contact form');
+        modalIframe.setAttribute('frameborder', '0');
+        modalIframe.setAttribute('allow', 'microphone; camera; clipboard-write; geolocation; payment');
+        modalIframe.style.width = '100%';
+        modalIframe.style.height = '100%';
+        modalIframe.style.border = '0';
+        modalIframe.style.background = '#fff';
+
+        modalShell.appendChild(closeBtn);
+        modalShell.appendChild(modalIframe);
+        modalOverlay.appendChild(modalShell);
+        document.body.appendChild(modalOverlay);
+
+        // helper functions
+        function openContactModal() {
+            // set src if not set (lazy-load)
+            if (!modalIframe.src || modalIframe.src === 'about:blank') {
+                modalIframe.src = modalIframe.dataset.src;
+            }
+            modalOverlay.classList.add('open');
+            modalOverlay.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open'); // body.modal-open blocks scroll (CSS)
+            // focus close button for accessibility
+            closeBtn.focus();
+        }
+
+        function closeContactModal() {
+            modalOverlay.classList.remove('open');
+            modalOverlay.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+            // optional: stop iframe activity by blanking it; uncomment if desired
+            // modalIframe.src = 'about:blank';
+        }
+
+        // open triggers:
+        const headerBtn = document.getElementById('open-contact-btn');
+        if (headerBtn) {
+            headerBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openContactModal();
+            });
+        }
+
+        // existing CTA anchors that go to #consultation
+        const modalTriggers = document.querySelectorAll('a[href="#consultation"]');
+        modalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                openContactModal();
+            });
+        });
+
+        // close actions
+        closeBtn.addEventListener('click', closeContactModal);
+
+        // clicking outside the shell closes modal
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) {
+                closeContactModal();
+            }
+        });
+
+        // Escape to close
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('open')) {
+                closeContactModal();
+            }
+        });
+
+        // Listen for postMessage from iframe (contact.html should post 'closeModal')
+        window.addEventListener('message', function(event) {
+            if (event && event.data === 'closeModal') {
+                closeContactModal();
+            }
+        }, false);
+
+        // Expose methods if needed
+        window.openContactModal = openContactModal;
+        window.closeContactModal = closeContactModal;
+    })();
+
+    // === 7. OLD CONSULTATION FORM (Keep for direct CTA method) ===
+    const form = document.getElementById('consultationForm');
+    const successOverlay = document.getElementById('successOverlay');
+    const errorMessage = document.getElementById('errorMessage');
+
+    if (form && successOverlay && errorMessage) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const service = document.getElementById('service').value;
+
+            if (name === '' || email === '' || service === '') {
+                errorMessage.textContent = 'Please fill out all required fields.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            errorMessage.style.display = 'none';
+            successOverlay.style.display = 'flex';
+            form.reset();
+
+            setTimeout(() => {
+                successOverlay.style.display = 'none';
+            }, 4000); 
+        });
     }
 });
