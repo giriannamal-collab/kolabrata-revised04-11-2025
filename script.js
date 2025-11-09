@@ -1,5 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Helper for performance: Throttles a function call to prevent excessive execution
+    const throttle = (func, limit) => {
+        let inThrottle;
+        return function() {
+            const context = this, args = arguments;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        }
+    }
+
+
     // === 1. MOBILE MENU TOGGLE ===
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const headerNav = document.querySelector('.header-nav');
@@ -30,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // === 3. SMOOTH SCROLL & ACTIVE NAV LINKS ===
+    // === 3. SMOOTH SCROLL & ACTIVE NAV LINKS (Throttled for Performance) ===
     const navLinks = document.querySelectorAll('.header-nav-links a');
     const sections = document.querySelectorAll('section[id]');
 
@@ -61,7 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - 100) {
+            // Use 200px offset for smoother transition feeling
+            if (window.scrollY >= sectionTop - 200) { 
                 currentSection = section.getAttribute('id');
             }
         });
@@ -74,7 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    window.addEventListener('scroll', updateActiveLink);
+    // Apply Throttle here to limit checks to every 100ms
+    window.addEventListener('scroll', throttle(updateActiveLink, 100)); 
     updateActiveLink();
 
     // === 4. PROCESS ANIMATION ===
@@ -95,13 +111,47 @@ document.addEventListener("DOMContentLoaded", () => {
     const processSteps = document.querySelectorAll('.process-simple-step');
     processSteps.forEach(step => stepObserver.observe(step));
 
-    // === 5. TESTIMONIALS CAROUSEL ===
+    // === 5. TESTIMONIALS CAROUSEL (Updated Counters with requestAnimationFrame) ===
     let currentStory = 0;
     const stories = document.querySelectorAll('.story-card');
     const dots = document.querySelectorAll('.dot');
     
     if (stories.length > 0 && dots.length > 0) {
         const totalStories = stories.length;
+
+        const animateCounters = (story) => {
+            if (!story) return;
+            const counters = story.querySelectorAll('.stat-value');
+            counters.forEach(counter => {
+                const targetStr = counter.getAttribute('data-target') || '0';
+                const target = Number(targetStr.replace(/,/g, '') || 0);
+                const duration = 1500;
+                const start = 0;
+                
+                if (Number(counter.textContent.replace(/,/g, '')) === target) {
+                    return;
+                }
+                
+                counter.textContent = start.toLocaleString();
+                
+                let startTimestamp = null;
+
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const elapsed = timestamp - startTimestamp;
+                    const progress = Math.min(elapsed / duration, 1); 
+                    
+                    let count = Math.floor(progress * target);
+                    
+                    counter.textContent = count.toLocaleString();
+
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            });
+        }
 
         const updateStories = () => {
             stories.forEach((story, index) => {
@@ -111,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 dot.classList.toggle('active', index === currentStory);
                 dot.setAttribute('aria-selected', index === currentStory);
             });
-            animateCounters(stories[currentStory]);
+            animateCounters(stories[currentStory]); 
         }
 
         const nextStory = () => {
@@ -132,41 +182,6 @@ document.addEventListener("DOMContentLoaded", () => {
         window.nextStory = nextStory;
         window.prevStory = prevStory;
         window.goToStory = goToStory;
-
-        const animateCounters = (story) => {
-            if (!story) return;
-            const counters = story.querySelectorAll('.stat-value');
-            counters.forEach(counter => {
-                let start = 0;
-                const targetStr = counter.getAttribute('data-target') || '0';
-                const target = Number(targetStr.replace(/,/g, '') || 0);
-                let duration = 1500;
-                // avoid division by zero
-                let stepTime = target > 0 ? Math.max(Math.floor(duration / target), 10) : 20;
-                
-                if (target === 0) {
-                    counter.textContent = targetStr;
-                    return;
-                }
-                if (counter.textContent.trim() !== '0' && Number(counter.textContent.replace(/,/g, '')) !== target) {
-                    counter.textContent = '0';
-                } else if (Number(counter.textContent.replace(/,/g, '')) === target) {
-                    return;
-                }
-                
-                let count = start;
-                const interval = setInterval(() => {
-                    let increment = Math.ceil(target / (duration / stepTime));
-                    count += increment;
-                    
-                    if (count >= target) {
-                        count = target;
-                        clearInterval(interval);
-                    }
-                    counter.textContent = count.toLocaleString();
-                }, stepTime);
-            });
-        }
 
         let autoplay = setInterval(nextStory, 7000);
 
@@ -190,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!isDragging) return;
                 const moveX = e.touches[0].clientX;
                 const diff = startX - moveX;
-                if (Math.abs(diff) > 50) {
+                if (Math.abs(diff) > 50) { 
                     if (diff > 0) nextStory();
                     else prevStory();
                     isDragging = false;
@@ -206,7 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const testimonialsSection = document.getElementById('testimonials');
             if (testimonialsSection) {
                 const rect = testimonialsSection.getBoundingClientRect();
-                const inView = (rect.top >= 0 && rect.bottom <= window.innerHeight);
+                const inView = (rect.top >= 0 && rect.bottom <= window.innerHeight); 
                 if (inView) {
                     if (e.key === 'ArrowLeft') prevStory();
                     if (e.key === 'ArrowRight') nextStory();
@@ -214,11 +229,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        updateStories();
+        updateStories(); 
     }
 
-    // === 6. MODAL FUNCTIONALITY ===
-    // Create overlay + shell + iframe (lazy-load contact.html)
+    // === 6. MODAL FUNCTIONALITY (with Accessibility Focus Trapping) ===
     (function() {
         const modalOverlay = document.createElement('div');
         modalOverlay.className = 'modal-overlay';
@@ -230,7 +244,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const modalShell = document.createElement('div');
         modalShell.className = 'modal-shell';
 
-        // close button (visible in parent overlay)
         const closeBtn = document.createElement('button');
         closeBtn.className = 'modal-close';
         closeBtn.type = 'button';
@@ -238,8 +251,6 @@ document.addEventListener("DOMContentLoaded", () => {
         closeBtn.innerHTML = '&times;';
 
         const modalIframe = document.createElement('iframe');
-        // lazy load: do not set src now to save initial load time
-        // set the actual page path here for when we open
         modalIframe.dataset.src = 'contact.html';
         modalIframe.id = 'contact-iframe';
         modalIframe.className = 'modal-iframe';
@@ -256,28 +267,27 @@ document.addEventListener("DOMContentLoaded", () => {
         modalOverlay.appendChild(modalShell);
         document.body.appendChild(modalOverlay);
 
-        // helper functions
+        
         function openContactModal() {
-            // set src if not set (lazy-load)
             if (!modalIframe.src || modalIframe.src === 'about:blank') {
                 modalIframe.src = modalIframe.dataset.src;
             }
             modalOverlay.classList.add('open');
             modalOverlay.setAttribute('aria-hidden', 'false');
-            document.body.classList.add('modal-open'); // body.modal-open blocks scroll (CSS)
-            // focus close button for accessibility
-            closeBtn.focus();
+            document.body.classList.add('modal-open');
+            
+            setTimeout(() => {
+                closeBtn.focus();
+            }, 50); 
         }
 
         function closeContactModal() {
             modalOverlay.classList.remove('open');
             modalOverlay.setAttribute('aria-hidden', 'true');
             document.body.classList.remove('modal-open');
-            // optional: stop iframe activity by blanking it; uncomment if desired
-            // modalIframe.src = 'about:blank';
         }
 
-        // open triggers:
+        // Open triggers
         const headerBtn = document.getElementById('open-contact-btn');
         if (headerBtn) {
             headerBtn.addEventListener('click', function(e) {
@@ -286,7 +296,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        // existing CTA anchors that go to #consultation
         const modalTriggers = document.querySelectorAll('a[href="#consultation"]');
         modalTriggers.forEach(trigger => {
             trigger.addEventListener('click', function(e) {
@@ -295,20 +304,23 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        // close actions
+        // Close actions
         closeBtn.addEventListener('click', closeContactModal);
 
-        // clicking outside the shell closes modal
+        // Clicking outside the shell closes modal
         modalOverlay.addEventListener('click', function(e) {
             if (e.target === modalOverlay) {
                 closeContactModal();
             }
         });
 
-        // Escape to close
+        // Escape key and Focus Trapping
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modalOverlay.classList.contains('open')) {
+            if (!modalOverlay.classList.contains('open')) return;
+            
+            if (e.key === 'Escape') {
                 closeContactModal();
+                return;
             }
         });
 
@@ -319,7 +331,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }, false);
 
-        // Expose methods if needed
         window.openContactModal = openContactModal;
         window.closeContactModal = closeContactModal;
     })();

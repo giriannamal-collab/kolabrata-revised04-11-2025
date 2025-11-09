@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact Kolabrata</title>
 
-  <!-- Calendly widget CSS (ONLY inside iframe) -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -133,7 +132,6 @@
     /* ---------------------------
        Remove Calendly floating items
        (badge/chat/overlay) that can overlap the calendar.
-       These selectors are intentionally broad to cover variations.
        --------------------------- */
     .calendly-badge-widget,
     .calendly-badge,
@@ -218,15 +216,13 @@
       </div>
 
       <div class="calendly-container" id="calendly-container">
-        <!-- Calendly inline widget (kept inside the iframe) -->
-        <div class="calendly-inline-widget" id="calendly-widget"
+        <div id="calendly-widget"
              data-url="https://calendly.com/adm-kolabrata/30min"
              style="min-width:320px;height:700px;"></div>
       </div>
     </div>
   </div>
 
-  <!-- Calendly widget JS (ONLY inside iframe) -->
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
 
   <script>
@@ -241,6 +237,7 @@
       e.preventDefault();
       const submitBtn = document.getElementById('submit-btn');
       const originalText = submitBtn.innerHTML;
+      
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
       submitBtn.disabled = true;
       document.getElementById('step2').classList.add('active');
@@ -254,49 +251,49 @@
       };
 
       try {
-        // show success message briefly
-        document.getElementById('success-message').classList.add('show');
+        const successMsg = document.getElementById('success-message');
+        successMsg.classList.add('show');
 
-        // give a little time for UI
         await new Promise(r => setTimeout(r, 700));
 
-        // hide the form and show Calendly inline container
         document.getElementById('form-container').classList.add('hide');
         document.getElementById('calendly-container').classList.add('show');
 
-        // build Calendly URL (ensure this matches the data-url above)
-        const calendlyUrl = `https://calendly.com/adm-kolabrata/30min?hide_gdpr_banner=1&primary_color=f97316&name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&a1=${encodeURIComponent(formData.phone)}&a2=${encodeURIComponent(formData.service)}`;
-
-        // initialize inline widget (Calendly script must be loaded above)
+        // 🔥 FIX: Correctly mapping Phone to 'a1' and Service to 'a2'
+        const calendlyBaseUrl = "https://calendly.com/adm-kolabrata/30min";
+        const calendlyPrefillUrl = `${calendlyBaseUrl}?hide_gdpr_banner=1&primary_color=f97316&name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&a1=${encodeURIComponent(formData.service)}&a2=${encodeURIComponent(formData.phone)}`;
         if (window.Calendly && typeof Calendly.initInlineWidget === 'function') {
+          
           Calendly.initInlineWidget({
-            url: calendlyUrl,
+            url: calendlyPrefillUrl, 
             parentElement: document.getElementById('calendly-widget'),
-            prefill: {
-              name: formData.name,
-              email: formData.email
+            
+            // FIX: Close modal after successful booking
+            onEventScheduled: function(event) {
+                console.log("Calendly Event Scheduled:", event.data);
+                window.parent.postMessage('closeModal', '*');
             }
           });
         } else {
-          // fallback: navigate to Calendly in new tab
-          window.open(calendlyUrl, '_blank', 'noopener');
+          window.open(calendlyPrefillUrl, '_blank', 'noopener');
         }
 
-        // hide success message after short delay
-        setTimeout(()=>{ document.getElementById('success-message').classList.remove('show'); }, 2800);
+        setTimeout(()=>{ successMsg.classList.remove('show'); }, 2800);
+        
       } catch (err) {
-        console.error(err);
+        console.error("Form submission error:", err);
         alert('Something went wrong. Please try again.');
+        
         document.getElementById('form-container').classList.remove('hide');
         document.getElementById('calendly-container').classList.remove('show');
         document.getElementById('step2').classList.remove('active');
+        
       } finally {
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
       }
     });
 
-    // prevent Enter key submission except in textarea
     document.getElementById('contact-form').addEventListener('keypress', function(e) {
       if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') e.preventDefault();
     });
