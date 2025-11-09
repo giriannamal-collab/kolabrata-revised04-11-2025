@@ -335,32 +335,75 @@ document.addEventListener("DOMContentLoaded", () => {
         window.closeContactModal = closeContactModal;
     })();
 
-    // === 7. OLD CONSULTATION FORM (Keep for direct CTA method) ===
-    const form = document.getElementById('consultationForm');
-    const successOverlay = document.getElementById('successOverlay');
-    const errorMessage = document.getElementById('errorMessage');
+  // ... (Your code for Sections 1 through 6 remains UNCHANGED) ...
 
-    if (form && successOverlay && errorMessage) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
+// === 7. CONSULTATION FORM (Capture data locally, then open Calendly with parameters) ===
+const form = document.getElementById('consultationForm');
+const errorMessage = document.getElementById('errorMessage');
+
+if (form && errorMessage) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // --- 1. Get Elements and Data ---
+        const name = document.getElementById('name')?.value.trim() || '';
+        const email = document.getElementById('email')?.value.trim() || '';
+        const phone = document.getElementById('phone')?.value.trim() || ''; // Added phone capture
+        const service = document.getElementById('service')?.value || '';
+        const submitBtn = e.submitter; 
+        
+        const defaultServiceOption = 'Select a service';
+
+        // --- 2. Form Validation ---
+        if (name === '' || email === '' || service === '' || service === defaultServiceOption) {
+            errorMessage.textContent = 'Please fill out all required fields before proceeding.';
+            errorMessage.style.display = 'block';
+            return;
+        }
+
+        // Validation successful: Hide error message
+        errorMessage.style.display = 'none';
+
+        // --- 3. Build Parameterized Calendly URL ---
+        const baseCalendlyURL = submitBtn.getAttribute('data-calendly-url');
+        
+        if (baseCalendlyURL) {
             
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const service = document.getElementById('service').value;
+            // Encode all user inputs to safely pass them through a URL
+            const encodedName = encodeURIComponent(name);
+            const encodedEmail = encodeURIComponent(email);
+            const encodedPhone = encodeURIComponent(phone);
+            
+            // Use the "Notes" field (or other suitable field) for the service type
+            const encodedServiceNote = encodeURIComponent(`Project Type: ${service}`);
 
-            if (name === '' || email === '' || service === '') {
-                errorMessage.textContent = 'Please fill out all required fields.';
-                errorMessage.style.display = 'block';
-                return;
+            // Construct the final URL with parameters (pre-filling data)
+            const finalCalendlyURL = `${baseCalendlyURL}?name=${encodedName}&email=${encodedEmail}&a1=${encodedServiceNote}&a2=${encodedPhone}`;
+
+            // --- 4. Open Calendly Link & Clear Form ---
+            try {
+                // CRITICAL: Launch Calendly in a new tab immediately
+                window.open(finalCalendlyURL, '_blank');
+            } catch (error) {
+                console.error("Failed to open Calendly window:", error);
+                // Fallback for extreme cases (e.g., severe pop-up blockers)
+                alert("An error occurred. Please try booking directly via: " + baseCalendlyURL);
             }
-
-            errorMessage.style.display = 'none';
-            successOverlay.style.display = 'flex';
-            form.reset();
-
+            
+            // Display temporary success message
+            errorMessage.textContent = 'Success! Opening the calendar now...';
+            errorMessage.style.color = '#38b000'; // Success green
+            errorMessage.style.display = 'block';
+            
+            // Clear the form after a short delay
             setTimeout(() => {
-                successOverlay.style.display = 'none';
-            }, 4000); 
-        });
-    }
+                form.reset();
+                errorMessage.style.display = 'none';
+                errorMessage.style.color = 'red'; // Reset error color
+            }, 3000); 
+        } else {
+             console.error("Calendly URL attribute is missing from the button.");
+        }
+    });
+}
 });
